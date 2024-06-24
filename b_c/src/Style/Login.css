@@ -1,0 +1,28 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between; /* 좌우 공백 */
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App-content {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+}
+
+.text {
+  /*현재 textarea 테스트중*/
+  display: block;
+  height: 50px;
+  width: 50%;
+  resize: none;
+}
