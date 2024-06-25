@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../Style/Login.css";
 
 function Login() {
@@ -8,14 +9,17 @@ function Login() {
       </header>
       <div className="App-content">
         <div>
-          <p>여기에 로그인 폼을 추가하세요.</p>
+          <textarea className="text" placeholder="아이디"></textarea>
         </div>
+        &nbsp;
         <div>
-          <textarea className="text">test</textarea>
+          <textarea className="text" placeholder="비밀번호"></textarea>
         </div>
-        <div>
-          <textarea className="text">test</textarea>
-        </div>
+        &nbsp;
+        <Link to="/login">
+          <button className="login-button-login">로그인</button>
+        </Link>
+        &nbsp;
       </div>
     </div>
   );
