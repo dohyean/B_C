@@ -14,7 +14,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.login-button {
+.login-button-Home {
   background-color: #6c5ce7;
   color: white;
   border: none;
@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 
-.App-content {
+.App-content-Home {
   display: flex;
   flex: 1;
   padding: 20px;

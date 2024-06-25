@@ -7,10 +7,10 @@ function HomePage() {
       <header className="App-header">
         <h1>ABCD</h1>
         <Link to="/login">
-          <button className="login-button">로그인</button>
+          <button className="login-button-Home">로그인</button>
         </Link>
       </header>
-      <div className="App-content">
+      <div className="App-content-Home">
         <div className="description">
           <p>페이지에 대한 설명</p>
         </div>
