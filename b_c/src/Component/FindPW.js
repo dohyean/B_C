@@ -5,7 +5,7 @@ function FindPW() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>아이디/패스워드 찾기</h1>
+        <h1>ABCD</h1>
         <Link to="/login">
           <button className="back-button-Login">뒤로 가기</button>
         </Link>
