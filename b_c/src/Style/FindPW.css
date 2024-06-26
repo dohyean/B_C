@@ -1,0 +1,74 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.back-button-Login {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between; /* 좌우 공백 */
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App-content-FindPW {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center; /* 가운데 정렬 */
+  padding: 20px;
+  flex-direction: row; /* 좌우로 배치 */
+  align-items: center; /* 가운데 정렬 */
+}
+
+.FindPW-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 50%;
+}
+
+.text {
+  /*현재 textarea 테스트중*/
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 40px;
+  width: 300px;
+  resize: none;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 40px;
+  padding: 0 10px;
+  font-family: "Arial", sans-serif;
+  color: black;
+}
+
+.FindPW-button-FindPW {
+  background-color: #a69cf5;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+  width: 323px;
+  font-size: 20px;
+}
+
+.divider {
+  width: 2px;
+  background-color: gray;
+  height: 106%; /* 구분선 높이 설정 */
+  margin: 0 20px;
+}
