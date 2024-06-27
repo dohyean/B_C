@@ -1,22 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
 import "../Style/FindPW.css";
+import Menubar from "./Menubar";
 
 function FindPW() {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/"); // 여기에 이동하고 싶은 경로를 입력하세요.
-  };
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 onClick={handleClick} style={{ cursor: "pointer" }}>
-          ABCD
-        </h1>
-        <Link to="/login">
-          <button className="back-button-Login">뒤로 가기</button>
-        </Link>
-      </header>
+      <Menubar></Menubar>
       <div className="App-content-FindPW">
         <div className="FindPW-section">
           <h2>아이디 찾기</h2>
