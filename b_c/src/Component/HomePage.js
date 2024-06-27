@@ -1,22 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
 import "../Style/HomePage.css";
+import Menubar from "./Menubar";
 
 function HomePage() {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/"); // 여기에 이동하고 싶은 경로를 입력하세요.
-  };
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 onClick={handleClick} style={{ cursor: "pointer" }}>
-          ABCD
-        </h1>
-        <Link to="/login">
-          <button className="login-button-Home">로그인</button>
-        </Link>
-      </header>
+      <Menubar></Menubar>
       <div className="App-content-Home">
         <div className="description">
           <p>페이지에 대한 설명</p>

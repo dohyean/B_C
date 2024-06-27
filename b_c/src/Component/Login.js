@@ -1,22 +1,18 @@
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../Style/Login.css";
+import Menubar from "./Menubar";
 
 function Login() {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/"); // 여기에 이동하고 싶은 경로를 입력하세요.
+  const HandleClick = (url) => {
+    navigate(url);
   };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 onClick={handleClick} style={{ cursor: "pointer" }}>
-          ABCD
-        </h1>
-        <Link to="/">
-          <button className="back-button-HomePage">뒤로 가기</button>
-        </Link>
-      </header>
+      <Menubar></Menubar>
       <div className="App-content">
         <div>
           <textarea className="text" placeholder="아이디"></textarea>
@@ -26,16 +22,25 @@ function Login() {
           <textarea className="text" placeholder="비밀번호"></textarea>
         </div>
         &nbsp;
-        <Link to="/HomePageLogin">
-          <button className="login-button-login">로그인</button>
-        </Link>
+        <button
+          onClick={() => HandleClick("/HomePageLogin")}
+          className="login-button-login"
+        >
+          로그인
+        </button>
         <div className="additional-buttons">
-          <Link to="/SignUp">
-            <button className="additional-button">회원가입</button>
-          </Link>
-          <Link to="/FindPW">
-            <button className="additional-button">아이디/패스워드 찾기</button>
-          </Link>
+          <button
+            onClick={() => HandleClick("/SignUp")}
+            className="additional-button"
+          >
+            회원가입
+          </button>
+          <button
+            onClick={() => HandleClick("/FindPW")}
+            className="additional-button"
+          >
+            아이디/패스워드 찾기
+          </button>
         </div>
       </div>
     </div>

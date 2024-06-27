@@ -1,18 +1,36 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Style/SignUp.css";
+import Menubar from "./Menubar";
 
 function SignUp() {
+  const navigate = useNavigate();
+
+  const HandleClick = (url) => {
+    navigate(url);
+  };
+
+  const [text, setText] = useState("");
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+  };
+
+  const Sign_Up = () => {
+    alert(text);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>회원가입</h1>
-        <Link to="/login">
-          <button className="back-button-Login">뒤로 가기</button>
-        </Link>
-      </header>
+      <Menubar></Menubar>
       <div className="App-content-SignUp">
         <div>
-          <textarea className="text" placeholder="아이디"></textarea>
+          <textarea
+            className="text"
+            value={text}
+            onChange={handleChange}
+            placeholder="아이디"
+          ></textarea>
         </div>
         &nbsp;
         <div>
@@ -46,9 +64,9 @@ function SignUp() {
           />
         </div>
         &nbsp;
-        <Link to="/login">
-          <button className="SignUp-button-SignUp">회원 가입</button>
-        </Link>
+        <button onClick={Sign_Up} className="SignUp-button-SignUp">
+          회원 가입
+        </button>
       </div>
     </div>
   );

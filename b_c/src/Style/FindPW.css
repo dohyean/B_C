@@ -27,7 +27,6 @@
   flex: 1;
   justify-content: center;
   align-items: center; /* 가운데 정렬 */
-  padding: 20px;
   flex-direction: row; /* 좌우로 배치 */
   align-items: center; /* 가운데 정렬 */
 }
@@ -69,6 +68,7 @@
 .divider {
   width: 2px;
   background-color: gray;
-  height: 106%; /* 구분선 높이 설정 */
+  height: 100%;
   margin: 0 20px;
+  rotate: 90;
 }
