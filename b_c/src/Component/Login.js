@@ -1,11 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Style/Login.css";
 
 function Login() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/"); // 여기에 이동하고 싶은 경로를 입력하세요.
+  };
   return (
     <div className="App">
       <header className="App-header">
-        <h1>로그인 페이지</h1>
+        <h1 onClick={handleClick} style={{ cursor: "pointer" }}>
+          ABCD
+        </h1>
         <Link to="/">
           <button className="back-button-HomePage">뒤로 가기</button>
         </Link>
@@ -19,7 +26,7 @@ function Login() {
           <textarea className="text" placeholder="비밀번호"></textarea>
         </div>
         &nbsp;
-        <Link to="/">
+        <Link to="/HomePageLogin">
           <button className="login-button-login">로그인</button>
         </Link>
         <div className="additional-buttons">
