@@ -36,7 +36,7 @@ function Login() {
             회원가입
           </button>
           <button
-            onClick={() => HandleClick("/FindPW")}
+            onClick={() => HandleClick("/FindINFO")}
             className="additional-button"
           >
             아이디/패스워드 찾기
