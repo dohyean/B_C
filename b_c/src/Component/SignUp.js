@@ -25,8 +25,18 @@ function SignUp() {
   /*const handleChange = (event) => {
     setFormData(event.target.value);
   };*/
+  const [showPassword, setShowPassword] = useState(false);
 
   const Sign_Up = () => {
+    var passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,32}$/;
+
+    if (!passwordRegex.test(formData.PW)) {
+      alert(
+        "비밀번호는 8~32자 이내의 영문자, 숫자 및 특수 문자를 포함해야 합니다."
+      );
+      return;
+    }
+
     if (formData.PW.length < 8 || formData.PW.length > 32) {
       alert("비밀번호를 8~32자로 작성해주세요.");
       return;
@@ -49,6 +59,8 @@ function SignUp() {
       Phone: "",
       Birth: "",
     });
+
+    alert("회원가입 완료");
   };
 
   const handleChange = (event) => {
@@ -57,6 +69,14 @@ function SignUp() {
       ...prevFormData,
       [name]: value,
     }));
+  };
+
+  const handleKeyDown = (event) => {
+    event.preventDefault();
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -75,12 +95,17 @@ function SignUp() {
         &nbsp;
         <div>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="PW"
-            className="text"
+            className="text password-input"
             value={formData.PW}
             onChange={handleChange}
             placeholder="비밀번호(8 ~ 32자)"
+          ></input>
+          <input
+            type="checkbox"
+            checked={showPassword}
+            onChange={toggleShowPassword}
           ></input>
         </div>
         &nbsp;
@@ -132,6 +157,7 @@ function SignUp() {
             className="text"
             value={formData.Birth}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             placeholder="생년월일 (YYYY/MM/DD)"
           />
         </div>
