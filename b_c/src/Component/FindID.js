@@ -2,6 +2,8 @@ import React from "react";
 import "../Style/FindID.css";
 
 function FindID() {
+  const Find_ID = () => {};
+
   return (
     <div className="FindID-section">
       <h2>아이디 찾기</h2>
