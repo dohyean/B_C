@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/Login.css";
 import Menubar from "./Menubar";
@@ -10,20 +10,50 @@ function Login() {
     navigate(url);
   };
 
+  const HandleClick_login = (url) => {
+    alert(JSON.stringify(formData));
+    navigate(url);
+  };
+
+  const [formData, setFormData] = useState({
+    ID: "",
+    PW: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="App">
       <Menubar></Menubar>
       <div className="App-content">
         <div>
-          <textarea className="text" placeholder="아이디"></textarea>
+          <textarea
+            name="ID"
+            className="text"
+            value={formData.ID}
+            onChange={handleChange}
+            placeholder="아이디"
+          ></textarea>
         </div>
         &nbsp;
         <div>
-          <textarea className="text" placeholder="비밀번호"></textarea>
+          <textarea
+            name="PW"
+            className="text"
+            value={formData.PW}
+            onChange={handleChange}
+            placeholder="비밀번호"
+          ></textarea>
         </div>
         &nbsp;
         <button
-          onClick={() => HandleClick("/HomePageLogin")}
+          onClick={() => HandleClick_login("/HomePageLogin")}
           className="login-button-login"
         >
           로그인
