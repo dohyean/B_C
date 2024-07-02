@@ -1,0 +1,72 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between; /* 좌우 공백 */
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App-content-SignUp {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-button-Login {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text {
+  /*현재 textarea 테스트중*/
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 40px;
+  width: 300px;
+  resize: none;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 40px;
+  padding: 0 10px;
+  font-family: "Arial", sans-serif;
+  color: black;
+}
+
+.SignUp-button-SignUp {
+  background-color: #a69cf5;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+  width: 320px;
+  font-size: 20px;
+}
+
+input[type="date"] {
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 40px;
+  width: 323px;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 0 10px;
+  font-family: "Arial", sans-serif;
+  color: black;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
