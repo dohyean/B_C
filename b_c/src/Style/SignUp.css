@@ -70,3 +70,19 @@ input[type="date"] {
   margin-bottom: 10px;
   box-sizing: border-box;
 }
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input {
+  flex: 1;
+}
+
+.password-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
