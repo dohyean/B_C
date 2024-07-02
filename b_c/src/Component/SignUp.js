@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/SignUp.css";
 import Menubar from "./Menubar";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -27,7 +26,6 @@ function SignUp() {
     setFormData(event.target.value);
   };*/
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const Sign_Up = () => {
     var passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,32}$/;
@@ -94,12 +92,6 @@ function SignUp() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const toggleShowConfirmPassword = () => {
-    setShowConfirmPassword(
-      (prevShowConfirmPassword) => !prevShowConfirmPassword
-    );
-  };
-
   return (
     <div className="App">
       <Menubar></Menubar>
@@ -114,32 +106,31 @@ function SignUp() {
           ></input>
         </div>
         &nbsp;
-        <div className="password-field">
+        <div>
           <input
             type={showPassword ? "text" : "password"}
             name="PW"
             className="text password-input"
             value={formData.PW}
             onChange={handleChange}
-            placeholder="비밀번호(8 ~ 32자) 및 특수문자 포함"
+            placeholder="비밀번호(8 ~ 32자)"
           ></input>
-          <span onClick={toggleShowPassword} className="password-icon">
-            {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-          </span>
+          <input
+            type="checkbox"
+            checked={showPassword}
+            onChange={toggleShowPassword}
+          ></input>
         </div>
         &nbsp;
-        <div className="password-field">
+        <div>
           <input
-            type={showConfirmPassword ? "text" : "password"}
+            type="password"
             name="confirmPW"
             className="text"
             value={formData.confirmPW}
             onChange={handleChange}
             placeholder="비밀번호 재입력"
           ></input>
-          <span onClick={toggleShowConfirmPassword} className="password-icon">
-            {showConfirmPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-          </span>
         </div>
         &nbsp;
         <div>
