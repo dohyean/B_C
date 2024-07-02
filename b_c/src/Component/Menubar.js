@@ -43,10 +43,6 @@ function Menubar() {
           <h1 onClick={() => HandleClick("/")} style={{ cursor: "pointer" }}>
             ABCD
           </h1>
-          <button onClick={() => HandleClick("/TestModule")}>
-            모듈 테스트
-          </button>
-
           <button
             onClick={() => HandleClick("/Login")}
             className="login-button-Home"
