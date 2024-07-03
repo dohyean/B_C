@@ -62,16 +62,16 @@ function TestModule() {
     // }
 
     formData.ID = "a";
-    formData.PW = "a";
-    formData.nickname = "a";
-    formData.name = "a";
-    formData.Phone = "a";
-    formData.Birth = "a";
+    formData.PW = "b";
+    formData.nickname = "c";
+    formData.name = "d";
+    formData.Phone = "e";
+    formData.Birth = "f";
 
     alert(formData.ID);
     // alert(JSON.stringify(formData));
     // alert(formData);
-    scokets.UserData(formData);
+    scokets.UserData_Save(formData);
 
     // 회원 가입 성공 시 초기화
     // setFormData({
@@ -84,7 +84,7 @@ function TestModule() {
     //   Birth: "",
     // });
 
-    alert("회원가입 완료");
+    // alert("회원가입 완료");
 
     // navigate("/Login");
   };

@@ -16,8 +16,8 @@ io.on("", (socket) => {
   // 서버 연결
   const db = Open_DBMS.open_dbms();
 
-  socket.on("User Data", (item) => {
-    console.log(item);
+  socket.on("Send User Data Save", (item) => {
+    console.log("test");
   });
 
   Close_DBMS.close_dbms(db);
