@@ -1,15 +1,40 @@
 import React from "react";
 import "../Style/FindPW.css";
+import { useNavigate } from "react-router-dom";
+import { useFormData } from "./useFormData";
+import { Find_PW } from "./FindPW_Find_PW";
 
 function FindPW() {
+  const navigate = useNavigate();
+  const [formData, handleChange, setFormData] = useFormData({
+    ID: "",
+    Phone: "",
+  });
   return (
     <div className="FindPW-section">
       <h2>비밀번호 찾기</h2>
-      <input type="text" className="text" placeholder="아이디" />
+      <input
+        name="ID"
+        className="text"
+        value={formData.ID}
+        onChange={handleChange}
+        placeholder="아이디"
+      />
       &nbsp;
-      <input type="text" className="text" placeholder="전화번호" />
+      <input
+        name="Phone"
+        className="text"
+        value={formData.Phone}
+        onChange={handleChange}
+        placeholder="전화번호"
+      />
       &nbsp;
-      <button className="FindPW-button-FindPW">찾기</button>
+      <button
+        onClick={() => Find_PW(formData, setFormData, navigate)}
+        className="FindPW-button-FindPW"
+      >
+        찾기
+      </button>
     </div>
   );
 }
