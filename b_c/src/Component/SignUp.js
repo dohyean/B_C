@@ -1,19 +1,21 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/SignUp.css";
 import Menubar from "./Menubar";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { Sign_Up } from "./SignUp_Sign_up";
+import { usePasswordToggle } from "./SignUp_PasswordToggle";
+import { useFormData } from "./useFormData";
 
 function SignUp() {
   const navigate = useNavigate();
 
-  const HandleClick = (url) => {
+  /*const HandleClick = (url) => {
     navigate(url);
-  };
+  };*/
 
   /*const [text, setText] = useState("");*/
 
-  const [formData, setFormData] = useState({
+  const [formData, handleChange, setFormData] = useFormData({
     ID: "",
     PW: "",
     confirmPW: "",
@@ -23,82 +25,12 @@ function SignUp() {
     Birth: "",
   });
 
-  /*const handleChange = (event) => {
-    setFormData(event.target.value);
-  };*/
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const Sign_Up = () => {
-    var passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,32}$/;
-
-    for (let key in formData) {
-      if (formData[key] === "") {
-        var key_info = "";
-        if (key === "ID") key_info = "아이디";
-        else if (key === "PW") key_info = "비밀번호";
-        else if (key === "confirmPW") key_info = "비밀번호 재입력";
-        else if (key === "nickname") key_info = "별명";
-        else if (key === "name") key_info = "이름";
-        else if (key === "Phone") key_info = "전화번호";
-        else if (key === "Birth") key_info = "생년월일";
-        const strings = key_info + "를(을) 입력해주세요";
-        alert(strings);
-        return;
-      }
-    }
-
-    if (!passwordRegex.test(formData.PW)) {
-      alert(
-        "비밀번호는 8~32자 이내의 영문자, 숫자 및 특수 문자를 포함해야 합니다."
-      );
-      return;
-    }
-
-    if (formData.PW !== formData.confirmPW) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-
-    alert(JSON.stringify(formData));
-
-    // 회원 가입 성공 시 초기화
-    setFormData({
-      ID: "",
-      PW: "",
-      confirmPW: "",
-      nickname: "",
-      name: "",
-      Phone: "",
-      Birth: "",
-    });
-
-    alert("회원가입 완료");
-
-    navigate("/Login");
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
-  const handleKeyDown = (event) => {
-    event.preventDefault();
-  };
-
-  const toggleShowPassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  const toggleShowConfirmPassword = () => {
-    setShowConfirmPassword(
-      (prevShowConfirmPassword) => !prevShowConfirmPassword
-    );
-  };
+  const {
+    showPassword,
+    toggleShowPassword,
+    showConfirmPassword,
+    toggleShowConfirmPassword,
+  } = usePasswordToggle();
 
   return (
     <div className="App">
@@ -179,12 +111,17 @@ function SignUp() {
             className="text"
             value={formData.Birth}
             onChange={handleChange}
-            onKeyDown={handleKeyDown}
+            onKeyDown={(event) => {
+              event.preventDefault();
+            }}
             placeholder="생년월일 (YYYY/MM/DD)"
           />
         </div>
         &nbsp;
-        <button onClick={Sign_Up} className="SignUp-button-SignUp">
+        <button
+          onClick={() => Sign_Up(formData, setFormData, navigate)}
+          className="SignUp-button-SignUp"
+        >
           회원 가입
         </button>
       </div>
