@@ -1,8 +1,8 @@
 import React from "react";
 import "../Style/FindPW.css";
 import { useNavigate } from "react-router-dom";
-import { useFormData } from "./useFormData";
-import { Find_PW } from "./FindPW_Find_PW";
+import { useFormData } from "../Function/useFormData";
+import { Find_PW } from "../Function/FindPW_Find_PW";
 
 function FindPW() {
   const navigate = useNavigate();
