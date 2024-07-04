@@ -12,7 +12,7 @@ http.listen(PORT, () => {
 const Open_DBMS = require("./module/SQL/Open_Close_DBMS/Open_DBMS.js");
 const Close_DBMS = require("./module/SQL/Open_Close_DBMS/Close_DBMS.js");
 
-io.on("", (socket) => {
+io.on("connect", (socket) => {
   // 서버 연결
   const db = Open_DBMS.open_dbms();
 
