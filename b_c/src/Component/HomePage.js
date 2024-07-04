@@ -10,10 +10,7 @@ function HomePage() {
           <p>페이지에 대한 설명</p>
         </div>
         <div className="image-section">
-          <img
-            src={process.env.PUBLIC_URL + "/image.jpg"}
-            alt="프로젝트 관련 사진 2~3장"
-          />
+          <img alt="프로젝트 관련 사진 2~3장" />
         </div>
       </div>
     </div>
