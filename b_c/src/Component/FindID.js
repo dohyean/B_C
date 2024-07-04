@@ -1,8 +1,8 @@
 import React from "react";
 import "../Style/FindID.css";
 import { useNavigate } from "react-router-dom";
-import { useFormData } from "./useFormData";
-import { Find_ID } from "./FindID_Find_ID";
+import { useFormData } from "../Function/useFormData";
+import { Find_ID } from "../Function/FindID_Find_ID";
 
 function FindID() {
   const navigate = useNavigate();
