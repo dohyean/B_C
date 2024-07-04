@@ -2,18 +2,12 @@ import { useNavigate } from "react-router-dom";
 import "../Style/SignUp.css";
 import Menubar from "./Menubar";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Sign_Up } from "./SignUp_Sign_up";
-import { usePasswordToggle } from "./SignUp_PasswordToggle";
-import { useFormData } from "./useFormData";
+import { Sign_Up } from "../Function/SignUp_Sign_up";
+import { usePasswordToggle } from "../Function/SignUp_PasswordToggle";
+import { useFormData } from "../Function/useFormData";
 
 function SignUp() {
   const navigate = useNavigate();
-
-  /*const HandleClick = (url) => {
-    navigate(url);
-  };*/
-
-  /*const [text, setText] = useState("");*/
 
   const [formData, handleChange, setFormData] = useFormData({
     ID: "",
