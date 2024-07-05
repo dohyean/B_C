@@ -1,22 +1,17 @@
-exports.sql_select = function (db, column, table, where) {
+exports.sql_select = function (db, column, schema, where, where_data) {
   return new Promise((resolve, rejects) => {
-    var select_column = "";
-
-    column.forEach((i) => {
-      select_column += i + ", ";
-    });
-
-    var query = `SELECT ${column} FROM ${table} VALUES ${where}`;
-
+    var query = `SELECT ${column} FROM ${schema} ${where}`;
     db.all(query, (err, result) => {
       if (err) {
-        resolve(0);
+        console.log(err);
       } else {
-        if (result[0] === undefined) {
-          resolve(1);
-        } else {
-          resolve(2);
-        }
+        console.log(result);
+
+        // if (result[0] === undefined) {
+        //   resolve(1);
+        // } else {
+        //   resolve(2);
+        // }
       }
     });
   });
