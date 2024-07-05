@@ -94,7 +94,7 @@ function SignUp() {
             className="text"
             value={formData.Phone}
             onChange={handleChange}
-            placeholder="전화번호"
+            placeholder="전화번호 ex)010-1234-5678"
           ></input>
         </div>
         &nbsp;
