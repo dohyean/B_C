@@ -14,11 +14,18 @@ const Close_DBMS = require("./module/SQL/Open_Close_DBMS/Close_DBMS.js");
 const s = require("./module/SQL/CRUD_Query/Select_DBMS.js");
 
 io.on("connection", (socket) => {
-  // 서버 연결
   const db = Open_DBMS.open_dbms();
 
-  socket.on("Send User Data Save", (item) => {
-    s.sql_select(db, "*", "User_data");
+  // sql test
+  socket.on("sql_select test", (item) => {
+    var data = [2];
+    s.sql_select(db, "User_ID", "User_Data", "User_ID", data);
+    s.sql_select(db, "*", "User_Data");
+  });
+
+  socket.on("Send User Data Save", (item) =>{
+    const UserData_Save = require("./module/SQL/Function/UserData_Save.js");
+    UserData_Save.UserData_Save(db, item);
   });
 
   socket.on("disconnect", function () {

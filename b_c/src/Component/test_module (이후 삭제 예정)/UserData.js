@@ -1,13 +1,12 @@
 exports.Send_User_Data = function (socket, data) {
   return new Promise((resolve, reject) => {
-    alert("userdata");
     socket.emit("Send User Data Save", {
-      id: data.id,
-      pw: data.pw,
-      name: data.name,
-      phone: data.phone,
-      SSN: data.SSN,
-      email: data.email,
+      ID: data.ID,
+      PW: data.PW,
+      Nickname: data.nickname,
+      Name: data.name,
+      Phone: data.Phone,
+      Birth: data.Birth,
     });
     resolve(0);
   });
