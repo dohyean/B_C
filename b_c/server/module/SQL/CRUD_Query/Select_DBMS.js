@@ -1,24 +1,39 @@
-exports.sql_select = function (db, column, schema, where="", where_data=[]) {
-  return new Promise((resolve, rejects) => {
-    var query;
-    if(where === "")
-      query = `SELECT ${column} FROM ${schema} ${where}`;
-    else
-      query = `SELECT ${column} FROM ${schema} WHERE ${where}`
+const return_err = 0;
+const return_undefined = 1;
+const return_success = 2;
 
-    var return_resolve = 0;
-    db.all(query, where_data, (err, result) => {
-      if (err) {
-        console.log(err);
-        return_resolve = 0;
-      } else {
-        if (result[0] === undefined) {
-          return_resolve = 1;
-        } else {
-          return_resolve = 2;
-        }
-      }
-    });
-    resolve(return_resolve);
+async function select_query(db, query, where_data) {
+  return await db.all(query, where_data, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // console.log(result); // 추후 log 저장을 위해 남겨둠
+    }
+  });
+}
+
+exports.sql_select = async function (
+  db,
+  column,
+  schema,
+  where = "",
+  where_data = []
+) {
+  var query;
+  if (where === "") query = `SELECT ${column} FROM ${schema} ${where}`;
+  else query = `SELECT ${column} FROM ${schema} WHERE ${where}`;
+
+  var result = await select_query(db, query, where_data);
+  var return_data;
+  if (result[0] === "err") {
+    return_data = { return_result: result, return_num: return_err };
+  } else if (result[0] === undefined) {
+    return_data = { return_result: result, return_num: return_undefined };
+  } else {
+    return_data = { return_result: result, return_num: return_success };
+  }
+
+  return new Promise((resolve, reject) => {
+    resolve(return_data);
   });
 };
