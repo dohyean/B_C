@@ -39,7 +39,7 @@ function SignUp() {
             placeholder="아이디"
           ></input>
         </div>
-        &nbsp;
+        <div className="text-box">보이지 않는 글씨</div>
         <div className="password-field">
           <input
             type={showPassword ? "text" : "password"}
@@ -53,7 +53,7 @@ function SignUp() {
             {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
           </span>
         </div>
-        &nbsp;
+        <div className="text-box">보이지 않는 글씨</div>
         <div className="password-field">
           <input
             type={showConfirmPassword ? "text" : "password"}
@@ -67,7 +67,7 @@ function SignUp() {
             {showConfirmPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
           </span>
         </div>
-        &nbsp;
+        <div className="text-box">보이지 않는 글씨</div>
         <div>
           <input
             name="nickname"
@@ -77,7 +77,7 @@ function SignUp() {
             placeholder="별명"
           ></input>
         </div>
-        &nbsp;
+        <div className="text-box">보이지 않는 글씨</div>
         <div>
           <input
             name="name"
@@ -87,7 +87,7 @@ function SignUp() {
             placeholder="이름"
           ></input>
         </div>
-        &nbsp;
+        <div className="text-box">보이지 않는 글씨</div>
         <div>
           <input
             name="Phone"
@@ -97,7 +97,7 @@ function SignUp() {
             placeholder="전화번호"
           ></input>
         </div>
-        &nbsp;
+        <div className="text-box">보이지 않는 글씨</div>
         <div>
           <input
             name="Birth"
@@ -111,7 +111,7 @@ function SignUp() {
             placeholder="생년월일 (YYYY/MM/DD)"
           />
         </div>
-        &nbsp;
+        <div className="text-box">보이지 않는 글씨</div>
         <button
           onClick={() => Sign_Up(formData, setFormData, navigate)}
           className="SignUp-button-SignUp"

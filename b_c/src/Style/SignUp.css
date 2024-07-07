@@ -37,7 +37,7 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   height: 40px;
   width: 300px;
-  resize: none;
+
   border-radius: 5px;
   font-size: 15px;
   line-height: 40px;
@@ -61,7 +61,7 @@ input[type="date"] {
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.2);
   height: 40px;
-  width: 323px;
+  width: 322px;
   border-radius: 5px;
   font-size: 15px;
   padding: 0 10px;
@@ -85,4 +85,14 @@ input[type="date"] {
   position: absolute;
   right: 10px;
   cursor: pointer;
+}
+
+.text-box {
+  display: inline-block;
+  font-size: 12px;
+  width: 300px;
+  height: 20px;
+  background-color: transparent;
+  border: 0px solid #ddd;
+  color: red;
 }
