@@ -5,8 +5,9 @@ exports.open_dbms = function () {
   var db = new sqlite3.Database("./server/db_control.db", (err) => {
     if (err) {
       console.error(err.message);
+    } else {
+      console.log("Connected to the database.");
     }
-    console.log("Connected to the database.");
   });
   return db;
 };
