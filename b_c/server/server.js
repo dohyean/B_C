@@ -17,15 +17,15 @@ io.on("connection", (socket) => {
   const db = Open_DBMS.open_dbms();
 
   // sql test
-  socket.on("sql_select test", (item) => {
-    var data = [2];
-    s.sql_select(db, "User_ID", "User_Data", "User_ID", data);
-    s.sql_select(db, "*", "User_Data");
-  });
+  // socket.on("sql_select test", (item) => {
+  //   var data = [2];
+  //   s.sql_select(db, "User_ID", "User_Data", "User_ID", data);
+  //   s.sql_select(db, "*", "User_Data");
+  // });
 
-  socket.on("Send User Data Save", (item) =>{
+  socket.on("Send User Data Save", (item) => {
     const UserData_Save = require("./module/SQL/Function/UserData_Save.js");
-    UserData_Save.UserData_Save(db, item);
+    UserData_Save.UserData_Save(db, io, item);
   });
 
   socket.on("disconnect", function () {

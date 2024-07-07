@@ -16,6 +16,7 @@ exports.Send_User_Data = function (socket, data) {
 exports.Rec_User_Data = function (socket) {
   return new Promise((resolve, reject) => {
     socket.on("Receive User Data Save", (message) => {
+      console.log(message);
       resolve(message);
     });
   });
