@@ -1,22 +1,22 @@
-exports.Send_User_Data = function (socket, data) {
+function Send_User_Data(socket, data) {
   return new Promise((resolve, reject) => {
     socket.emit("Send User Data Save", {
       ID: data.ID,
       PW: data.PW,
-      Nickname: data.nickname,
+      NickName: data.nickname,
       Name: data.name,
-      Phone: data.Phone,
-      Birth: data.Birth,
+      PhoneNum: data.Phone,
+      Birthday: data.Birth,
     });
     resolve(0);
   });
-};
+}
 
 // 서버 메시지 수신
-exports.Rec_User_Data = function (socket) {
+exports.Rec_User_Data = async function (socket, data) {
+  await Send_User_Data(socket, data);
   return new Promise((resolve, reject) => {
     socket.on("Receive User Data Save", (message) => {
-      console.log(message);
       resolve(message);
     });
   });

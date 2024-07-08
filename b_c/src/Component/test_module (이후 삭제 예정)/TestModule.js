@@ -27,7 +27,7 @@ function TestModule() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const Sign_Up = () => {
+  const Sign_Up = async () => {
     formData.ID = "a";
     formData.PW = "b";
     formData.nickname = "c";
@@ -35,7 +35,8 @@ function TestModule() {
     formData.Phone = "e";
     formData.Birth = "f";
 
-    scokets.UserData_Save(formData);
+    var save = await scokets.UserData_Save(formData);
+    alert(save.UserData_Save_Result);
   };
 
   const handleChange = (event) => {

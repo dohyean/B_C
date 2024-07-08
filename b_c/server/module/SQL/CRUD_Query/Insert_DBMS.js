@@ -1,3 +1,6 @@
+const return_err = 0;
+const return_success = 1;
+
 exports.sql_insert = function (db, schema, column, dataset) {
   return new Promise((resolve, rejects) => {
     var insert_column = "";
@@ -13,9 +16,9 @@ exports.sql_insert = function (db, schema, column, dataset) {
 
     db.all(query, dataset, (err, result) => {
       if (err) {
-        resolve(0); // 오류가 발생한 경우 0 반환
+        resolve(return_err);
       } else {
-        resolve(1); // 이외에는 1 반환
+        resolve(return_success);
       }
     });
   });
