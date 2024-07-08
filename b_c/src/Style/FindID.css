@@ -72,3 +72,20 @@
   margin: 0 20px;
   rotate: 90;
 }
+
+.text-box-ID {
+  display: inline-block;
+  font-size: 12px;
+  width: 300px;
+  height: 20px;
+  background-color: transparent;
+  border: 0px solid #ddd;
+  color: red;
+}
+
+.Find-form-ID {
+  width: 322px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
