@@ -19,6 +19,7 @@ exports.sql_select = async function (
 
     db.all(query, where_data, (err, result) => {
       if (err) {
+        console.log(err);
         db_complete_check = true;
         return_data = {
           return_result_print: "err",
