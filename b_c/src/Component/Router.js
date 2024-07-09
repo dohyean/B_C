@@ -5,7 +5,7 @@ import SignUp from "./SignUp.js";
 import FindINFO from "./FindINFO.js";
 import HomePageLogin from "./HomePageLogIn.js";
 
-// import TestModule from "./test_module (이후 삭제 예정)/TestModule.js"; // 테스트 목적의 데이터
+import TestModule from "./test_module (이후 삭제 예정)/TestModule.js"; // 테스트 목적의 데이터
 
 function Router() {
   return (
@@ -16,7 +16,7 @@ function Router() {
       <Route path="/FindINFO" element={<FindINFO />} />
       <Route path="/HomePageLogin" element={<HomePageLogin />} />
 
-      {/* <Route path="/TestModule" element={<TestModule />} /> */}
+      <Route path="/TestModule" element={<TestModule />} />
     </Routes>
   );
 }
