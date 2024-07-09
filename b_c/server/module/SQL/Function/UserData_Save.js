@@ -1,8 +1,5 @@
 const Select_DBMS = require("../CRUD_Query/Select_DBMS.js");
 const Insert_DBMS = require("../CRUD_Query/Insert_DBMS.js");
-const {
-  UserData_Save,
-} = require("../../../../src/Component/test_module (이후 삭제 예정)/sockets.js");
 const All_Complete = 0; // 모든 조건 만족 & 데이터 저장
 const Duplicate_ID = 1; // ID 중복
 const Error = 2;
@@ -56,6 +53,7 @@ async function Save_UserData(db, UserData) {
 exports.UserData_Save = async function (db, io, UserData) {
   var UserData_Save_Result;
   var Save_Check_Duplicate_ID = await Check_Duplicate_ID(db, UserData.ID);
+
   if (Save_Check_Duplicate_ID === Return_Duplicate_Error) {
     UserData_Save_Result = Error;
   } else if (Save_Check_Duplicate_ID === Return_Duplicate_Undefined) {
@@ -68,6 +66,7 @@ exports.UserData_Save = async function (db, io, UserData) {
   } else {
     UserData_Save_Result = Duplicate_ID;
   }
+  console.log(UserData_Save_Result);
 
   io.emit("Receive User Data Save", {
     UserData_Save_Result: UserData_Save_Result,

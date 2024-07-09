@@ -16,6 +16,7 @@ exports.sql_insert = function (db, schema, column, dataset) {
 
     db.all(query, dataset, (err, result) => {
       if (err) {
+        console.log(err);
         resolve(return_err);
       } else {
         resolve(return_success);
