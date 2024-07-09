@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "../Style/Login.css";
 import Menubar from "./Menubar";
 import { useFormData } from "../Function/useFormData";
-import { Log_in } from "../Function/Login_Log_in";
+import { Log_in } from "../Function/Login/Log_in";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { usePasswordToggle } from "../Function/usePasswordToggle";
 
 function Login() {
   const navigate = useNavigate();
@@ -13,28 +15,34 @@ function Login() {
     PW: "",
   });
 
+  const { showPassword, toggleShowPassword } = usePasswordToggle();
+
   return (
     <div className="App">
       <Menubar></Menubar>
       <div className="App-content">
         <div>
-          <textarea
+          <input
             name="ID"
             className="text"
             value={formData.ID}
             onChange={handleChange}
             placeholder="아이디"
-          ></textarea>
+          ></input>
         </div>
         &nbsp;
-        <div>
-          <textarea
+        <div className="password-field">
+          <input
+            type={showPassword ? "text" : "password"}
             name="PW"
-            className="text"
+            className="text password-input"
             value={formData.PW}
             onChange={handleChange}
             placeholder="비밀번호"
-          ></textarea>
+          ></input>
+          <span onClick={toggleShowPassword} className="password-icon">
+            {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+          </span>
         </div>
         &nbsp;
         <button

@@ -2,14 +2,12 @@ import { useNavigate } from "react-router-dom";
 import "../Style/SignUp.css";
 import Menubar from "./Menubar";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Sign_Up } from "../Function/SignUp_Sign_up";
-import { usePasswordToggle } from "../Function/SignUp_PasswordToggle";
+import { Sign_Up } from "../Function/SignUp/Sign_up";
+import { usePasswordToggle } from "../Function/usePasswordToggle";
 import { useFormData } from "../Function/useFormData";
-import {
-  useFormErrors_SignUP,
-  handleChangeWithErrorCheck,
-  handleSubmit_Sign_Up,
-} from "../Function/useFormErrors";
+import { handleChangeWithErrorCheck } from "../Function/SignUp/handleChangeWithErrorCheck";
+import { useFormErrors_SignUP } from "../Function/SignUp/useFormErrors_SignUP";
+import { handleSubmit_Sign_Up } from "../Function/SignUp/handleSubmit_Sign_Up";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -71,7 +69,7 @@ function SignUp() {
             ></input>
           </div>
           <div className="text-box">
-            {errors.ID && "아이디를 입력해 주세요."}
+            {errors.ID && "아이디를 입력해 주세요(영문)."}
           </div>
           <div className="password-field">
             <input
@@ -87,7 +85,8 @@ function SignUp() {
             </span>
           </div>
           <div className="text-box">
-            {errors.PW && "비밀번호를 입력해 주세요."}
+            {errors.PW &&
+              "비밀번호를 입력해 주세요(8 ~ 32자) 및 특수문자 포함."}
           </div>
           <div className="password-field">
             <input

@@ -73,3 +73,21 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 322px;
+}
+
+.password-input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.password-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
