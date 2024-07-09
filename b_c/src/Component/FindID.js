@@ -2,12 +2,10 @@ import React from "react";
 import "../Style/FindID.css";
 import { useNavigate } from "react-router-dom";
 import { useFormData } from "../Function/useFormData";
-import { Find_ID } from "../Function/FindID_Find_ID";
-import {
-  useFormErrors_FindID,
-  handleChangeWithErrorCheck,
-  handleSubmit_Find_ID,
-} from "../Function/useFormErrors";
+import { Find_ID } from "../Function/FindID/Find_ID";
+import { handleChangeWithErrorCheck } from "../Function/FindID/handleChangeWithErrorCheck";
+import { useFormErrors_FindID } from "../Function/FindID/useFormErrors_FindID";
+import { handleSubmit_Find_ID } from "../Function/FindID/handleSubmit_Find_ID";
 
 function FindID() {
   const navigate = useNavigate();

@@ -2,12 +2,10 @@ import React from "react";
 import "../Style/FindPW.css";
 import { useNavigate } from "react-router-dom";
 import { useFormData } from "../Function/useFormData";
-import { Find_PW } from "../Function/FindPW_Find_PW";
-import {
-  useFormErrors_FindPW,
-  handleChangeWithErrorCheck,
-  handleSubmit_Find_PW,
-} from "../Function/useFormErrors";
+import { Find_PW } from "../Function/FindPW/Find_PW";
+import { handleChangeWithErrorCheck } from "../Function/FindPW/handleChangeWithErrorCheck";
+import { useFormErrors_FindPW } from "../Function/FindPW/useFormErrors_FindPW";
+import { handleSubmit_Find_PW } from "../Function/FindPW/handleSubmit_Find_PW";
 
 function FindPW() {
   const navigate = useNavigate();
