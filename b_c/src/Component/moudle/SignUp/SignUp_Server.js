@@ -1,7 +1,7 @@
 // 서버 데이터 전송
-function Send_User_Data(socket, data) {
+function Send_SignUp(socket, data) {
   return new Promise((resolve, reject) => {
-    socket.emit("Send User Data Save", {
+    socket.emit("Send SingUp", {
       ID: data.ID,
       PW: data.PW,
       NickName: data.nickname,
@@ -14,10 +14,10 @@ function Send_User_Data(socket, data) {
 }
 
 // 서버 메시지 수신
-exports.Rec_User_Data = async function (socket, data) {
-  await Send_User_Data(socket, data);
+exports.Rec_SignUp = async function (socket, data) {
+  await Send_SignUp(socket, data);
   return new Promise((resolve, reject) => {
-    socket.on("Receive User Data Save", (message) => {
+    socket.on("Receive SingUp", (message) => {
       resolve(message);
     });
   });

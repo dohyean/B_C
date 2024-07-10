@@ -3,14 +3,14 @@ const Insert_DBMS = require("../CRUD_Query/Insert_DBMS.js");
 const All_Complete = 0; // 모든 조건 만족 & 데이터 저장
 const Duplicate_ID = 1; // ID 중복
 const Error = 2; // 문법 오류
-const Other_Error = 3;
+const Other_Error = 3; // 이외의 오류
 
-const Return_Duplicate_Error = 0; // 문법 오류
+const Return_Duplicate_Error = 0; // ID 중복 시 문법 오류
 const Return_Duplicate_Undefined = 1; // 중복된 ID가 없는 경우 (성공)
 const Return_Duplicate_Match = 2; // 중복된 ID가 있는 경우 (실패)
 
-const Return_UserData_Error = 0;
-const Return_UserData_Success = 1;
+const Return_UserData_Error = 0; // 유저 데이터 저장 문법 오류
+const Return_UserData_Success = 1; // 유저 데이터 저장 성공
 
 async function Check_Duplicate_ID(db, UserID) {
   var Check_Duplicate_ID_Result = await Select_DBMS.sql_select(
@@ -54,35 +54,33 @@ async function Save_UserData(db, UserData) {
 }
 
 exports.UserData_Save = async function (db, io, UserData) {
-  var UserData_Save_Result;
+  var SignUp_Server_Result;
   switch (await Check_Duplicate_ID(db, UserData.ID)) {
     case Return_Duplicate_Error:
-      UserData_Save_Result = Error;
+      SignUp_Server_Result = Error;
       break;
     case Return_Duplicate_Undefined:
       switch (await Save_UserData(db, UserData)) {
         case Return_UserData_Error:
-          UserData_Save_Result = Error;
+          SignUp_Server_Result = Error;
           break;
         case Return_UserData_Success:
-          UserData_Save_Result = All_Complete;
+          SignUp_Server_Result = All_Complete;
           break;
         default:
-          UserData_Save_Result = Other_Error;
+          SignUp_Server_Result = Other_Error;
           break;
       }
       break;
     case Return_Duplicate_Match:
-      UserData_Save_Result = Duplicate_ID;
+      SignUp_Server_Result = Duplicate_ID;
       break;
     default:
-      UserData_Save_Result = Other_Error;
+      SignUp_Server_Result = Other_Error;
       break;
   }
 
-  console.log(UserData_Save_Result);
-
-  io.emit("Receive User Data Save", {
-    UserData_Save_Result: UserData_Save_Result,
+  io.emit("Receive SingUp", {
+    SignUp_Server_Result: SignUp_Server_Result,
   });
 };
