@@ -10,37 +10,49 @@ const Return_FindID_Undefined = 1; // 아이디가 없는 경우 (실패)
 const Return_FindID_Match = 2; // 아이디가 있는 경우 (성공)
 
 async function Check_FindID(db, Phone) {
-  var Check_Find_ID_Result = await Select_DBMS.sql_select(
+  var Check_FindID_Result = await Select_DBMS.sql_select(
     db,
     "User_ID",
     "User_Data",
-    "User_Phone = ?",
+    "User_PhoneNum = ?",
     Phone
   );
   return new Promise((resolve, rejects) => {
-    resolve(Check_Find_ID_Result);
+    resolve(Check_FindID_Result);
   });
 }
 
-exports.FindID = async function (db, io, Phone) {
+exports.FindID = async function (db, io, UserData) {
   var FindID_Result;
-  var save = await Check_FindID(db, Phone);
-  switch (save.return_result_num) {
+  var Check_FindID_Result = await Check_FindID(db, UserData.PhoneNum);
+  switch (Check_FindID_Result.return_result_num) {
     case Return_FindID_Error:
-      FindID_Result = Error;
+      FindID_Result = {
+        FindID_return_result: "err",
+        FindID_return_result_num: Error,
+      };
       break;
     case Return_FindID_Undefined:
-      FindID_Result = Fail;
+      FindID_Result = {
+        FindID_return_result: "",
+        FindID_return_result_num: Fail,
+      };
       break;
     case Return_FindID_Match:
-      FindID_Result = All_Complete;
+      FindID_Result = {
+        FindID_return_result: Check_FindID_Result.return_result,
+        FindID_return_result_num: All_Complete,
+      };
       break;
     default:
-      FindID_Result = Other_Error;
+      FindID_Result = {
+        FindID_return_result: "err",
+        FindID_return_result_num: Other_Error,
+      };
       break;
   }
 
-  io.emit("Receive Find ID", {
+  io.emit("Receive FindID", {
     FindID_Result: FindID_Result,
   });
 };

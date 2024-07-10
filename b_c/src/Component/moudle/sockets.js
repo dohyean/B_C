@@ -1,16 +1,31 @@
 const io = require("socket.io-client");
 const socket = io("http://localhost:3001");
 
-const UserData = require("./SignUp/UserData.js");
-
-async function UserData_Save(formData) {
-  var save = UserData.Rec_User_Data(socket, formData);
-  console.log(save);
+async function SignUp_Server(formData) {
+  const SignUp = require("./SignUp/SignUp_Server.js");
+  var SignUp_Server_Result = await SignUp.Rec_SignUp(socket, formData);
   return new Promise((resolve, reject) => {
-    resolve(save);
+    resolve(SignUp_Server_Result);
+  });
+}
+
+async function FindID_Server(formData) {
+  const FindID = require("./FindID/FindID_Server.js");
+  var FindID_Server_Result = await FindID.Rec_FindID(socket, formData);
+  return new Promise((resolve, reject) => {
+    resolve(FindID_Server_Result);
+  });
+}
+
+async function Disconnect() {
+  return new Promise((resolve, reject) => {
+    socket.emit("disconnect", {});
+    resolve(0);
   });
 }
 
 module.exports = {
-  UserData_Save,
+  SignUp_Server,
+  FindID_Server,
+  Disconnect,
 };

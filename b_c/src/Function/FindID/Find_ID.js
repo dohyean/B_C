@@ -1,9 +1,51 @@
 //Find_ID_fuction.js
-//import { checkFormData } from "./CheckUserInput.js";
+const sockets = require("../../Component/moudle/sockets.js");
 
-export const Find_ID = (formData, setFormData, navigate) => {
-  alert(JSON.stringify(formData));
-  setFormData({
-    Phone: "",
+const Return_Success = 0;
+const Return_Fail = 1;
+const Return_Error = 2;
+
+function Make_String_All_ID(ID_Data) {
+  var return_string = "";
+
+  for (var i = 0; i < ID_Data.length; i++) {
+    return_string += ID_Data[i].User_ID + "\r\n";
+  }
+
+  return new Promise((resolve, reject) => {
+    resolve(return_string);
   });
-};
+}
+
+async function Check_Find_ID(formData, setFormData, navigate) {
+  try {
+    var FindID_Server_Result = await sockets.FindID_Server(formData);
+    alert(FindID_Server_Result.FindID_Result.FindID_return_result_num);
+    switch (FindID_Server_Result.FindID_Result.FindID_return_result_num) {
+      case Return_Success:
+        var String_ID = await Make_String_All_ID(
+          FindID_Server_Result.FindID_Result.FindID_return_result
+        );
+        alert(String_ID);
+        setFormData({
+          Phone: "",
+        });
+        break;
+      case Return_Fail:
+        alert("해당하는 번호가 없습니다.");
+        break;
+      case Return_Error:
+        alert("오류.");
+        break;
+      default:
+        alert("관리자에게 문의하세요.");
+        break;
+    }
+  } catch (error) {
+    console.log("Sign-up error:", error);
+    alert("서버 오류. 다시 시도해 주세요.");
+  }
+}
+export async function Find_ID(formData, setFormData, navigate) {
+  await Check_Find_ID(formData, setFormData, navigate);
+}

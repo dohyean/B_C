@@ -23,16 +23,17 @@ io.on("connection", (socket) => {
   //   s.sql_select(db, "*", "User_Data");
   // });
 
-  socket.on("Send User Data Save", (item) => {
+  socket.on("Send SingUp", (item) => {
     const SiginUp = require("./module/SQL/Function/SignUp.js");
     SiginUp.UserData_Save(db, io, item);
   });
 
-  socket.on("Send Find ID", (item) => {
+  socket.on("Send FindID", (item) => {
     const FindID = require("./module/SQL/Function/FindID.js");
+    FindID.FindID(db, io, item);
   });
 
-  socket.on("disconnect", function () {
+  socket.on("disconnect", () => {
     Close_DBMS.close_dbms(db);
   });
 });

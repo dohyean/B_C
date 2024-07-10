@@ -6,9 +6,8 @@ const Return_Error = 2;
 
 async function Check_Sign_Up(formData, setFormData, navigate) {
   try {
-    var UserData_Save_Result = await sockets.UserData_Save(formData);
-    alert(UserData_Save_Result.UserData_Save_Result);
-    switch (UserData_Save_Result.UserData_Save_Result) {
+    var SignUp_Server_Result = await sockets.SignUp_Server(formData);
+    switch (SignUp_Server_Result.SignUp_Server_Result) {
       case Return_Success:
         setFormData({
           ID: "",
@@ -33,8 +32,10 @@ async function Check_Sign_Up(formData, setFormData, navigate) {
         break;
     }
   } catch (error) {
-    console.error("Sign-up error:", error);
+    console.log("Sign-up error:", error);
     alert("서버 오류. 다시 시도해 주세요.");
+  } finally {
+    sockets.Disconnect();
   }
 }
 

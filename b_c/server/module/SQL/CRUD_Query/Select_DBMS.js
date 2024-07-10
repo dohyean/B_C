@@ -1,6 +1,6 @@
-const return_err = 0;
-const return_undefined = 1;
-const return_success = 2;
+const return_err = 0; // 에러
+const return_undefined = 1; // 데이터 없음
+const return_success = 2; // 성공
 
 exports.sql_select = async function (
   db,
@@ -22,20 +22,20 @@ exports.sql_select = async function (
         console.log(err);
         db_complete_check = true;
         return_data = {
-          return_result_print: "err",
+          return_result: "err",
           return_result_num: return_err,
         };
       } else {
         if (result[0] === undefined) {
           db_complete_check = true;
           return_data = {
-            return_result_print: "",
+            return_result: "",
             return_result_num: return_undefined,
           };
         } else {
           db_complete_check = true;
           return_data = {
-            return_result_print: result,
+            return_result: result,
             return_result_num: return_success,
           };
         }
