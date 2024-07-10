@@ -1,7 +1,9 @@
 import "../Style/HomePageLogin.css";
 import Menubar from "./Menubar";
+import { getRandomImages } from "../Function/shuffleImages";
 
 function HomePageLogin() {
+  const images = getRandomImages();
   return (
     <div className="App">
       <Menubar></Menubar>
@@ -10,10 +12,11 @@ function HomePageLogin() {
           <p>페이지에 대한 설명</p>
         </div>
         <div className="image-section">
-          <img
-            src={process.env.PUBLIC_URL + "/image.jpg"}
-            alt="프로젝트 관련 사진 2~3장"
-          />
+          {images.map((image, index) => (
+            <div className="image-quarter" key={index}>
+              <img src={image} alt={`프로젝트 관련 사진 ${index + 1}`} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
