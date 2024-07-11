@@ -5,6 +5,7 @@ import SignUp from "./SignUp.js";
 import FindINFO from "./FindINFO.js";
 import HomePageLogin from "./HomePageLogIn.js";
 import Blog from "./Blog.js";
+import Community from "./Community.js";
 
 import TestModule from "./test_module (이후 삭제 예정)/TestModule.js"; // 테스트 목적의 데이터
 
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/FindINFO" element={<FindINFO />} />
       <Route path="/HomePageLogin" element={<HomePageLogin />} />
       <Route path="/Blog" element={<Blog />} />
+      <Route path="/Community" element={<Community />} />
       <Route path="/TestModule" element={<TestModule />} />
     </Routes>
   );

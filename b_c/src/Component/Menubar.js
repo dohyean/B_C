@@ -10,7 +10,10 @@ function Menubar() {
   };
 
   var start_page = ["/Login"];
-  var Anjeon_Dotti = ["/HomePageLogin"];
+  //내 사랑이 담긴 도띠를 위한 변수 이름
+  var Anjeon_Dotti = ["/HomePageLogin"]; //앙전도띠
+  var gajeondotti = ["/Blog"]; //가전자띠
+  var yang_ongtti = ["/Community"]; //양공띠
   const location = useLocation();
 
   function page_check() {
@@ -18,7 +21,12 @@ function Menubar() {
       if (location.pathname === start_page[i]) {
         return 1;
       }
-      if (location.pathname === Anjeon_Dotti[i]) {
+      if (
+        //이제 로그인이 되어있는 경우에 이동할 수 있는 경로
+        location.pathname === Anjeon_Dotti[i] ||
+        location.pathname === gajeondotti[i] ||
+        location.pathname === yang_ongtti[i]
+      ) {
         return 2;
       }
     }
@@ -59,7 +67,7 @@ function Menubar() {
                 블로그
               </h1>
               <h1
-                onClick={() => HandleClick("/Blog")}
+                onClick={() => HandleClick("/Community")}
                 style={{ cursor: "pointer" }}
               >
                 커뮤니티
