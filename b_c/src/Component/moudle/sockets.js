@@ -17,9 +17,17 @@ async function FindID_Server(formData) {
   });
 }
 
+async function FindPW_Server(formData) {
+  const FindPW = require("./FindPW/FindPW_Server.js");
+  var FindPW_Server_Result = await FindPW.Rec_FindPW(socket, formData);
+  return new Promise((resolve, reject) => {
+    resolve(FindPW_Server_Result);
+  });
+}
+
 async function Disconnect() {
   return new Promise((resolve, reject) => {
-    socket.emit("disconnect", {});
+    socket.emit("disconnect");
     resolve(0);
   });
 }
@@ -27,5 +35,6 @@ async function Disconnect() {
 module.exports = {
   SignUp_Server,
   FindID_Server,
+  FindPW_Server,
   Disconnect,
 };

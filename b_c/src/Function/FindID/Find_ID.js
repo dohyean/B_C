@@ -20,7 +20,6 @@ function Make_String_All_ID(ID_Data) {
 async function Check_Find_ID(formData, setFormData, navigate) {
   try {
     var FindID_Server_Result = await sockets.FindID_Server(formData);
-    alert(FindID_Server_Result.FindID_Result.FindID_return_result_num);
     switch (FindID_Server_Result.FindID_Result.FindID_return_result_num) {
       case Return_Success:
         var String_ID = await Make_String_All_ID(
@@ -41,11 +40,14 @@ async function Check_Find_ID(formData, setFormData, navigate) {
         alert("관리자에게 문의하세요.");
         break;
     }
-  } catch (error) {
-    console.log("Sign-up error:", error);
+  } catch (err) {
+    console.log("Find-ID error: ", err);
     alert("서버 오류. 다시 시도해 주세요.");
+  } finally {
+    // sockets.Disconnect();
   }
 }
+
 export async function Find_ID(formData, setFormData, navigate) {
   await Check_Find_ID(formData, setFormData, navigate);
 }

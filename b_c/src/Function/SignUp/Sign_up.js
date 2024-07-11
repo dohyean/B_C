@@ -31,11 +31,11 @@ async function Check_Sign_Up(formData, setFormData, navigate) {
         alert("관리자에게 문의하세요.");
         break;
     }
-  } catch (error) {
-    console.log("Sign-up error:", error);
+  } catch (err) {
+    console.log("Sign-up error: ", err);
     alert("서버 오류. 다시 시도해 주세요.");
   } finally {
-    sockets.Disconnect();
+    // sockets.Disconnect();
   }
 }
 
