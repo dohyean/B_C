@@ -33,6 +33,11 @@ io.on("connection", (socket) => {
     FindID.FindID(db, io, item);
   });
 
+  socket.on("Send FindPW", (item) => {
+    const FindPW = require("./module/SQL/Function/FindPW.js");
+    FindPW.FindPW(db, io, item);
+  })
+
   socket.on("disconnect", () => {
     Close_DBMS.close_dbms(db);
   });
