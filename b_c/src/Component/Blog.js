@@ -1,9 +1,14 @@
 import React from "react";
+import "../Style/Blog.css";
+import Menubar from "./Menubar";
 
 function Blog() {
   return (
-    <div>
-      <h1>앙전도띠</h1>
+    <div className="App">
+      <Menubar></Menubar>
+      <div className="App-content-Blog">
+        <h1>앙전도띠</h1>
+      </div>
     </div>
   );
 }
