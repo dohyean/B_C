@@ -59,10 +59,16 @@ function Login() {
             회원가입
           </button>
           <button
-            onClick={() => navigate("/FindINFO")}
+            onClick={() => navigate("/FindID")}
             className="additional-button"
           >
-            아이디/패스워드 찾기
+            아이디 찾기
+          </button>
+          <button
+            onClick={() => navigate("/FindPW")}
+            className="additional-button"
+          >
+            패스워드 찾기
           </button>
         </div>
       </div>
