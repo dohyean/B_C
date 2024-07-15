@@ -1,5 +1,5 @@
 const io = require("socket.io-client");
-const socket = io("http://localhost:3001");
+const socket = io("https://localhost:3001");
 
 async function SignUp_Server(formData) {
   const SignUp = require("./SignUp/SignUp_Server.js");
