@@ -69,7 +69,7 @@ function SignUp() {
             ></input>
           </div>
           <div className="text-box">
-            {errors.ID && "아이디를 입력해 주세요(영문)."}
+            {errors.ID && "아이디를 입력해 주세요.(영문)"}
           </div>
           <div className="password-field">
             <input

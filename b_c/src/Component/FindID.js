@@ -1,5 +1,6 @@
 import React from "react";
 import "../Style/FindID.css";
+import Menubar from "./Menubar";
 import { useNavigate } from "react-router-dom";
 import { useFormData } from "../Function/useFormData";
 import { Find_ID } from "../Function/FindID/Find_ID";
@@ -33,24 +34,27 @@ function FindID() {
   };
 
   return (
-    <div className="FindID-section">
-      <h2>아이디 찾기</h2>
-      &nbsp;
-      <form onSubmit={handleFormSubmit} className="signup-form">
-        <input
-          name="Phone"
-          className="text"
-          value={formData.Phone}
-          onChange={handleInputChange}
-          placeholder="전화번호"
-        />
-        <div className="text-box">
-          {errors.Phone && "형식이 올바르지 않습니다. 예: 010-1234-5678"}
-        </div>
-        <button type="submit" className="FindID-button-FindID">
-          찾기
-        </button>
-      </form>
+    <div className="App">
+      <Menubar></Menubar>
+      <div className="App-content-FindID">
+        <h2>아이디 찾기</h2>
+        &nbsp;
+        <form onSubmit={handleFormSubmit} className="signup-form">
+          <input
+            name="Phone"
+            className="text"
+            value={formData.Phone}
+            onChange={handleInputChange}
+            placeholder="전화번호"
+          />
+          <div className="text-box">
+            {errors.Phone && "형식이 올바르지 않습니다. 예: 010-1234-5678"}
+          </div>
+          <button type="submit" className="FindID-button-FindID">
+            찾기
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

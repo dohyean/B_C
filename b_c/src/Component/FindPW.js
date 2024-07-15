@@ -1,5 +1,6 @@
 import React from "react";
 import "../Style/FindPW.css";
+import Menubar from "./Menubar";
 import { useNavigate } from "react-router-dom";
 import { useFormData } from "../Function/useFormData";
 import { Find_PW } from "../Function/FindPW/Find_PW";
@@ -34,31 +35,36 @@ function FindPW() {
   };
 
   return (
-    <div className="FindPW-section">
-      <h2>비밀번호 찾기</h2>
-      <form onSubmit={handleFormSubmit} className="signup-form-PW">
-        <input
-          name="ID"
-          className="text"
-          value={formData.ID}
-          onChange={handleInputChange}
-          placeholder="아이디"
-        />
-        <div className="text-box">{errors.ID && "아이디를 입력해 주세요."}</div>
-        <input
-          name="Phone"
-          className="text"
-          value={formData.Phone}
-          onChange={handleInputChange}
-          placeholder="전화번호"
-        />
-        <div className="text-box">
-          {errors.Phone && "형식이 올바르지 않습니다. 예: 010-1234-5678"}
-        </div>
-        <button type="submit" className="FindPW-button-FindPW">
-          찾기
-        </button>
-      </form>
+    <div className="App">
+      <Menubar></Menubar>
+      <div className="App-content-FindID">
+        <h2>비밀번호 찾기</h2>
+        <form onSubmit={handleFormSubmit} className="signup-form-PW">
+          <input
+            name="ID"
+            className="text"
+            value={formData.ID}
+            onChange={handleInputChange}
+            placeholder="아이디"
+          />
+          <div className="text-box">
+            {errors.ID && "아이디를 입력해 주세요.(영문)"}
+          </div>
+          <input
+            name="Phone"
+            className="text"
+            value={formData.Phone}
+            onChange={handleInputChange}
+            placeholder="전화번호"
+          />
+          <div className="text-box">
+            {errors.Phone && "형식이 올바르지 않습니다. 예: 010-1234-5678"}
+          </div>
+          <button type="submit" className="FindPW-button-FindPW">
+            찾기
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
