@@ -1,17 +1,29 @@
+const { Server } = require('socket.io');
 const express = require("express");
 const app = express();
-const PORT = 3001;
 
-const http = require("http").createServer(app);
-const io = require("socket.io")(http, { cors: { origin: "*" } });
+const cors = require('cors');
+app.use(cors());
 
-http.listen(PORT, () => {
-  console.log(`app listening on port : ${PORT}`);
-});
+const fs = require('fs');
+const port = 3001;
+
+const https = require('https');
+const server = https.createServer({
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+}, app);
+
+const io = new Server(server, { cors: { origin: 'https://localhost:3000', methods: ['GET', 'POST'] } });
+
 
 const Open_DBMS = require("./module/SQL/Open_Close_DBMS/Open_DBMS.js");
 const Close_DBMS = require("./module/SQL/Open_Close_DBMS/Close_DBMS.js");
 // const s = require("./module/SQL/CRUD_Query/Select_DBMS.js");
+
+server.listen(port, () => {
+  console.log(`Socket.IO 서버가 포트 ${port}에서 실행 중입니다.`);
+});
 
 io.on("connection", (socket) => {
   const db = Open_DBMS.open_dbms();

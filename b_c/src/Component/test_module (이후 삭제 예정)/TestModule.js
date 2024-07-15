@@ -1,58 +1,39 @@
-import React from "react";
-import "../../Style/FindID.css";
 import { useNavigate } from "react-router-dom";
-import { useFormData } from "../../Function/useFormData";
-import { Find_ID } from "../../Function/FindID/Find_ID";
-import { handleChangeWithErrorCheck } from "../../Function/FindID/handleChangeWithErrorCheck";
-import { useFormErrors_FindID } from "../../Function/FindID/useFormErrors_FindID";
-import { handleSubmit_Find_ID } from "../../Function/FindID/handleSubmit_Find_ID";
+import "../../Style/SignUp.css";
+import Menubar from "../Menubar";
+import createHmac from "crypto-js";
 
 // SignUp을 그대로 가져와서 테스트
 function TestModule() {
   const navigate = useNavigate();
-  const [formData, handleChange, setFormData] = useFormData({
-    Phone: "",
-  });
 
-  const { errors, updateErrors, checkErrors } = useFormErrors_FindID({
-    Phone: false,
-  });
-
-  const handleInputChange = (e) => {
-    handleChangeWithErrorCheck(e, handleChange, updateErrors, formData);
-  };
-
-  const handleFormSubmit = (e) => {
-    handleSubmit_Find_ID(
-      e,
-      formData,
-      checkErrors,
-      Find_ID,
-      setFormData,
-      navigate
-    );
-  };
+  const PW = "test";
+  const test = "abcdefg";
+  const check = () => {
+    const hashPW = createHmac 
+    alert(`test : ${hashPW}`);
+  }
 
   return (
-    <div className="FindID-section">
-      <h2>아이디 찾기</h2>
-      &nbsp;
-      <form onSubmit={handleFormSubmit} className="signup-form">
-        <input
-          name="Phone"
-          className="text"
-          value={formData.Phone}
-          onChange={handleInputChange}
-          placeholder="전화번호"
-        />
-        <div className="text-box">
-          {errors.Phone && "형식이 올바르지 않습니다. 예: 010-1234-5678"}
+    <div className="App">
+    <Menubar></Menubar>
+    <div className="App-content-SignUp">
+      <form className="signup-form">
+        <div className="password-field">
+          <input
+            type={"password"}
+            name="PW"
+            className="text password-input"
+            value={PW}
+            placeholder="비밀번호"
+          ></input>
         </div>
-        <button type="submit" className="FindID-button-FindID">
-          찾기
+        <button type="submit" onClick={check}className="SignUp-button-SignUp">
+          회원 가입
         </button>
       </form>
     </div>
+  </div>
   );
 }
 
