@@ -27,16 +27,8 @@
   flex: 1;
   justify-content: center;
   align-items: center; /* 가운데 정렬 */
-  flex-direction: row; /* 좌우로 배치 */
+  flex-direction: column; /* 세로 배치 */
   align-items: center; /* 가운데 정렬 */
-}
-
-.FindPW-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  width: 50%;
 }
 
 .text {
