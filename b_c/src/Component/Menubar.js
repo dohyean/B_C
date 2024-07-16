@@ -4,17 +4,21 @@ import "../Style/Menubar.css";
 
 function Menubar() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const HandleClick = (url) => {
-    navigate(url);
+    if (location.pathname === url) {
+      //새로고침 기능
+      window.location.reload();
+    } else {
+      navigate(url);
+    }
   };
 
   var start_page = ["/Login"];
-  //내 사랑이 담긴 도띠를 위한 변수 이름
-  var Anjeon_Dotti = ["/HomePageLogin"]; //앙전도띠
-  var gajeondotti = ["/Blog"]; //가전자띠
-  var yang_ongtti = ["/Community"]; //양공띠
-  const location = useLocation();
+  var HomePageLogin = ["/HomePageLogin"]; //로그인된 화면
+  var Blog = ["/Blog"]; //블로그
+  var Community = ["/Community"]; //커뮤니티
 
   function page_check() {
     for (var i = 0; i < start_page.length; i++) {
@@ -23,9 +27,9 @@ function Menubar() {
       }
       if (
         //이제 로그인이 되어있는 경우에 이동할 수 있는 경로
-        location.pathname === Anjeon_Dotti[i] ||
-        location.pathname === gajeondotti[i] ||
-        location.pathname === yang_ongtti[i]
+        location.pathname === HomePageLogin[i] ||
+        location.pathname === Blog[i] ||
+        location.pathname === Community[i]
       ) {
         return 2;
       }

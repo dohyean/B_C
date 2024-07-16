@@ -29,6 +29,7 @@ async function Check_Find_ID(formData, setFormData, navigate) {
         setFormData({
           Phone: "",
         });
+        navigate("/SelectID");
         break;
       case Return_Fail:
         alert("해당하는 번호가 없습니다.");
