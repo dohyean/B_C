@@ -25,6 +25,14 @@ async function FindPW_Server(formData) {
   });
 }
 
+async function SendHash_Server() {
+  const SendHash = require("./etc/SendHash_Server.js");
+  var SendHash_Server_Result = await SendHash.Rec_SendHash(socket);
+  return new Promise((resolve, reject) => {
+    resolve(SendHash_Server_Result);
+  });
+}
+
 async function Disconnect() {
   return new Promise((resolve, reject) => {
     socket.emit("disconnect");
@@ -37,4 +45,5 @@ module.exports = {
   FindID_Server,
   FindPW_Server,
   Disconnect,
+  SendHash_Server
 };
