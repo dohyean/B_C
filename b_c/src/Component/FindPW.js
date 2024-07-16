@@ -7,6 +7,7 @@ import { Find_PW } from "../Function/FindPW/Find_PW";
 import { handleChangeWithErrorCheck } from "../Function/FindPW/handleChangeWithErrorCheck";
 import { useFormErrors_FindPW } from "../Function/FindPW/useFormErrors_FindPW";
 import { handleSubmit_Find_PW } from "../Function/FindPW/handleSubmit_Find_PW";
+import CredentialBar from "./CredentialBar";
 
 function FindPW() {
   const navigate = useNavigate();
@@ -64,6 +65,7 @@ function FindPW() {
             찾기
           </button>
         </form>
+        <CredentialBar></CredentialBar>
       </div>
     </div>
   );

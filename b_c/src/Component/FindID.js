@@ -7,6 +7,7 @@ import { Find_ID } from "../Function/FindID/Find_ID";
 import { handleChangeWithErrorCheck } from "../Function/FindID/handleChangeWithErrorCheck";
 import { useFormErrors_FindID } from "../Function/FindID/useFormErrors_FindID";
 import { handleSubmit_Find_ID } from "../Function/FindID/handleSubmit_Find_ID";
+import CredentialBar from "./CredentialBar";
 
 function FindID() {
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ function FindID() {
             찾기
           </button>
         </form>
+        <CredentialBar></CredentialBar>
       </div>
     </div>
   );

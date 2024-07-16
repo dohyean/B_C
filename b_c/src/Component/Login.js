@@ -6,6 +6,7 @@ import { useFormData } from "../Function/useFormData";
 import { Log_in } from "../Function/Login/Log_in";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { usePasswordToggle } from "../Function/usePasswordToggle";
+import CredentialBar from "./CredentialBar";
 
 function Login() {
   const navigate = useNavigate();
@@ -51,25 +52,8 @@ function Login() {
         >
           로그인
         </button>
-        <div className="additional-buttons">
-          <button
-            onClick={() => navigate("/SignUp")}
-            className="additional-button"
-          >
-            회원가입
-          </button>
-          <button
-            onClick={() => navigate("/FindID")}
-            className="additional-button"
-          >
-            아이디 찾기
-          </button>
-          <button
-            onClick={() => navigate("/FindPW")}
-            className="additional-button"
-          >
-            패스워드 찾기
-          </button>
+        <div>
+          <CredentialBar></CredentialBar>
         </div>
       </div>
     </div>

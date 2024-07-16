@@ -1,0 +1,29 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.App-content-SelectID {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center; /* 가운데 정렬 */
+  flex-direction: column; /* 세로 배치 */
+  align-items: center; /* 가운데 정렬 */
+}
+
+.text {
+  /*현재 textarea 테스트중*/
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 40px;
+  width: 300px;
+  resize: none;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 40px;
+  padding: 0 10px;
+  font-family: "Arial", sans-serif;
+  color: black;
+}

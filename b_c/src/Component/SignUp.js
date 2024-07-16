@@ -8,6 +8,7 @@ import { useFormData } from "../Function/useFormData";
 import { handleChangeWithErrorCheck } from "../Function/SignUp/handleChangeWithErrorCheck";
 import { useFormErrors_SignUP } from "../Function/SignUp/useFormErrors_SignUP";
 import { handleSubmit_Sign_Up } from "../Function/SignUp/handleSubmit_Sign_Up";
+import CredentialBar from "./CredentialBar";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -160,6 +161,7 @@ function SignUp() {
             회원 가입
           </button>
         </form>
+        <CredentialBar></CredentialBar>
       </div>
     </div>
   );
