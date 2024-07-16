@@ -1,19 +1,15 @@
 const { Server } = require('socket.io');
 const express = require("express");
 const app = express();
-
 const cors = require('cors');
 app.use(cors());
-
 const fs = require('fs');
 const port = 3001;
-
 const https = require('https');
 const server = https.createServer({
   key: fs.readFileSync('./key.pem'),
   cert: fs.readFileSync('./cert.pem')
 }, app);
-
 const io = new Server(server, { cors: { origin: 'https://localhost:3000', methods: ['GET', 'POST'] } });
 
 
@@ -49,6 +45,11 @@ io.on("connection", (socket) => {
     const FindPW = require("./module/SQL/Function/FindPW.js");
     FindPW.FindPW(db, io, item);
   })
+
+  socket.on("Send SendHash", () => {
+    const SendHash = require("./module/SQL/Function/SendHash.js");
+    SendHash.SendHash(io);
+  });
 
   socket.on("disconnect", () => {
     Close_DBMS.close_dbms(db);
