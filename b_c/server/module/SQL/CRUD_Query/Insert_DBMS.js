@@ -1,7 +1,6 @@
-const return_err = 0;
-const return_success = 1;
+const { global_value } = require("../Function/temp/global_value.js");
 
-exports.sql_insert = function (db, schema, column, dataset) {
+exports.Insert_DBMS = function (db, schema, column, dataset) {
   return new Promise((resolve, rejects) => {
     var insert_column = "";
     var column_num = "";
@@ -17,9 +16,9 @@ exports.sql_insert = function (db, schema, column, dataset) {
     db.all(query, dataset, (err, result) => {
       if (err) {
         console.log(err);
-        resolve(return_err);
+        resolve(global_value.return_DBMS_err);
       } else {
-        resolve(return_success);
+        resolve(global_value.return_DBMS_success);
       }
     });
   });

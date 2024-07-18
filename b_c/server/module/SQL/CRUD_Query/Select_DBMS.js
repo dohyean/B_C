@@ -1,8 +1,7 @@
-const return_err = 0; // 에러
-const return_undefined = 1; // 데이터 없음
-const return_success = 2; // 성공
+const { global_value } = require("../Function/temp/global_value.js");
 
-exports.sql_select = async function (
+
+exports.Select_DBMS = async function (
   db,
   column,
   schema,
@@ -23,20 +22,20 @@ exports.sql_select = async function (
         db_complete_check = true;
         return_data = {
           return_result: "err",
-          return_result_num: return_err,
+          return_result_num: global_value.return_DBMS_err,
         };
       } else {
         if (result[0] === undefined) {
           db_complete_check = true;
           return_data = {
             return_result: "",
-            return_result_num: return_undefined,
+            return_result_num: global_value.return_DBMS_undefined,
           };
         } else {
           db_complete_check = true;
           return_data = {
             return_result: result,
-            return_result_num: return_success,
+            return_result_num: global_value.return_DBMS_success,
           };
         }
       }

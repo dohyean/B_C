@@ -18,7 +18,7 @@ const Close_DBMS = require("./module/SQL/Open_Close_DBMS/Close_DBMS.js");
 // const s = require("./module/SQL/CRUD_Query/Select_DBMS.js");
 
 server.listen(port, () => {
-  console.log(`Socket.IO 서버가 포트 ${port}에서 실행 중입니다.`);
+  console.log(`서버가 ${port}에서 실행 중입니다.`);
 });
 
 io.on("connection", (socket) => {
@@ -32,26 +32,26 @@ io.on("connection", (socket) => {
   // });
 
   socket.on("Send SingUp", (item) => {
-    const SiginUp = require("./module/SQL/Function/SignUp.js");
+    const SiginUp = require("./module/SQL/Function/SignUp/SignUp.js");
     SiginUp.UserData_Save(db, io, item);
   });
 
   socket.on("Send FindID", (item) => {
-    const FindID = require("./module/SQL/Function/FindID.js");
+    const FindID = require("./module/SQL/Function/FindID/FindID.js");
     FindID.FindID(db, io, item);
   });
 
   socket.on("Send FindPW", (item) => {
-    const FindPW = require("./module/SQL/Function/FindPW.js");
+    const FindPW = require("./module/SQL/Function/FindPW/FindPW.js");
     FindPW.FindPW(db, io, item);
   })
 
   socket.on("Send SendHash", () => {
-    const SendHash = require("./module/SQL/Function/SendHash.js");
+    const SendHash = require("./module/SQL/Function/etc/SendHash.js");
     SendHash.SendHash(io);
   });
 
-  socket.on("disconnect", () => {
+  socket.on("dis", () => {
     Close_DBMS.close_dbms(db);
   });
 });

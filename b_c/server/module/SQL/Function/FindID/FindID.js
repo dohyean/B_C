@@ -1,9 +1,8 @@
-const Select_DBMS = require("../CRUD_Query/Select_DBMS.js");
-const Insert_DBMS = require("../CRUD_Query/Insert_DBMS.js");
-const { global_value } = require("./temp/global_value.js");
+const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
+const { global_value } = require("../temp/global_value.js");
 
 async function Check_FindID(db, Phone) {
-  var Check_FindID_Result = await Select_DBMS.sql_select(
+  var Check_FindID_Result = await Select_DBMS.Select_DBMS(
     db,
     "User_ID",
     "User_Data",

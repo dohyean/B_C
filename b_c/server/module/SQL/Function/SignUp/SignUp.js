@@ -1,10 +1,10 @@
-const Select_DBMS = require("../CRUD_Query/Select_DBMS.js");
-const Insert_DBMS = require("../CRUD_Query/Insert_DBMS.js");
+const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
+const Insert_DBMS = require("../../CRUD_Query/Insert_DBMS.js");
 
-const { global_value } = require("./temp/global_value.js");
+const { global_value } = require("../temp/global_value.js");
 
 async function Check_Duplicate_ID(db, UserID) {
-  var Check_Duplicate_ID_Result = await Select_DBMS.sql_select(
+  var Check_Duplicate_ID_Result = await Select_DBMS.Select_DBMS(
     db,
     "User_ID",
     "User_Data",
@@ -33,7 +33,7 @@ async function Save_UserData(db, UserData) {
     UserData.PhoneNum,
     UserData.Birthday,
   ];
-  var Save_UserData_Result = await Insert_DBMS.sql_insert(
+  var Save_UserData_Result = await Insert_DBMS.Insert_DBMS(
     db,
     "User_Data",
     column,
