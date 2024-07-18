@@ -1,4 +1,8 @@
 const global_value = {
+    return_DBMS_err: 0, // 에러
+    return_DBMS_undefined: 1, // 데이터 없음
+    return_DBMS_success: 2, // 성공
+
     All_Complete: 0, // 모든 조건 만족 & 데이터 저장
     Fail: 1, // 실패
     Error: 2, // 문법 오류
