@@ -9,22 +9,6 @@ function CredentialBar() {
     navigate(url);
   };
 
-  // function page_check() {
-  //   for (var i = 0; i < Login.length; i++) {
-  //     if (location.pathname === Login[i]) {
-  //       return 1;
-  //     }
-  //     if (
-  //       //이제 로그인이 되어있는 경우에 이동할 수 있는 경로
-  //       location.pathname === HomePageLogin[i] ||
-  //       location.pathname === Blog[i] ||
-  //       location.pathname === Community[i]
-  //     ) {
-  //       return 2;
-  //     }
-  //   }
-  // }
-
   return (
     <div className="additional-buttons">
       <button
@@ -43,7 +27,7 @@ function CredentialBar() {
         onClick={() => HandleClick("/FindPW")}
         className="additional-button"
       >
-        패스워드 찾기
+        비밀번호 찾기
       </button>
     </div>
   );

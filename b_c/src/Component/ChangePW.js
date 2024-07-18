@@ -49,6 +49,7 @@ function ChangePW() {
     <div className="App">
       <Menubar></Menubar>
       <div className="App-content-ChangePW">
+        <h2>비밀번호 변경</h2>
         <form onSubmit={handleFormSubmit} className="changePW-form">
           <div className="password-field">
             <input

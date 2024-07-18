@@ -18,8 +18,8 @@ export const useFormErrors_SignUP = (initialState) => {
   };
 
   const validateID = (id) => {
-    // 아이디는 영문 대소문자와 숫자만 허용
-    const idRegex = /^[A-Za-z\d]+$/;
+    // 아이디는 영문 대소문자와 숫자만 허용하며, 최대 20자까지
+    const idRegex = /^[A-Za-z\d]{1,20}$/;
     return idRegex.test(id);
   };
 
