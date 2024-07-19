@@ -1,17 +1,20 @@
-import { useNavigate } from "react-router-dom";
 import "../../Style/SignUp.css";
 import Menubar from "../Menubar";
-import createHmac from "crypto-js";
+import {HmacSHA256} from "crypto-js";
+const sockets = require("../moudle/sockets.js");
+
+async function find(PW) {
+  const key = await sockets.SendHash_Server();
+  const hashPW = HmacSHA256(PW, key.key).toString();
+  alert(`${hashPW}`);
+}
 
 // SignUp을 그대로 가져와서 테스트
 function TestModule() {
-  const navigate = useNavigate();
-
-  const PW = "test";
-  const test = "abcdefg";
+  const PW = "A";
+  
   const check = () => {
-    const hashPW = createHmac 
-    alert(`test : ${hashPW}`);
+    find(PW);
   }
 
   return (
@@ -24,7 +27,6 @@ function TestModule() {
             type={"password"}
             name="PW"
             className="text password-input"
-            value={PW}
             placeholder="비밀번호"
           ></input>
         </div>
