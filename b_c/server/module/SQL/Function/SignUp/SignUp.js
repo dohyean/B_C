@@ -64,7 +64,7 @@ exports.UserData_Save = async function (db, io, UserData) {
       }
       break;
     case global_value.Return_Duplicate_Match:
-      SignUp_Server_Result = global_value.Duplicate_ID;
+      SignUp_Server_Result = global_value.Fail;
       break;
     default:
       SignUp_Server_Result = global_value.Other_Error;

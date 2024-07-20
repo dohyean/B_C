@@ -3,15 +3,15 @@ const { global_value } = require("../Function/temp/global_value.js");
 exports.Update_DBMS = async function (
   db,
   schema,
-  column,
-  column_data,
-  where,
-  where_data
+  column = [],
+  column_data = [],
+  where = [],
+  where_data = []
 ) {
   return new Promise((resolve, reject) => {
     var update_column = "";
     var update_where = "";
-    for(var i = 0; i < length(column); i++){
+    for(var i = 0; i < column.length; i++){
         update_column += column[i] + " = \"";
         update_column += column_data[i] + "\", ";
     }

@@ -1,5 +1,13 @@
 const { global_value } = require("../Function/temp/global_value.js");
 
+function Fill_Return_Data(return_result, return_result_num){
+  db_complete_check = true;
+  return_data = {
+    return_result: return_result,
+    return_result_num: return_result_num,
+  };
+  return return_result, db_complete_check;
+}
 
 exports.Select_DBMS = async function (
   db,
