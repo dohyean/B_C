@@ -46,6 +46,11 @@ io.on("connection", (socket) => {
     FindPW.FindPW(db, io, item);
   })
 
+  socket.on("Send ChangePW", (item) => {
+    const ChangePW = require("./module/SQL/Function/ChangePW/ChangePW.js");
+    ChangePW.ChangePW(db, io, item);
+  });
+
   socket.on("Send SendHash", () => {
     const SendHash = require("./module/SQL/Function/etc/SendHash.js");
     SendHash.SendHash(io);
