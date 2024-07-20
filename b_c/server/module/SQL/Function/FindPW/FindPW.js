@@ -1,8 +1,8 @@
-const Select_DBMS = require("../CRUD_Query/Select_DBMS.js");
-const { global_value } = require("./temp/global_value.js");
+const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
+const { global_value } = require("../temp/global_value.js");
 
 async function Check_FindPW(db, UserData) {
-  var Check_FindPW_Result = await Select_DBMS.sql_select(
+  var Check_FindPW_Result = await Select_DBMS.Select_DBMS(
     db,
     "User_PW",
     "User_Data",
