@@ -2,7 +2,7 @@ import Menubar from "./Menubar";
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../Style/SelectID.css";
-import CredentialBar from "./CredentialBar";
+//import CredentialBar from "./CredentialBar";
 
 function SelectID() {
   const navigate = useNavigate();
@@ -10,23 +10,25 @@ function SelectID() {
   const [selectedOption, setSelectedOption] = useState("");
   const [options, setOptions] = useState([]);
 
-  const state = location.state; // 전달된 상태 객체
-  // console.log("Received state:", state);
-  const String_ID = state?.String_ID; // 상태 객체에서 String_ID를 추출
-  console.log("Received String_ID:", String_ID);
+  const state = location.state || {}; // 전달된 상태 객체
+  const { String_ID, Phone } = state; // 상태 객체에서 String_ID와 Phone을 추출
 
   useEffect(() => {
-    if (location.state && location.state.String_ID) {
-      console.log("Received String_ID:", location.state.String_ID); // 데이터 로그 출력
-      const optionsArray = location.state.String_ID.split("\n").filter(Boolean);
+    if (String_ID) {
+      console.log("Received String_ID:", String_ID); // 데이터 로그 출력
+      console.log("Received Phone:", Phone); // 데이터 로그 출력
+      // const optionsArray = String_ID.split("\n").filter(Boolean);
+      const optionsArray = String_ID.split("\n")
+        .map((id) => id.replace(/\r/g, ""))
+        .filter(Boolean);
       setOptions(optionsArray);
       if (optionsArray.length > 0) {
         setSelectedOption(optionsArray[0]);
       }
     } else {
-      console.log("No String_ID found in location.state"); //사실상 안넘오는 단계
+      console.log("No String_ID found in location.state");
     }
-  }, [location.state]);
+  }, [String_ID, Phone]);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -62,9 +64,18 @@ function SelectID() {
             navigate("/Login", { state: { selectedID: selectedOption } })
           } //확인 버튼 누르면 로그인으로 가게 해둠
         >
-          확인
+          로그인
         </button>
-        <CredentialBar />
+        <button
+          className="Select-button-Select"
+          onClick={() =>
+            navigate("/ChangePW", {
+              state: { selectedID: selectedOption, Phone },
+            })
+          } //확인 버튼 누르면 로그인으로 가게 해둠
+        >
+          비밀번호 찾기
+        </button>
       </div>
     </div>
   );

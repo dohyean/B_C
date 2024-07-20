@@ -7,8 +7,9 @@ const Return_Error = 2;
 async function Check_Change_PW(formData, setFormData, navigate) {
   try {
     // alert(formData.PW);
-
+    console.log("Form Data:", formData); //여기서 찍어보면 ID, Phone, NewPW, ComPW 들어와있음
     var ChangePW_Server_Result = await sockets.ChangePW_Server(formData);
+    console.log("Server Response:", ChangePW_Server_Result); //로그 찍어본거
     switch (ChangePW_Server_Result) {
       case Return_Success:
         break;
@@ -33,8 +34,7 @@ async function Check_Change_PW(formData, setFormData, navigate) {
   //   confirmPW: "",
   // });
   // navigate("/ChangePW");
-};
-
+}
 
 export async function Change_PW(formData, setFormData, navigate) {
   await Check_Change_PW(formData, setFormData, navigate);
