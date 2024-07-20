@@ -25,11 +25,13 @@ async function Check_Find_ID(formData, setFormData, navigate) {
         var String_ID = await Make_String_All_ID(
           FindID_Server_Result.FindID_Result.FindID_return_result
         );
+        console.log("Generated String_ID:", String_ID); // 데이터 로그 출력
         alert(String_ID);
         setFormData({
           Phone: "",
         });
-        navigate("/SelectID", { String_ID });
+        // navigate("/SelectID", { String_ID });
+        navigate("/SelectID", { state: { String_ID } }); // state 객체로 전달
         break;
       case Return_Fail:
         alert("해당하는 번호가 없습니다.");
