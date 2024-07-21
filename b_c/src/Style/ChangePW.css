@@ -58,3 +58,18 @@
   width: 320px;
   font-size: 20px;
 }
+
+.text {
+  /*현재 textarea 테스트중*/
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 40px;
+  width: 300px;
+
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 40px;
+  padding: 0 10px;
+  font-family: "Arial", sans-serif;
+  color: black;
+}
