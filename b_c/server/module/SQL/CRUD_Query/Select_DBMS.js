@@ -1,12 +1,11 @@
 const { global_value } = require("../Function/temp/global_value.js");
 
-function Fill_Return_Data(return_result, return_result_num){
-  db_complete_check = true;
-  return_data = {
+function Fill_Return_Data(return_result, return_result_num) {
+  const result = {
     return_result: return_result,
     return_result_num: return_result_num,
   };
-  return return_result, db_complete_check;
+  return result;
 }
 
 exports.Select_DBMS = async function (
@@ -28,23 +27,20 @@ exports.Select_DBMS = async function (
       if (err) {
         console.log(err);
         db_complete_check = true;
-        return_data = {
-          return_result: "err",
-          return_result_num: global_value.return_DBMS_err,
-        };
+        return_data = Fill_Return_Data("err", global_value.return_DBMS_err);
       } else {
         if (result[0] === undefined) {
           db_complete_check = true;
-          return_data = {
-            return_result: "",
-            return_result_num: global_value.return_DBMS_undefined,
-          };
+          return_data = Fill_Return_Data(
+            "",
+            global_value.return_DBMS_undefined
+          );
         } else {
           db_complete_check = true;
-          return_data = {
-            return_result: result,
-            return_result_num: global_value.return_DBMS_success,
-          };
+          return_data = Fill_Return_Data(
+            result,
+            global_value.return_DBMS_success
+          );
         }
       }
       while (true) {
