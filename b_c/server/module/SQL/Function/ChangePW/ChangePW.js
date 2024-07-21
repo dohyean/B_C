@@ -2,7 +2,6 @@ const Update_DBMS = require("../../CRUD_Query/Update_DBMS.js");
 const { global_value } = require("../temp/global_value.js");
 
 async function Check_ChangePW(db, UserData) {
-  console.log(UserData);
   var column = ["User_PW"];
   var column_data = [UserData.PW];
   var where = ["User_ID"];

@@ -1,15 +1,10 @@
 const io = require("socket.io-client");
 const socket = io("https://localhost:3001");
 
-
-
 async function SignUp_Server(formData) {
   const SignUp = require("./SignUp/SignUp_Server.js");
-  var SignUp_Server_Result = await SignUp.Rec_SignUp(socket, formData);
-  // Disconnect();
-  return new Promise((resolve, reject) => {
-    resolve(SignUp_Server_Result);
-  });
+  var return_data = await SignUp.SignUp_Server(socket, formData);
+  return return_data;
 }
 
 async function FindID_Server(formData) {
@@ -60,5 +55,5 @@ module.exports = {
   FindPW_Server,
   ChangePW_Server,
   SendHash_Server,
-  Disconnect
+  Disconnect,
 };
