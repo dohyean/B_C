@@ -26,8 +26,12 @@ const global_value = {
   Return_ChangePW_Error: 0, // 유저 데이터 저장 문법 오류
   Return_ChangePW_Success: 1, // 유저 데이터 저장 성공
 
-  Return_Update_Error: 0,
-  Return_Update_Success: 1,
+  Return_Update_Error: 0, // sql Update 실행시 오류
+  Return_Update_Success: 1, // sql Update 실행시 성공
+
+  Return_Select_Error: 0, // sql Select 실행시 오류
+  Return_Select_Match: 1, // sql Select 실행시 데이터가 있는 경우 (성공)
+  Return_Select_Undefined: 2, // sql Select 실행시 오류 데이터가 없는 경우 (실패)
 };
 
 exports.global_value = global_value;

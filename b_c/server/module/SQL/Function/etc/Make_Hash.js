@@ -15,12 +15,12 @@ function Make_Format_Data() {
   });
 }
 
-exports.SendHash = async function (io) {
+exports.Make_Hash = async function (io) {
   Make_Format_Data()
     .then((Format_Data) => {
       const key = SHA256(Format_Data).toString();
 
-      io.emit("Receive SendHash", {
+      io.emit("Receive Make Hash", {
         key: key,
       });
     })
