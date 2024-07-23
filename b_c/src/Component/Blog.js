@@ -7,7 +7,7 @@ function Blog() {
     <div className="App">
       <Menubar></Menubar>
       <div className="App-content-Blog">
-        <h1>앙전도띠</h1>
+        <h1>블로그</h1>
       </div>
     </div>
   );

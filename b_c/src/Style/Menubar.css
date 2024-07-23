@@ -41,3 +41,60 @@
 .logout-button {
   margin-left: 20px; /* menu-items와 로그아웃 버튼 사이 간격 */
 }
+
+.menu-items h1 {
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  z-index: 1;
+  top: 100%;
+  left: 50%; /* 부모 요소의 왼쪽 기준으로 50% 이동 */
+  transform: translateX(-50%); /* 요소를 왼쪽으로 50% 이동하여 중앙에 맞추기 */
+  width: 120px;
+  /* 배경을 투명하게 만듭니다 */
+  /* background-color: transparent; */
+  /* 그림자를 없애기 위해 box-shadow를 제거합니다 */
+  box-shadow: none;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-content button:hover {
+  background-color: #575757;
+}
+
+.menu-items h1:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content h4 {
+  font-size: 20px; /* 글씨 크기 조절 */
+  margin: 0; /* 상하 공백 제거 */
+  padding: 5px; /* 상하좌우 공백 조절 */
+  cursor: pointer; /* 클릭 가능 요소 */
+  background-color: transparent; /* 배경색 투명 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  line-height: 1.5; /* 텍스트 중앙 정렬을 위한 행 높이 조절 */
+  /* width: 100%; 부모 컨테이너의 너비를 꽉 채우기 */
+  box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
+}
+.dropdown-content h4:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 */
+}
+/*일단 명함을 넣고 나중에 없앨예정*/
