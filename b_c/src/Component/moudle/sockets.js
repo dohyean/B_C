@@ -42,12 +42,18 @@ async function Make_Hash_Server() {
   });
 }
 
-async function GetHash_Server() {
+async function GetHash_Server(formData) {
   const GetHash = require("./etc/GetHash_Server.js");
-  var GetHash_Server_Result = await GetHash.Rec_GetHash(socket);
+  var GetHash_Server_Result = await GetHash.Rec_GetHash(socket, formData);
   return new Promise((resolve, reject) => {
     resolve(GetHash_Server_Result);
   });
+}
+
+async function Login_Server(formData) {
+  const Login = require("./Login/Login_Server.js");
+  var return_data = await Login.Login_Server(socket, formData);
+  return return_data;
 }
 
 function Disconnect() {
@@ -64,5 +70,6 @@ module.exports = {
   ChangePW_Server,
   Make_Hash_Server,
   GetHash_Server,
+  Login_Server,
   Disconnect,
 };

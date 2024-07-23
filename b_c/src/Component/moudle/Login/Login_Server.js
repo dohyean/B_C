@@ -1,20 +1,11 @@
-// 서버 데이터 전송
-function Send_Login(socket, data) {
-  return new Promise((resolve, reject) => {
-    socket.emit("Send Login", {
-      ID: data.ID,
-      PhoneNum: data.Phone,
-    });
-    resolve(0);
-  });
-}
+const Login_Server_Receive = require("./Login_Server_Receive.js");
 
-// 서버 메시지 수신
-exports.Rec_Login = async function (socket, data) {
-  await Send_Login(socket, data);
+exports.Login_Server = async function (socket, formData) {
+  var Login_Server_Result = await Login_Server_Receive.Rec_Login(
+    socket,
+    formData
+  );
   return new Promise((resolve, reject) => {
-    socket.on("Receive Login", (message) => {
-      resolve(message);
-    });
+    resolve(Login_Server_Result);
   });
 };
