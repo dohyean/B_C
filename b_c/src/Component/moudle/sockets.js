@@ -33,13 +33,27 @@ async function ChangePW_Server(formData) {
   });
 }
 
-async function SendHash_Server() {
-  const SendHash = require("./etc/SendHash_Server.js");
-  var SendHash_Server_Result = await SendHash.Rec_SendHash(socket);
+async function Make_Hash_Server() {
+  const Make_Hash = require("./etc/Make_Hash_Server.js");
+  var Make_Hash_Server_Result = await Make_Hash.Rec_Make_Hash(socket);
   // Disconnect();
   return new Promise((resolve, reject) => {
-    resolve(SendHash_Server_Result);
+    resolve(Make_Hash_Server_Result);
   });
+}
+
+async function GetHash_Server(formData) {
+  const GetHash = require("./etc/GetHash_Server.js");
+  var GetHash_Server_Result = await GetHash.Rec_GetHash(socket, formData);
+  return new Promise((resolve, reject) => {
+    resolve(GetHash_Server_Result);
+  });
+}
+
+async function Login_Server(formData) {
+  const Login = require("./Login/Login_Server.js");
+  var return_data = await Login.Login_Server(socket, formData);
+  return return_data;
 }
 
 function Disconnect() {
@@ -54,6 +68,8 @@ module.exports = {
   FindID_Server,
   FindPW_Server,
   ChangePW_Server,
-  SendHash_Server,
+  Make_Hash_Server,
+  GetHash_Server,
+  Login_Server,
   Disconnect,
 };
