@@ -6,12 +6,16 @@ const Return_Error = 2;
 
 async function Check_Change_PW(formData, setFormData, navigate) {
   try {
-    // alert(formData.PW);
-    console.log("Form Data:", formData); //여기서 찍어보면 ID, Phone, NewPW, ComPW 들어와있음
     var ChangePW_Server_Result = await sockets.ChangePW_Server(formData);
-    console.log("Server Response:", ChangePW_Server_Result); //로그 찍어본거
-    switch (ChangePW_Server_Result) {
+    console.log(ChangePW_Server_Result.ChangePW_Result);
+    switch (ChangePW_Server_Result.ChangePW_Result) {
       case Return_Success:
+        setFormData({
+          PW: "",
+          confirmPW: "",
+        });
+        alert("변경 완료.");
+        navigate("/Login");
         break;
       case Return_Fail:
         alert("해당하는 번호가 없습니다.");
@@ -29,11 +33,6 @@ async function Check_Change_PW(formData, setFormData, navigate) {
   } finally {
     // sockets.Disconnect();
   }
-  // setFormData({
-  //   PW: "",
-  //   confirmPW: "",
-  // });
-  // navigate("/ChangePW");
 }
 
 export async function Change_PW(formData, setFormData, navigate) {

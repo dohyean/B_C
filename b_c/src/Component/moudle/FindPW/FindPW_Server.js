@@ -1,21 +1,11 @@
-// 서버 데이터 전송
-function Send_FindPW(socket, data) {
-    return new Promise((resolve, reject) => {
-      socket.emit("Send FindPW", {
-        ID : data.ID,
-        PhoneNum: data.Phone,
-      });
-      resolve(0);
-    });
-  }
-  
-  // 서버 메시지 수신
-  exports.Rec_FindPW = async function (socket, data) {
-    await Send_FindPW(socket, data);
-    return new Promise((resolve, reject) => {
-      socket.on("Receive FindPW", (message) => {
-        resolve(message);
-      });
-    });
-  };
-  
+const FindPW_Server_Receive = require("./FindPW_Server_Receive.js");
+
+exports.FindPW_Server = async function (socket, formData) {
+  var FindPW_Server_Result = await FindPW_Server_Receive.Rec_FindPW(
+    socket,
+    formData
+  );
+  return new Promise((resolve, reject) => {
+    resolve(FindPW_Server_Result);
+  });
+};

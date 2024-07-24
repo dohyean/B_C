@@ -34,6 +34,7 @@ exports.Update_DBMS = async function (
           return_result_num: global_value.return_DBMS_err,
         };
       } else {
+        console.log(result);
         return_data = {
           return_result: result,
           return_result_num: global_value.return_DBMS_success,

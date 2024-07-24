@@ -23,9 +23,6 @@ const global_value = {
   Return_UserData_Error: 0, // 유저 데이터 저장 문법 오류
   Return_UserData_Success: 1, // 유저 데이터 저장 성공
 
-  Return_ChangePW_Error: 0, // 유저 데이터 저장 문법 오류
-  Return_ChangePW_Success: 1, // 유저 데이터 저장 성공
-
   Return_Update_Error: 0, // sql Update 실행시 오류
   Return_Update_Success: 1, // sql Update 실행시 성공
 
