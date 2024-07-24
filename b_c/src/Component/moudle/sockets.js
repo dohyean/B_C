@@ -9,28 +9,20 @@ async function SignUp_Server(formData) {
 
 async function FindID_Server(formData) {
   const FindID = require("./FindID/FindID_Server.js");
-  var FindID_Server_Result = await FindID.Rec_FindID(socket, formData);
-  // Disconnect();
-  return new Promise((resolve, reject) => {
-    resolve(FindID_Server_Result);
-  });
+  var return_data = await FindID.FindID_Server(socket, formData);
+  return return_data;
 }
 
 async function FindPW_Server(formData) {
   const FindPW = require("./FindPW/FindPW_Server.js");
-  var FindPW_Server_Result = await FindPW.Rec_FindPW(socket, formData);
-  // Disconnect();
-  return new Promise((resolve, reject) => {
-    resolve(FindPW_Server_Result);
-  });
+  var return_data = await FindPW.FindPW_Server(socket, formData);
+  return return_data;
 }
 
 async function ChangePW_Server(formData) {
   const ChangePW = require("./ChangePW/ChangePW_Server.js");
-  var ChangePW_Server_Result = await ChangePW.Rec_ChangePW(socket, formData);
-  return new Promise((resolve, reject) => {
-    resolve(ChangePW_Server_Result);
-  });
+  var return_data = await ChangePW.ChangePW_Server(socket, formData);
+  return return_data;
 }
 
 async function Make_Hash_Server() {

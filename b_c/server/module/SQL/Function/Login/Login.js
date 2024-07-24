@@ -5,7 +5,7 @@ async function Check_Login(db, UserData) {
   const Data = [UserData.ID, UserData.PW];
   const Check_FindID_Result = await Select_DBMS.Select_DBMS(
     db,
-    "User_ID",
+    "User_ID, User_NickName",
     "User_Data",
     "User_ID = ? and User_PW = ?",
     Data

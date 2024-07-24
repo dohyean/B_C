@@ -1,19 +1,13 @@
-// 서버 데이터 전송
-function Send_FindID(socket, data) {
-  return new Promise((resolve, reject) => {
-    socket.emit("Send FindID", {
-      PhoneNum: data.Phone,
-    });
-    resolve(0);
-  });
-}
+const FindID_Server_Receive = require("./FindID_Server_Receive.js");
 
-// 서버 메시지 수신
-exports.Rec_FindID = async function (socket, data) {
-  await Send_FindID(socket, data);
+exports.FindID_Server = async function (socket, formData) {
+  var FindID_Server_Result = await FindID_Server_Receive.Rec_FindID(
+    socket,
+    formData
+  );
+
+  console.log(FindID_Server_Result);
   return new Promise((resolve, reject) => {
-    socket.on("Receive FindID", (message) => {
-      resolve(message);
-    });
+    resolve(FindID_Server_Result);
   });
 };
