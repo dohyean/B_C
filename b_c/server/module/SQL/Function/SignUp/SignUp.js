@@ -65,19 +65,22 @@ async function Save_Hash(db, ID, Hash) {
 
 exports.UserData_Save = async function (db, io, UserData) {
   var SignUp_Server_Result;
-  switch (await Check_Duplicate_ID(db, UserData.ID)) {
-    case global_value.Return_Duplicate_Error:
+  switch (await Check_Duplicate_ID(db, UserData.UserData.ID)) {
+    case global_value.Return_Select_Error:
       SignUp_Server_Result = global_value.Error;
       break;
-    case global_value.Return_Duplicate_Undefined:
-      switch (await Save_UserData(db, UserData)) {
-        case global_value.Return_UserData_Error:
+    case global_value.Return_Select_Undefined:
+      switch (await Save_UserData(db, UserData.UserData)) {
+        case global_value.Return_Update_Error:
           SignUp_Server_Result = global_value.Error;
           break;
-        case global_value.Return_UserData_Success:
+        case global_value.Return_Update_Success:
           switch (
-            await Save_Hash(db, UserData.ID, UserData.Hash.key)
-              .return_result_num
+            await Save_Hash(
+              db,
+              UserData.UserData.ID,
+              UserData.UserData.Hash.key
+            ).return_result_num
           ) {
             case global_value.Return_Update_Error:
               SignUp_Server_Result = global_value.Error;
@@ -96,7 +99,7 @@ exports.UserData_Save = async function (db, io, UserData) {
           break;
       }
       break;
-    case global_value.Return_Duplicate_Match:
+    case global_value.Return_Select_Match:
       SignUp_Server_Result = global_value.Fail;
       break;
     default:
@@ -104,7 +107,7 @@ exports.UserData_Save = async function (db, io, UserData) {
       break;
   }
 
-  io.emit("Receive SingUp", {
+  io.emit("Receive SignUp", {
     SignUp_Server_Result: SignUp_Server_Result,
   });
 };

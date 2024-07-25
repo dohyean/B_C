@@ -7,7 +7,6 @@ const Return_Error = 2;
 async function Check_Change_PW(formData, setFormData, navigate) {
   try {
     var ChangePW_Server_Result = await sockets.ChangePW_Server(formData);
-    console.log(ChangePW_Server_Result.ChangePW_Result);
     switch (ChangePW_Server_Result.ChangePW_Result) {
       case Return_Success:
         setFormData({
@@ -28,7 +27,7 @@ async function Check_Change_PW(formData, setFormData, navigate) {
         break;
     }
   } catch (err) {
-    console.log("Find-ID error: ", err);
+    console.log("Change-PW error: ", err);
     alert("서버 오류. 다시 시도해 주세요.");
   } finally {
     // sockets.Disconnect();

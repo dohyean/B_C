@@ -28,13 +28,13 @@ io.on("connection", (socket) => {
   const db = Open_DBMS.open_dbms();
 
   // 회원가입
-  socket.on("Send SingUp", (item) => {
+  socket.on("Send SignUp", (item) => {
     const SiginUp = require("./module/SQL/Function/SignUp/SignUp.js");
     SiginUp.UserData_Save(db, io, item);
   });
 
   // 회원가입시 hash 생성
-  socket.on("Send Make Hash", () => {
+  socket.on("Send MakeHash", (item) => {
     const SendHash = require("./module/SQL/Function/etc/Make_Hash.js");
     SendHash.Make_Hash(io);
   });

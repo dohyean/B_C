@@ -41,8 +41,8 @@ exports.ChangePW = async function (db, io, UserData) {
   var ChangePW_Result;
   var Check_ChangePW_Result = await Check_ChangePW(
     db,
-    UserData.ID,
-    UserData.PW
+    UserData.UserData.ID,
+    UserData.UserData.PW
   );
   switch (Check_ChangePW_Result.return_result_num) {
     case global_value.Return_Update_Error:
@@ -51,8 +51,8 @@ exports.ChangePW = async function (db, io, UserData) {
     case global_value.Return_Update_Success:
       var Check_ChangeHash_Result = await Check_ChangeHash(
         db,
-        UserData.ID,
-        UserData.Hash.key
+        UserData.UserData.ID,
+        UserData.UserData.Hash.key
       );
       switch (Check_ChangeHash_Result.return_result_num) {
         case global_value.Return_Update_Error:
