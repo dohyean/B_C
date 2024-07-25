@@ -1,19 +1,15 @@
-// 서버 데이터 전송
-function Send_GetHash(socket, data) {
-  return new Promise((resolve, reject) => {
-    socket.emit("Send GetHash", {
-      ID: data.ID,
-    });
-    resolve(0);
-  });
-}
+const Server_Receive = require("../Server_RecSend/Server_Receive.js");
+const { RecSend_Message } = require("../Server_RecSend/RecSend_Message.js");
 
-// 서버 메시지 수신
-exports.Rec_GetHash = async function (socket, data) {
-  await Send_GetHash(socket, data);
+exports.GetHash_Server = async function (socket, formData) {
+  const UserData = { ID: formData.ID };
+
+  var GetHash_Server_Result = await Server_Receive.Server_Receive(
+    socket,
+    UserData,
+    RecSend_Message.GetHash_Message
+  );
   return new Promise((resolve, reject) => {
-    socket.on("Receive GetHash", (message) => {
-      resolve(message);
-    });
+    resolve(GetHash_Server_Result);
   });
 };

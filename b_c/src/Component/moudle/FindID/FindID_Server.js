@@ -1,12 +1,17 @@
-const FindID_Server_Receive = require("./FindID_Server_Receive.js");
+const Server_Receive = require("../Server_RecSend/Server_Receive.js");
+const { RecSend_Message } = require("../Server_RecSend/RecSend_Message.js");
 
 exports.FindID_Server = async function (socket, formData) {
-  var FindID_Server_Result = await FindID_Server_Receive.Rec_FindID(
+  const UserData = {
+    PhoneNum: formData.Phone,
+  };
+
+  var FindID_Server_Result = await Server_Receive.Server_Receive(
     socket,
-    formData
+    UserData,
+    RecSend_Message.FindID_Message
   );
 
-  console.log(FindID_Server_Result);
   return new Promise((resolve, reject) => {
     resolve(FindID_Server_Result);
   });
