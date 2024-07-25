@@ -7,7 +7,10 @@ function Blog() {
     <div className="App">
       <Menubar></Menubar>
       <div className="App-content-Blog">
-        <h1>블로그</h1>
+        <div className="split-container">
+          <div className="left-section">여기는 왼쪽</div>
+          <div className="right-section">여기는 오른쪽</div>
+        </div>
       </div>
     </div>
   );
