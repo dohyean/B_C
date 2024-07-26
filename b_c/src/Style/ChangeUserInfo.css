@@ -1,0 +1,13 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.App-content-ChangeUserInfo {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center; /* 가운데 정렬 */
+  flex-direction: column; /* 가로 배치 */
+}
