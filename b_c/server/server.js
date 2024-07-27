@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
     GetHash.GetHash(db, io, item);
   });
 
-  socket.on("dis", () => {
+  socket.on("disconnect", () => {
     Close_DBMS.close_dbms(db);
   });
 });
