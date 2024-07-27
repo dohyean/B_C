@@ -1,13 +1,13 @@
 const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
 const { global_value } = require("../temp/global_value.js");
 
-async function Check_GetHash(db, UserData) {
+async function Check_GetHash(db, ID) {
   var Check_GetHash_Result = await Select_DBMS.Select_DBMS(
     db,
     "User_Hash",
     "Hash_Data",
     "User_ID = ?",
-    UserData.ID
+    ID
   );
   return new Promise((resolve, rejects) => {
     resolve(Check_GetHash_Result);
@@ -16,7 +16,7 @@ async function Check_GetHash(db, UserData) {
 
 exports.GetHash = async function (db, io, UserData) {
   var GetHash_Result;
-  const Check_FindPW_Result = await Check_GetHash(db, UserData);
+  const Check_FindPW_Result = await Check_GetHash(db, UserData.UserData.ID);
   switch (Check_FindPW_Result.return_result_num) {
     case global_value.Return_Select_Error:
       GetHash_Result = {

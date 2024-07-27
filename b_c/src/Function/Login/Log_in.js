@@ -7,6 +7,7 @@ const Return_Select_Undefined = 1;
 async function Login(formData, setFormData, navigate) {
   try {
     const Login_Server_Result = await sockets.Login_Server(formData);
+    // console.log(Login_Server_Result.Login_Result) // 데이터 저장 확인 (닉네임도 가져옴)
     switch (Login_Server_Result.Login_Result) {
       case Return_Select_Undefined:
         alert("비밀번호 틀림.");
@@ -37,6 +38,7 @@ async function Login(formData, setFormData, navigate) {
 async function GetHash(formData, setFormData, navigate) {
   try {
     const GetHash_Server_Result = await sockets.GetHash_Server(formData);
+    console.log(GetHash_Server_Result.GetHash_Result);
     switch (GetHash_Server_Result.GetHash_Result.GetHash_return_result_num) {
       case Return_Select_Undefined:
         alert("해당하는 아이디가 없음.");

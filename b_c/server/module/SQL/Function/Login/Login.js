@@ -5,7 +5,7 @@ async function Check_Login(db, UserData) {
   const Data = [UserData.ID, UserData.PW];
   const Check_FindID_Result = await Select_DBMS.Select_DBMS(
     db,
-    "User_ID",
+    "User_ID, User_NickName",
     "User_Data",
     "User_ID = ? and User_PW = ?",
     Data
@@ -17,15 +17,15 @@ async function Check_Login(db, UserData) {
 
 exports.Login = async function (db, io, UserData) {
   var Login_Result;
-  var Check_Login_Result = await Check_Login(db, UserData);
+  var Check_Login_Result = await Check_Login(db, UserData.UserData);
   switch (Check_Login_Result.return_result_num) {
-    case global_value.Return_FindID_Error:
+    case global_value.Return_Select_Error:
       Login_Result = global_value.Error;
       break;
-    case global_value.Return_FindID_Undefined:
+    case global_value.Return_Select_Undefined:
       Login_Result = global_value.Fail;
       break;
-    case global_value.Return_FindID_Match:
+    case global_value.Return_Select_Match:
       Login_Result = global_value.All_Complete;
       break;
     default:

@@ -20,7 +20,7 @@ exports.Make_Hash = async function (io) {
     .then((Format_Data) => {
       const key = SHA256(Format_Data).toString();
 
-      io.emit("Receive Make Hash", {
+      io.emit("Receive MakeHash", {
         key: key,
       });
     })

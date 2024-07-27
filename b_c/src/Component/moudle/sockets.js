@@ -9,45 +9,32 @@ async function SignUp_Server(formData) {
 
 async function FindID_Server(formData) {
   const FindID = require("./FindID/FindID_Server.js");
-  var FindID_Server_Result = await FindID.Rec_FindID(socket, formData);
-  // Disconnect();
-  return new Promise((resolve, reject) => {
-    resolve(FindID_Server_Result);
-  });
+  var return_data = await FindID.FindID_Server(socket, formData);
+  return return_data;
 }
 
 async function FindPW_Server(formData) {
   const FindPW = require("./FindPW/FindPW_Server.js");
-  var FindPW_Server_Result = await FindPW.Rec_FindPW(socket, formData);
-  // Disconnect();
-  return new Promise((resolve, reject) => {
-    resolve(FindPW_Server_Result);
-  });
+  var return_data = await FindPW.FindPW_Server(socket, formData);
+  return return_data;
 }
 
 async function ChangePW_Server(formData) {
   const ChangePW = require("./ChangePW/ChangePW_Server.js");
-  var ChangePW_Server_Result = await ChangePW.Rec_ChangePW(socket, formData);
-  return new Promise((resolve, reject) => {
-    resolve(ChangePW_Server_Result);
-  });
+  var return_data = await ChangePW.ChangePW_Server(socket, formData);
+  return return_data;
 }
 
-async function Make_Hash_Server() {
-  const Make_Hash = require("./etc/Make_Hash_Server.js");
-  var Make_Hash_Server_Result = await Make_Hash.Rec_Make_Hash(socket);
-  // Disconnect();
-  return new Promise((resolve, reject) => {
-    resolve(Make_Hash_Server_Result);
-  });
+async function MakeHash_Server() {
+  const MakeHash = require("./etc/MakeHash_Server.js");
+  var return_data = await MakeHash.MakeHash_Server(socket);
+  return return_data;
 }
 
 async function GetHash_Server(formData) {
   const GetHash = require("./etc/GetHash_Server.js");
-  var GetHash_Server_Result = await GetHash.Rec_GetHash(socket, formData);
-  return new Promise((resolve, reject) => {
-    resolve(GetHash_Server_Result);
-  });
+  var return_data = await GetHash.GetHash_Server(socket, formData);
+  return return_data;
 }
 
 async function Login_Server(formData) {
@@ -68,7 +55,7 @@ module.exports = {
   FindID_Server,
   FindPW_Server,
   ChangePW_Server,
-  Make_Hash_Server,
+  MakeHash_Server,
   GetHash_Server,
   Login_Server,
   Disconnect,
