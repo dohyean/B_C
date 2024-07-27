@@ -46,8 +46,6 @@ async function Check_Find_ID(formData, setFormData, navigate) {
   } catch (err) {
     console.log("Find-ID error: ", err);
     alert("서버 오류. 다시 시도해 주세요.");
-  } finally {
-    // sockets.Disconnect();
   }
 }
 
