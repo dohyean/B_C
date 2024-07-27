@@ -9,9 +9,11 @@ import { handleChangeWithErrorCheck } from "../Function/SignUp/handleChangeWithE
 import { useFormErrors_SignUP } from "../Function/SignUp/useFormErrors_SignUP";
 import { handleSubmit_Sign_Up } from "../Function/SignUp/handleSubmit_Sign_Up";
 import CredentialBar from "./CredentialBar";
+import { MaxDate } from "../Function/SignUp/MaxDate";
 
 function SignUp() {
   const navigate = useNavigate();
+  const maxDate = MaxDate(); //날짜 제한 함수
 
   const [formData, handleChange, setFormData] = useFormData({
     ID: "",
@@ -152,6 +154,7 @@ function SignUp() {
                 event.preventDefault();
               }}
               placeholder="생년월일 (YYYY/MM/DD)"
+              max={maxDate} //날짜 제한
             />
           </div>
           <div className="text-box">
