@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Menubar from "./Menubar";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../Style/ChangePW.css";
@@ -17,18 +17,11 @@ function ChangePW() {
   const state = location.state || {}; // 전달된 상태 객체
 
   // 상태 객체에서 selectedID와 Phone을 추출
-  const { selectedID, Phone, ID } = state;
-
-  useEffect(() => {
-    console.log("Received selectedID:", selectedID); // 데이터 로그 출력
-    console.log("Received Phone:", Phone); // 데이터 로그 출력
-    console.log("Received ID:", ID); // 데이터 로그 출력
-  }, [selectedID, Phone, ID]);
+  const { ID } = state;
 
   // useFormData 훅의 초기값으로 ID와 Phone을 설정
   const [formData, handleChange, setFormData] = useFormData({
-    ID: selectedID || ID || "", // selectedID 또는 ID를 사용
-    Phone: Phone || "",
+    ID: ID, // selectedID 또는 ID를 사용
     PW: "",
     confirmPW: "",
   });
@@ -73,17 +66,6 @@ function ChangePW() {
               name="ID"
               className="text"
               value={formData.ID}
-              readOnly
-            />
-          </div>
-          <div className="text-box"></div>
-          <div>
-            <input
-              type="text"
-              id="Phone"
-              name="Phone"
-              className="text"
-              value={formData.Phone}
               readOnly
             />
           </div>

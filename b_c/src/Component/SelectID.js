@@ -2,7 +2,6 @@ import Menubar from "./Menubar";
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../Style/SelectID.css";
-//import CredentialBar from "./CredentialBar";
 
 function SelectID() {
   const navigate = useNavigate();
@@ -11,13 +10,10 @@ function SelectID() {
   const [options, setOptions] = useState([]);
 
   const state = location.state || {}; // 전달된 상태 객체
-  const { String_ID, Phone } = state; // 상태 객체에서 String_ID와 Phone을 추출
+  const { String_ID } = state; // 상태 객체에서 String_ID와 Phone을 추출
 
   useEffect(() => {
     if (String_ID) {
-      console.log("Received String_ID:", String_ID); // 데이터 로그 출력
-      console.log("Received Phone:", Phone); // 데이터 로그 출력
-      // const optionsArray = String_ID.split("\n").filter(Boolean);
       const optionsArray = String_ID.split("\n")
         .map((id) => id.replace(/\r/g, ""))
         .filter(Boolean);
@@ -25,10 +21,8 @@ function SelectID() {
       if (optionsArray.length > 0) {
         setSelectedOption(optionsArray[0]);
       }
-    } else {
-      console.log("No String_ID found in location.state");
     }
-  }, [String_ID, Phone]);
+  }, [String_ID]);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -60,9 +54,7 @@ function SelectID() {
         )}
         <button
           className="Select-button-Select"
-          onClick={() =>
-            navigate("/Login", { state: { selectedID: selectedOption } })
-          } //확인 버튼 누르면 로그인으로 가게 해둠
+          onClick={() => navigate("/Login", { state: { ID: selectedOption } })} //확인 버튼 누르면 로그인으로 가게 해둠
         >
           로그인
         </button>
@@ -70,7 +62,7 @@ function SelectID() {
           className="Select-button-Select"
           onClick={() =>
             navigate("/ChangePW", {
-              state: { selectedID: selectedOption, Phone },
+              state: { ID: selectedOption },
             })
           } //확인 버튼 누르면 로그인으로 가게 해둠
         >

@@ -9,20 +9,13 @@ async function Check_Find_PW(formData, setFormData, navigate) {
     var FindPW_Server_Result = await sockets.FindPW_Server(formData);
     switch (FindPW_Server_Result.FindPW_Result.FindPW_return_result_num) {
       case Return_Success:
-        console.log("Navigating to ChangePW with:", {
-          ID: formData.ID,
-          Phone: formData.Phone,
-        });
-        // alert(
-        //   FindPW_Server_Result.FindPW_Result.FindPW_return_result[0].User_PW
-        // ); //비밀번호를 알람으로 주지 않고 바로 비밀번호 변경 화면으로 넘가가게 함
         setFormData({
           ID: "",
           Phone: "",
         });
         navigate("/ChangePW", {
-          state: { ID: formData.ID, Phone: formData.Phone },
-        }); //이동할 때 아이디와 핸드폰번호 보내기
+          state: { ID: formData.ID },
+        }); //이동할 때 아이디 보내기
         break;
       case Return_Fail:
         alert("해당하는 아이디, 전화번호가 없습니다.");

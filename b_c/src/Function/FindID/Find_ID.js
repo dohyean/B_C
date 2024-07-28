@@ -31,7 +31,7 @@ async function Check_Find_ID(formData, setFormData, navigate) {
           Phone: "",
         });
         // navigate("/SelectID", { String_ID });
-        navigate("/SelectID", { state: { String_ID, Phone: formData.Phone } }); // state 객체로 전달
+        navigate("/SelectID", { state: { String_ID } }); // state 객체로 전달
         break;
       case Return_Fail:
         alert("해당하는 번호가 없습니다.");
