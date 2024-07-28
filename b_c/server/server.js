@@ -30,13 +30,13 @@ io.on("connection", (socket) => {
   // 회원가입
   socket.on("Send SignUp", (item) => {
     const SiginUp = require("./module/SQL/Function/SignUp/SignUp.js");
-    SiginUp.UserData_Save(db, io, item);
+    SiginUp.SignUp(db, io, item);
   });
 
   // 회원가입시 hash 생성
   socket.on("Send MakeHash", (item) => {
-    const SendHash = require("./module/SQL/Function/etc/Make_Hash.js");
-    SendHash.Make_Hash(io);
+    const SendHash = require("./module/SQL/Function/HashModule/MakeHash/MakeHash.js");
+    SendHash.MakeHash(io);
   });
 
   // 아이디 찾기
@@ -62,7 +62,7 @@ io.on("connection", (socket) => {
     Login.Login(db, io, item);
   });
   socket.on("Send GetHash", (item) => {
-    const GetHash = require("./module/SQL/Function/etc/GetHash.js");
+    const GetHash = require("./module/SQL/Function/HashModule/GetHash/GetHash.js");
     GetHash.GetHash(db, io, item);
   });
 

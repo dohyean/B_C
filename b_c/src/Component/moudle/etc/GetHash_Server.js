@@ -9,7 +9,5 @@ exports.GetHash_Server = async function (socket, formData) {
     UserData,
     RecSend_Message.GetHash_Message
   );
-  return new Promise((resolve, reject) => {
-    resolve(GetHash_Server_Result);
-  });
+  return GetHash_Server_Result;
 };

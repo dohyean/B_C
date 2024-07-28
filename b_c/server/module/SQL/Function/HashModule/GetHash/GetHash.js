@@ -1,18 +1,5 @@
-const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
-const { global_value } = require("../temp/global_value.js");
-
-async function Check_GetHash(db, ID) {
-  var Check_GetHash_Result = await Select_DBMS.Select_DBMS(
-    db,
-    "User_Hash",
-    "Hash_Data",
-    "User_ID = ?",
-    ID
-  );
-  return new Promise((resolve, rejects) => {
-    resolve(Check_GetHash_Result);
-  });
-}
+const { global_value } = require("../../temp/global_value.js");
+const { Check_GetHash } = require("./Check_GetHash.js");
 
 exports.GetHash = async function (db, io, UserData) {
   var GetHash_Result;
