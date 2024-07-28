@@ -1,18 +1,5 @@
-const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
 const { global_value } = require("../temp/global_value.js");
-
-async function Check_FindID(db, Phone) {
-  var Check_FindID_Result = await Select_DBMS.Select_DBMS(
-    db,
-    "User_ID",
-    "User_Data",
-    "User_PhoneNum = ?",
-    Phone
-  );
-  return new Promise((resolve, rejects) => {
-    resolve(Check_FindID_Result);
-  });
-}
+const { Check_FindID } = require("./Check_FindID.js");
 
 exports.FindID = async function (db, io, UserData) {
   var FindID_Result;

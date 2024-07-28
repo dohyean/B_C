@@ -1,18 +1,5 @@
-const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
 const { global_value } = require("../temp/global_value.js");
-
-async function Check_FindPW(db, UserData) {
-  var Check_FindPW_Result = await Select_DBMS.Select_DBMS(
-    db,
-    "User_PW",
-    "User_Data",
-    "User_ID = ? AND User_PhoneNum = ?",
-    UserData
-  );
-  return new Promise((resolve, rejects) => {
-    resolve(Check_FindPW_Result);
-  });
-}
+const { Check_FindPW } = require("./Check_FindPW.js");
 
 exports.FindPW = async function (db, io, UserData) {
   var FindPW_Result;
@@ -27,7 +14,7 @@ exports.FindPW = async function (db, io, UserData) {
       break;
     case global_value.Return_Select_Undefined:
       FindPW_Result = {
-        FindPW_return_result: "",
+        FindPW_return_result: "fail",
         FindPW_return_result_num: global_value.Fail,
       };
       break;
@@ -39,7 +26,7 @@ exports.FindPW = async function (db, io, UserData) {
       break;
     default:
       FindPW_Result = {
-        FindPW_return_result: "err",
+        FindPW_return_result: "other err",
         FindPW_return_result_num: global_value.Other_Error,
       };
       break;

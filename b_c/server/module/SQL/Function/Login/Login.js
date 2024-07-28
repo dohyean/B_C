@@ -1,19 +1,5 @@
-const Select_DBMS = require("../../CRUD_Query/Select_DBMS.js");
 const { global_value } = require("../temp/global_value.js");
-
-async function Check_Login(db, UserData) {
-  const Data = [UserData.ID, UserData.PW];
-  const Check_FindID_Result = await Select_DBMS.Select_DBMS(
-    db,
-    "User_ID, User_NickName",
-    "User_Data",
-    "User_ID = ? and User_PW = ?",
-    Data
-  );
-  return new Promise((resolve, rejects) => {
-    resolve(Check_FindID_Result);
-  });
-}
+const { Check_Login } = require("./Check_Login.js");
 
 exports.Login = async function (db, io, UserData) {
   var Login_Result;
