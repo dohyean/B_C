@@ -4,7 +4,7 @@ import Menubar from "./Menubar";
 import { useNavigate } from "react-router-dom";
 import { useFormData } from "../Function/useFormData";
 import { Find_PW } from "../Function/FindPW/Find_PW";
-import { handleChangeWithErrorCheck } from "../Function/FindPW/handleChangeWithErrorCheck";
+import { handleChangeWithErrorCheck } from "../Function/Common/handleChangeWithErrorCheck";
 import { useFormErrors_FindPW } from "../Function/FindPW/useFormErrors_FindPW";
 import { handleSubmit_Find_PW } from "../Function/FindPW/handleSubmit_Find_PW";
 import CredentialBar from "./CredentialBar";

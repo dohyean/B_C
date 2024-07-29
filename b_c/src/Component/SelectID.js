@@ -1,28 +1,16 @@
 import Menubar from "./Menubar";
-import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../Style/SelectID.css";
+import useStringID from "../Function/SelectID/useStringID";
 
 function SelectID() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedOption, setSelectedOption] = useState("");
-  const [options, setOptions] = useState([]);
 
   const state = location.state || {}; // 전달된 상태 객체
-  const { String_ID } = state; // 상태 객체에서 String_ID와 Phone을 추출
+  const { String_ID } = state; // 상태 객체에서 String_ID 추출
 
-  useEffect(() => {
-    if (String_ID) {
-      const optionsArray = String_ID.split("\n")
-        .map((id) => id.replace(/\r/g, ""))
-        .filter(Boolean);
-      setOptions(optionsArray);
-      if (optionsArray.length > 0) {
-        setSelectedOption(optionsArray[0]);
-      }
-    }
-  }, [String_ID]);
+  const { options, selectedOption, setSelectedOption } = useStringID(String_ID); //아이디 받아와서 배열에 넣기
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -50,21 +38,19 @@ function SelectID() {
             ))}
           </form>
         ) : (
-          <p>아이디가 없습니다.</p> //아이디가 없는 경우(사실상 넘어오지않지만 혹시라도)
+          <p>아이디가 없습니다.</p>
         )}
         <button
           className="Select-button-Select"
-          onClick={() => navigate("/Login", { state: { ID: selectedOption } })} //확인 버튼 누르면 로그인으로 가게 해둠
+          onClick={() => navigate("/Login", { state: { ID: selectedOption } })}
         >
           로그인
         </button>
         <button
           className="Select-button-Select"
           onClick={() =>
-            navigate("/ChangePW", {
-              state: { ID: selectedOption },
-            })
-          } //확인 버튼 누르면 로그인으로 가게 해둠
+            navigate("/ChangePW", { state: { ID: selectedOption } })
+          }
         >
           비밀번호 찾기
         </button>

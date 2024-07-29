@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./Login.js";
 import HomePage from "./HomePage.js";
 import SignUp from "./SignUp.js";
-import FindINFO from "./FindINFO.js";
 import HomePageLogin from "./HomePageLogIn.js";
 import Blog from "./Blog.js";
 import Community from "./Community.js";
@@ -20,7 +19,6 @@ function Router() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/SignUp" element={<SignUp />} />
-      <Route path="/FindINFO" element={<FindINFO />} />
       <Route path="/FindID" element={<FindID />} />
       <Route path="/FindPW" element={<FindPW />} />
       <Route path="/SelectID" element={<SelectID />} />
