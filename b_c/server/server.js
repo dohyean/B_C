@@ -61,9 +61,15 @@ io.on("connection", (socket) => {
     const Login = require("./module/SQL/Function/Login/Login.js");
     Login.Login(db, io, item);
   });
+
   socket.on("Send GetHash", (item) => {
     const GetHash = require("./module/SQL/Function/HashModule/GetHash/GetHash.js");
     GetHash.GetHash(db, io, item);
+  });
+
+  socket.on("Send DeleteUser", (item) => {
+    const DeleteUser = require("./module/SQL/Function/DeleteUser/DeleteUser.js");
+    DeleteUser.DeleteUser(db, io, item);
   });
 
   socket.on("disconnect", () => {
