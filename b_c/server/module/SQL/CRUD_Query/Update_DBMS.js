@@ -9,24 +9,15 @@ exports.Update_DBMS = async function (
   where_data = []
 ) {
   return new Promise((resolve, reject) => {
-    var update_column = "";
-    var update_where = "";
-    for (var i = 0; i < column.length; i++) {
-      update_column += column[i] + ' = "';
-      update_column += column_data[i] + '", ';
-    }
+    const update_column = column.map((col) => `${col} = ?`).join(", ");
+    const update_where = where.map((col) => `${col} = ?`).join(" AND ");
 
-    where.forEach((i) => {
-      update_where += i + " = ?, ";
-    });
+    const query = `UPDATE ${schema} SET ${update_column} WHERE ${update_where}`;
 
-    var query = `UPDATE ${schema} SET ${update_column.slice(
-      0,
-      -2
-    )} WHERE ${update_where.slice(0, -2)};`;
-    var return_data;
+    const data = [...column_data, ...where_data];
 
-    db.all(query, where_data, (err, result) => {
+    db.run(query, data, (err, result) => {
+      let return_data;
       if (err) {
         console.log(err);
         return_data = {

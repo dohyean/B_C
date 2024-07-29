@@ -33,6 +33,11 @@ const RecSend_Message = {
     Receive: "Receive MakeHash",
     Send: "Send MakeHash",
   },
+
+  DeleteUser_Message: {
+    Receive: "Receive DeleteUser",
+    Send: "Send DeleteUser",
+  },
 };
 
 exports.RecSend_Message = RecSend_Message;

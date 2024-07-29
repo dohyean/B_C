@@ -133,6 +133,21 @@ async function Login_Server(formData) {
   }
 }
 
+// 아래는 이후 삭제 예정 (test)
+async function DeleteUser_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const DeleteUser = require("./DeleteUser/DeleteUser_Server.js");
+    var return_data = await DeleteUser.DeleteUser_Server(socket, formData);
+    return return_data;
+  } catch (err) {
+    console.error("err in Login_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 module.exports = {
   SignUp_Server,
   FindID_Server,
@@ -141,4 +156,5 @@ module.exports = {
   MakeHash_Server,
   GetHash_Server,
   Login_Server,
+  DeleteUser_Server,
 };
