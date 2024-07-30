@@ -5,7 +5,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Sign_Up } from "../Function/SignUp/Sign_up";
 import { usePasswordToggle } from "../Function/usePasswordToggle";
 import { useFormData } from "../Function/useFormData";
-import { handleChangeWithErrorCheck } from "../Function/SignUp/handleChangeWithErrorCheck";
+import { handleChangeWithErrorCheck } from "../Function/Common/handleChangeWithErrorCheck";
 import { useFormErrors_SignUP } from "../Function/SignUp/useFormErrors_SignUP";
 import { handleSubmit_Sign_Up } from "../Function/SignUp/handleSubmit_Sign_Up";
 import CredentialBar from "./CredentialBar";

@@ -8,7 +8,7 @@ import { useFormData } from "../Function/useFormData";
 import { useFormErrors_ChangePW } from "../Function/ChangePW/useFormErrors_ChangePW";
 import { handleSubmit_Change_PW } from "../Function/ChangePW/handleSubmit_Change_PW";
 import { Change_PW } from "../Function/ChangePW/Change_PW";
-import { handleChangeWithErrorCheck } from "../Function/SignUp/handleChangeWithErrorCheck";
+import { handleChangeWithErrorCheck } from "../Function/Common/handleChangeWithErrorCheck";
 import CredentialBar from "./CredentialBar";
 
 function ChangePW() {
