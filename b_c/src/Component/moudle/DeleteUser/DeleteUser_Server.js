@@ -3,6 +3,7 @@ const { RecSend_Message } = require("../Server_RecSend/RecSend_Message.js");
 
 exports.DeleteUser_Server = async function (socket, formData) {
   const UserData = { ID: formData.ID };
+  alert(UserData.ID);
 
   var Delete_Server_Result = await Server_Receive.Server_Receive(
     socket,

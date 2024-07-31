@@ -138,6 +138,7 @@ async function DeleteUser_Server(formData) {
   const socket = await connectSocket();
   try {
     const DeleteUser = require("./DeleteUser/DeleteUser_Server.js");
+    alert(formData.ID);
     var return_data = await DeleteUser.DeleteUser_Server(socket, formData);
     return return_data;
   } catch (err) {

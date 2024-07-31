@@ -4,12 +4,12 @@ const sockets = require("../moudle/sockets.js");
 
 // SignUp을 그대로 가져와서 테스트
 function TestModule() {
-  const ID = "test";
-
   const check = () => {
+    const ID = "test";
     var formData = { ID: ID };
     const save = sockets.DeleteUser_Server(formData);
-    alert(save);
+    // alert(save.DeleteUser_Result);
+    console.log(save);
   };
 
   return (
