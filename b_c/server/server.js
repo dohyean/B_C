@@ -69,6 +69,7 @@ io.on("connection", (socket) => {
 
   socket.on("Send DeleteUser", (item) => {
     const DeleteUser = require("./module/SQL/Function/DeleteUser/DeleteUser.js");
+    console.log("server");
     DeleteUser.DeleteUser(db, io, item);
   });
 
