@@ -4,7 +4,7 @@ import Menubar from "./Menubar";
 import { useNavigate } from "react-router-dom";
 import { useFormData } from "../Function/useFormData";
 import { Find_ID } from "../Function/FindID/Find_ID";
-import { handleChangeWithErrorCheck } from "../Function/FindID/handleChangeWithErrorCheck";
+import { handleChangeWithErrorCheck } from "../Function/Common/handleChangeWithErrorCheck";
 import { useFormErrors_FindID } from "../Function/FindID/useFormErrors_FindID";
 import { handleSubmit_Find_ID } from "../Function/FindID/handleSubmit_Find_ID";
 import CredentialBar from "./CredentialBar";
