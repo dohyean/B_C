@@ -1,4 +1,3 @@
-// src/Function/shuffleImages.js
 import { shuffle } from "lodash";
 
 function importAll(r) {
