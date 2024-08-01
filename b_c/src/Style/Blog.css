@@ -23,6 +23,39 @@
   justify-content: center;
   align-items: center;
   flex-direction: column; /* 세로 배치 */
+  height: 100vh; /* 전체 화면 높이 사용 */
+}
+
+.left-container {
+  width: 100%; /* 전체 너비 사용 */
+  height: 100%; /* 전체 높이 사용 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+}
+
+.left-section-1,
+.left-section-2,
+.left-section-3,
+.left-section-4,
+.left-section-5 {
+  width: 100%; /* 전체 너비 사용 */
+  height: 10%; /* 전체 높이의 10% 사용 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.left-section-6,
+.left-section-7,
+.left-section-8,
+.left-section-9,
+.left-section-10 {
+  width: 100%; /* 전체 너비 사용 */
+  height: 10%; /* 전체 높이의 10% 사용 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .right-section {
@@ -31,4 +64,88 @@
   justify-content: center;
   align-items: center;
   flex-direction: column; /* 세로 배치 */
+  height: 100vh; /* 전체 화면 높이 사용 */
+}
+
+.right-container {
+  width: 100%; /* 전체 너비 사용 */
+  height: 100%; /* 전체 높이 사용 */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+}
+
+.right-section1 {
+  width: 100%; /* 전체 너비 사용 */
+  height: 10%; /* 전체 높이의 10% 사용 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.right-section1-a1,
+.right-section1-a3 {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section1-a2 {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section2 {
+  width: 100%; /* 전체 너비 사용 */
+  height: 80%; /* 전체 높이의 80% 사용 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section2-a1 {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section2-a2 {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section3 {
+  width: 100%; /* 전체 너비 사용 */
+  height: 10%; /* 전체 높이의 80% 사용 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section3-a1,
+.right-section3-a3 {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section3-a2 {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

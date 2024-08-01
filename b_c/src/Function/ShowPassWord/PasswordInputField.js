@@ -16,7 +16,7 @@ function PasswordInputField({ name, value, onChange, error, placeholder }) {
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-        />
+        ></input>
         <span onClick={toggleShowPassword} className="password-icon">
           {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
         </span>
