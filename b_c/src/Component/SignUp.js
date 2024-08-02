@@ -1,9 +1,9 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/SignUp.css";
 import Menubar from "./Menubar";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import PasswordInputField from "../Function/ShowPassWord/PasswordInputField";
 import { Sign_Up } from "../Function/SignUp/Sign_up";
-import { usePasswordToggle } from "../Function/usePasswordToggle";
 import { useFormData } from "../Function/useFormData";
 import { handleChangeWithErrorCheck } from "../Function/Common/handleChangeWithErrorCheck";
 import { useFormErrors_SignUP } from "../Function/SignUp/useFormErrors_SignUP";
@@ -34,13 +34,6 @@ function SignUp() {
     Phone: false,
     Birth: false,
   });
-
-  const {
-    showPassword,
-    toggleShowPassword,
-    showConfirmPassword,
-    toggleShowConfirmPassword,
-  } = usePasswordToggle();
 
   const handleInputChange = (e) => {
     handleChangeWithErrorCheck(e, handleChange, updateErrors, formData);
@@ -74,39 +67,23 @@ function SignUp() {
           <div className="text-box">
             {errors.ID && "아이디를 입력해 주세요.(영문)"}
           </div>
-          <div className="password-field">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="PW"
-              className="text password-input"
-              value={formData.PW}
-              onChange={handleInputChange}
-              placeholder="비밀번호(8 ~ 32자) 및 특수문자 포함"
-            ></input>
-            <span onClick={toggleShowPassword} className="password-icon">
-              {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-            </span>
-          </div>
-          <div className="text-box">
-            {errors.PW &&
-              "비밀번호를 입력해 주세요(8 ~ 32자) 및 특수문자 포함."}
-          </div>
-          <div className="password-field">
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              name="confirmPW"
-              className="text"
-              value={formData.confirmPW}
-              onChange={handleInputChange}
-              placeholder="비밀번호 재입력"
-            ></input>
-            <span onClick={toggleShowConfirmPassword} className="password-icon">
-              {showConfirmPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-            </span>
-          </div>
-          <div className="text-box">
-            {errors.confirmPW && "비밀번호가 일치하지 않습니다."}
-          </div>
+          <PasswordInputField
+            name="PW"
+            value={formData.PW}
+            onChange={handleInputChange}
+            error={
+              errors.PW &&
+              "비밀번호를 입력해 주세요(8 ~ 32자) 및 특수문자 포함."
+            }
+            placeholder="비밀번호(8 ~ 32자) 및 특수문자 포함"
+          />
+          <PasswordInputField
+            name="confirmPW"
+            value={formData.confirmPW}
+            onChange={handleInputChange}
+            error={errors.confirmPW && "비밀번호가 일치하지 않습니다."}
+            placeholder="비밀번호 재입력"
+          />
           <div>
             <input
               name="nickname"

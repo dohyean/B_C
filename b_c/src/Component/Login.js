@@ -4,8 +4,7 @@ import "../Style/Login.css";
 import Menubar from "./Menubar";
 import { useFormData } from "../Function/useFormData";
 import { Log_in } from "../Function/Login/Log_in";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { usePasswordToggle } from "../Function/usePasswordToggle";
+import PasswordInputField from "../Function/ShowPassWord/PasswordInputField";
 import CredentialBar from "./CredentialBar";
 
 function Login() {
@@ -17,8 +16,6 @@ function Login() {
     PW: "",
   });
 
-  const { showPassword, toggleShowPassword } = usePasswordToggle();
-
   useEffect(() => {
     if (location.state?.ID) {
       setFormData((prevFormData) => ({
@@ -28,40 +25,40 @@ function Login() {
     }
   }, [location.state, setFormData]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault(); // 기본 폼 제출 동작 방지
+    Log_in(formData, setFormData, navigate);
+  };
+
   return (
     <div className="App">
       <Menubar></Menubar>
       <div className="App-content">
-        <div>
-          <input
-            name="ID"
-            className="text"
-            value={formData.ID}
-            onChange={handleChange}
-            placeholder="아이디"
-          ></input>
-        </div>
-        &nbsp;
-        <div className="password-field">
-          <input
-            type={showPassword ? "text" : "password"}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input
+              name="ID"
+              className="text"
+              value={formData.ID}
+              onChange={handleChange}
+              placeholder="아이디"
+            />
+          </div>
+          &nbsp;
+          <PasswordInputField
             name="PW"
-            className="text password-input"
             value={formData.PW}
             onChange={handleChange}
             placeholder="비밀번호"
-          ></input>
-          <span onClick={toggleShowPassword} className="password-icon">
-            {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-          </span>
-        </div>
-        &nbsp;
-        <button
-          onClick={() => Log_in(formData, setFormData, navigate)}
-          className="login-button-login"
-        >
-          로그인
-        </button>
+          />
+          &nbsp;
+          <button
+            type="submit" // 폼 제출 버튼으로 설정
+            className="login-button-login"
+          >
+            로그인
+          </button>
+        </form>
         <div>
           <CredentialBar></CredentialBar>
         </div>
