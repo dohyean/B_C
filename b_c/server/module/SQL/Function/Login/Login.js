@@ -6,16 +6,28 @@ exports.Login = async function (db, io, UserData) {
   var Check_Login_Result = await Check_Login(db, UserData.UserData);
   switch (Check_Login_Result.return_result_num) {
     case global_value.Return_Select_Error:
-      Login_Result = global_value.Error;
+      Login_Result = {
+        result: "err",
+        result_num: global_value.Error,
+      };
       break;
     case global_value.Return_Select_Undefined:
-      Login_Result = global_value.Fail;
+      Login_Result = {
+        result: "",
+        result_num: global_value.Fail,
+      };
       break;
     case global_value.Return_Select_Match:
-      Login_Result = global_value.All_Complete;
+      Login_Result = {
+        result: Check_Login_Result.return_result,
+        result_num: global_value.All_Complete,
+      };
       break;
     default:
-      Login_Result = global_value.Other_Error;
+      Login_Result = {
+        result: "other err",
+        result_num: global_value.Other_Error,
+      };
       break;
   }
 
