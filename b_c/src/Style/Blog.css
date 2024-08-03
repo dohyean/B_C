@@ -18,7 +18,7 @@
 }
 
 .left-section {
-  width: 10%; /* 왼쪽 섹션의 너비를 10%로 설정 */
+  width: 10%; /* 왼쪽 섹션의 너비를 30%로 설정 */
   display: flex;
   justify-content: center;
   align-items: center;

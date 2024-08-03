@@ -30,6 +30,7 @@ async function Check_Find_ID(formData, setFormData, navigate) {
         setFormData({
           Phone: "",
         });
+        // navigate("/SelectID", { String_ID });
         navigate("/SelectID", { state: { String_ID } }); // state 객체로 전달
         break;
       case Return_Fail:

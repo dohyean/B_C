@@ -25,7 +25,6 @@ function Menubar() {
   const Blog = ["/Blog"]; // 블로그
   const Community = ["/Community"]; // 커뮤니티
   const ChangeUserInfo = ["/ChangeUserInfo"];
-  const CreateBlog = ["/CreateBlog"];
 
   function page_check() {
     if (start_page.includes(location.pathname)) {
@@ -35,8 +34,7 @@ function Menubar() {
       HomePageLoginPages.includes(location.pathname) ||
       Blog.includes(location.pathname) ||
       Community.includes(location.pathname) ||
-      ChangeUserInfo.includes(location.pathname) ||
-      CreateBlog.includes(location.pathname)
+      ChangeUserInfo.includes(location.pathname)
     ) {
       return 2;
     }

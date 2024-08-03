@@ -30,7 +30,7 @@ function MenubarLoginafter() {
                   블로그
                 </h4>
                 <h5
-                  onClick={() => handleClick("/CreateBlog")}
+                  onClick={() => handleClick("/MakeBlog")}
                   style={{ cursor: "pointer" }}
                 >
                   블로그 작성
