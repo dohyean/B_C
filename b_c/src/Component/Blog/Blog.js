@@ -1,6 +1,6 @@
 import React from "react";
-import "../Style/Blog.css";
-import Menubar from "./Menubar";
+import "../../Style/Blog.css";
+import Menubar from "../Menubar";
 
 function Blog() {
   return (
