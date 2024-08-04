@@ -1,50 +1,46 @@
 블로그
 // 블로그 정보 (블로그의 번호 및 )
 CREATE TABLE Blog_Data (
-  Blog_ID INTEGER AUTO_INCREMENT,
+  Blog_ID INTEGER PRIMARY KEY AUTOINCREMENT,
   User_ID varchar(20) NOT NULL,
   Blog_Name varchar(30) NOT NULL,
   Blog_Description varchar(500),
   Blog_Visibility_Status INTEGER DEFAULT 1,
   Blog_Create_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (Blog_ID),
   FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID)
 );
 
 // 게시물 정보
 CREATE TABLE Blog_Post_Data (
-  Post_ID INTEGER AUTO_INCREMENT,
+  Post_ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Blog_ID varchar(20) NOT NULL,
   Post_Title TEXT NOT NULL,
   Post_Content TEXT NOT NULL,
   Post_Visibility_Status INTEGER DEFAULT 1,
   Post_Create_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (Post_ID),
   FOREIGN KEY (Blog_ID) REFERENCES Blog_Data(Blog_ID)
 );
 
 // 댓글 정보
 CREATE TABLE Blog_Comment_Data (
-  Comment_ID INTEGER AUTO_INCREMENT,
+  Comment_ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Post_ID INTGER NOT NULL,
   User_ID varchar(20) NOT NULL,
   Comment TEXT NOT NULL,
   Comment_Visibility_Status INTEGER DEFAULT 1,
   Comment_Report_Status INTEGER DEFAULT 0,
   Comment_Create_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (Comment_ID),
   FOREIGN KEY (Post_ID) REFERENCES Blog_Post_Data(Post_ID),
   FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID)
 );
 
 // 카테고리 정보
 CREATE TABLE Blog_Category_Data (
-  Category_ID INTEGER AUTO_INCREMENT,
+  Category_ID INTEGER PRIMARY KEY AUTOINCREMENT,
   User_ID varchar(20) NOT NULL,
   Category_Name VARCHAR(100) NOT NULL,
   Parent_Category_ID INTEGER,
   Child_Num INTEGER,
-  PRIMARY KEY (Category_ID),
   FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID),
   FOREIGN KEY (Parent_Category_ID) REFERENCES Blog_Category_Data(Category_ID)
 );

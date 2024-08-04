@@ -18,7 +18,6 @@ exports.ChangePW_Server = async function (socket, formData) {
     UserData,
     RecSend_Message.ChangePW_Message
   );
-  return new Promise((resolve, reject) => {
-    resolve(ChangePW_Server_Result);
-  });
+
+  return ChangePW_Server_Result;
 };

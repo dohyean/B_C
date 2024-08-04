@@ -17,6 +17,9 @@ const global_value = {
 
   Return_Delete_Error: 0, // sql Delete 실행시 오류
   Return_Delete_Success: 1, // sql Delete 실행시 성공
+
+  Return_Insert_Error: 0,
+  Return_Insert_Success: 1,
 };
 
 exports.global_value = global_value;

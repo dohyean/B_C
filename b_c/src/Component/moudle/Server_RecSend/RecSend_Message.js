@@ -38,6 +38,11 @@ const RecSend_Message = {
     Receive: "Receive DeleteUser",
     Send: "Send DeleteUser",
   },
+
+  BlogSave_Message: {
+    Receive: "Receive BlogSave",
+    Send: "Send BlogSave",
+  },
 };
 
 exports.RecSend_Message = RecSend_Message;

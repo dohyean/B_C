@@ -8,8 +8,8 @@ async function Login(formData, setFormData, navigate) {
   try {
     const Login_Server_Result = await sockets.Login_Server(formData);
     console.log("test"); // 데이터 저장 확인 (닉네임도 가져옴)
-    console.log(Login_Server_Result.Login_Result); // 데이터 저장 확인 (닉네임도 가져옴)
-    switch (Login_Server_Result.Login_Result.return_num) {
+    console.log(Login_Server_Result.Login_Result.result); // 데이터 저장 확인 (닉네임도 가져옴)
+    switch (Login_Server_Result.Login_Result.result_num) {
       case Return_Select_Undefined:
         alert("비밀번호 틀림.");
         break;
