@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../Style/Menubar.css";
 
 function MenubarLoginafter() {
+  const [nickname, setNickname] = useState("");
   const navigate = useNavigate();
 
   const handleClick = (url) => {
     navigate(url);
+  };
+
+  useEffect(() => {
+    // 로컬 스토리지에서 닉네임 읽기
+    const storedNickname = localStorage.getItem("nickname");
+    if (storedNickname) {
+      setNickname(storedNickname);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // 로컬 스토리지에서 닉네임 제거
+    localStorage.removeItem("nickname");
+    navigate("/"); // 로그아웃 후 홈으로 이동
   };
 
   return (
@@ -59,7 +74,7 @@ function MenubarLoginafter() {
           </div>
           <div className="dropdown">
             <h1 style={{ cursor: "pointer" }}>
-              이름
+              {nickname}님
               <div className="dropdown-content">
                 <h4
                   onClick={() => handleClick("/Community")}
@@ -78,7 +93,7 @@ function MenubarLoginafter() {
           </div>
         </div>
         <button
-          onClick={() => handleClick("/")}
+          onClick={handleLogout}
           className="back-button-HomePage logout-button"
         >
           로그아웃

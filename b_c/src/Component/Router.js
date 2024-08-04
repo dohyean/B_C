@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./Login.js";
 import HomePage from "./HomePage.js";
 import SignUp from "./SignUp.js";
-import HomePageLogin from "./HomePageLogIn.js";
+import HomePageLogin from "./HomePageLogin.js";
 // import Blog from "./Blog.js";
 import Community from "./Community.js";
 import FindID from "./FindID.js";
