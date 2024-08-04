@@ -6,10 +6,18 @@ const sockets = require("../moudle/sockets.js");
 function TestModule() {
   const check = () => {
     const ID = "test";
-    var formData = { ID: ID };
-    const save = sockets.DeleteUser_Server(formData);
-    // alert(save.DeleteUser_Result);
-    console.log(save);
+    const Blog_Name = "블로그 이름";
+    const Blog_Description = "테스트입니다.";
+    const Blog_Visibility_Status = 1;
+
+    var formData = {
+      ID: ID,
+      Blog_Name: Blog_Name,
+      Blog_Description: Blog_Description,
+      Blog_Visibility_Status: Blog_Visibility_Status,
+    };
+    const save = sockets.BlogSave_Server(formData);
+    alert(save);
   };
 
   return (
@@ -17,20 +25,12 @@ function TestModule() {
       <Menubar></Menubar>
       <div className="App-content-SignUp">
         <form className="signup-form">
-          <div className="password-field">
-            <input
-              type={"password"}
-              name="PW"
-              className="text password-input"
-              placeholder="아이디"
-            ></input>
-          </div>
           <button
             type="submit"
             onClick={check}
             className="SignUp-button-SignUp"
           >
-            제거
+            확인
           </button>
         </form>
       </div>

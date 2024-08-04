@@ -57,20 +57,28 @@ io.on("connection", (socket) => {
     ChangePW.ChangePW(db, io, item);
   });
 
+  // 로그인
   socket.on("Send Login", (item) => {
     const Login = require("./module/SQL/Function/Login/Login.js");
     Login.Login(db, io, item);
   });
 
+  // 해시 데이터 획득
   socket.on("Send GetHash", (item) => {
     const GetHash = require("./module/SQL/Function/HashModule/GetHash/GetHash.js");
     GetHash.GetHash(db, io, item);
   });
 
+  // 유저 데이터 삭제 (프론트 구현 x)
   socket.on("Send DeleteUser", (item) => {
     const DeleteUser = require("./module/SQL/Function/DeleteUser/DeleteUser.js");
-    console.log("server");
     DeleteUser.DeleteUser(db, io, item);
+  });
+
+  // 블로그 생성
+  socket.on("Send BlogSave", (item) => {
+    const BlogSave = require("./module/SQL/Function/Blog/BlogSave/BlogSave.js");
+    BlogSave.BlogSave(db, io, item);
   });
 
   socket.on("disconnect", () => {

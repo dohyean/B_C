@@ -38,6 +38,7 @@ function disconnectSocket(socket) {
   });
 }
 
+// 회원가입 기능
 async function SignUp_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -52,6 +53,7 @@ async function SignUp_Server(formData) {
   }
 }
 
+// 아이디 찾기 기능
 async function FindID_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -66,6 +68,7 @@ async function FindID_Server(formData) {
   }
 }
 
+// 패스워드 찾기 기능
 async function FindPW_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -80,6 +83,7 @@ async function FindPW_Server(formData) {
   }
 }
 
+// 패스워드 변경 기능
 async function ChangePW_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -94,6 +98,7 @@ async function ChangePW_Server(formData) {
   }
 }
 
+// 해시를 생성하는 기능
 async function MakeHash_Server() {
   try {
     const MakeHash = require("./etc/MakeHash_Server.js");
@@ -105,6 +110,7 @@ async function MakeHash_Server() {
   }
 }
 
+// 저장된 해시를 가져오는 기능
 async function GetHash_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -119,6 +125,7 @@ async function GetHash_Server(formData) {
   }
 }
 
+// 로그인 기능
 async function Login_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -133,16 +140,30 @@ async function Login_Server(formData) {
   }
 }
 
-// 아래는 이후 삭제 예정 (test)
+// 아래는 후순위 더미 데이터 (유저 정보 제거 관련 데이터)
 async function DeleteUser_Server(formData) {
   const socket = await connectSocket();
   try {
     const DeleteUser = require("./DeleteUser/DeleteUser_Server.js");
-    alert(formData.ID);
     var return_data = await DeleteUser.DeleteUser_Server(socket, formData);
     return return_data;
   } catch (err) {
-    console.error("err in Login_Server: ", err);
+    console.error("err in DeleteUser_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
+// 블로그 저장
+async function BlogSave_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const BlogSave = require("./Blog/BlogSave/BlogSave_Server.js");
+    var return_data = await BlogSave.BlogSave_Server(socket, formData);
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogSave_Server: ", err);
     throw err;
   } finally {
     await disconnectSocket(socket);
@@ -158,4 +179,5 @@ module.exports = {
   GetHash_Server,
   Login_Server,
   DeleteUser_Server,
+  BlogSave_Server,
 };
