@@ -185,6 +185,24 @@ async function BlogPostSave_Server(formData) {
   }
 }
 
+// 블로그 카테고리 생성
+async function CategoryCreate_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const CategoryCreate = require("./Blog/CategoryCreate/CategoryCreate_Server.js");
+    var return_data = await CategoryCreate.CategoryCreate_Server(
+      socket,
+      formData
+    );
+    return return_data;
+  } catch (err) {
+    console.error("err in CategoryCreate_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 module.exports = {
   SignUp_Server,
   FindID_Server,
@@ -196,4 +214,5 @@ module.exports = {
   DeleteUser_Server,
   BlogSave_Server,
   BlogPostSave_Server,
+  CategoryCreate_Server,
 };

@@ -48,6 +48,11 @@ const RecSend_Message = {
     Receive: "Receive BlogPostSave",
     Send: "Send BlogPostSave",
   },
+
+  BlogCategoryCreate_Message: {
+    Receive: "Receive CategoryCreate",
+    Send: "Send CategoryCreate",
+  },
 };
 
 exports.RecSend_Message = RecSend_Message;
