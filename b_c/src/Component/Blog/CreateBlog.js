@@ -1,56 +1,29 @@
-import React, { useRef, useEffect } from "react";
-import Quill from "quill";
+import React, { useRef } from "react";
 import "quill/dist/quill.snow.css";
-import Menubar from "../Menubar";
+import Toolbar from "./Function/Toolbar"; // Toolbar 컴포넌트 임포트
+import useQuill from "./Function/useQuill"; // useQuill 훅 임포트
 import "../../Style/CreateBlog.css";
+import Menubar from "../Menubar";
 
 function CreateBlog() {
   const quillRef = useRef(null);
+  const toolbarRef = useRef(null);
 
-  useEffect(() => {
-    if (quillRef.current) {
-      // Quill 초기화가 이미 되었는지 확인
-      if (!quillRef.current.__quill) {
-        new Quill(quillRef.current, {
-          theme: "snow",
-          modules: {
-            toolbar: [
-              [{ header: "1" }, { header: "2" }, { font: [] }],
-              [{ list: "ordered" }, { list: "bullet" }],
-              ["bold", "italic", "underline"],
-              [{ color: [] }, { background: [] }],
-              [{ align: [] }],
-              ["link", "image"],
-              [{ size: [] }],
-            ],
-          },
-        });
-        quillRef.current.__quill = true; // Quill이 이미 초기화되었음을 기록
-      }
-    }
-  }, []);
+  // 커스텀 훅 사용
+  useQuill(quillRef, toolbarRef);
 
   return (
     <div className="App">
-      <Menubar />
+      <Menubar></Menubar>
       <div className="App-header-CreateBlog">
         <div className="CreateBlog-container">
           <div className="high-section">
-            <div className="high-section-a1">
-              블로그 작성할 때 각종 기능이 들어갈 자리
-            </div>
+            <Toolbar ref={toolbarRef} />
           </div>
           <div className="mid-section">
             <div className="mid-section-a1">
-              <input
-                className="mid-section-title"
-                placeholder="제목"
-                type="text"
-              />
-              <div
-                className="mid-section-content"
-                ref={quillRef} // Quill을 적용할 div
-              >
+              <textarea className="mid-section-title" placeholder="제목" />
+              <div className="mid-section-content" ref={quillRef}>
                 {/* Quill 에디터가 이 div에 렌더링됩니다. */}
               </div>
             </div>
