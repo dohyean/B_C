@@ -27,10 +27,14 @@ function TestModule() {
     if (file) {
       setPosts.append("");
     }
-    const formData = { title: title, content: content };
+    const formData = {
+      ID: "test",
+      Category_Name: "wow",
+      Category_PID: 0,
+      Category_Child_Num: 0,
+    };
     try {
-      console.log(formData.title);
-      sockets.BlogPostSave_Server(formData);
+      sockets.CategoryCreate_Server(formData);
     } catch (error) {
       console.error("Error creating post", error);
     }

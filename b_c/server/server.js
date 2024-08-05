@@ -88,7 +88,7 @@ io.on("connection", (socket) => {
   });
 
   // 블로그 카테고리 생성 (테스트 x)
-  socket.on("Send BlogPostSave", (item) => {
+  socket.on("Send CategoryCreate", (item) => {
     const CategoryCreate = require("./module/SQL/Function/Blog/CategoryCreate/CategoryCreate.js");
     CategoryCreate.CategoryCreate(db, io, item);
   });
