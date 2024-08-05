@@ -81,6 +81,18 @@ io.on("connection", (socket) => {
     BlogSave.BlogSave(db, io, item);
   });
 
+  // 블로그 게시물 생성
+  socket.on("Send BlogPostSave", (item) => {
+    const BlogPostSave = require("./module/SQL/Function/Blog/BlogPostSave/BlogPostSave.js");
+    BlogPostSave.BlogPostSave(db, io, item);
+  });
+
+  // 블로그 카테고리 생성 (테스트 x)
+  socket.on("Send BlogPostSave", (item) => {
+    const CategoryCreate = require("./module/SQL/Function/Blog/CategoryCreate/CategoryCreate.js");
+    CategoryCreate.CategoryCreate(db, io, item);
+  });
+
   socket.on("disconnect", () => {
     Close_DBMS.close_dbms(db);
   });
