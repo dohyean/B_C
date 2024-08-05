@@ -5,6 +5,7 @@ import MenubarLoginbefore from "../Function/Menubar/MenubarLoginbefore";
 import MenubarLoginafter from "../Function/Menubar/MenubarLoginafter";
 
 function Menubar() {
+  //nickname 받기
   const navigate = useNavigate();
   const location = useLocation();
 

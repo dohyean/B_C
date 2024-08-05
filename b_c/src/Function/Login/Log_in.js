@@ -9,6 +9,10 @@ async function Login(formData, setFormData, navigate) {
     const Login_Server_Result = await sockets.Login_Server(formData);
     console.log("test"); // 데이터 저장 확인 (닉네임도 가져옴)
     console.log(Login_Server_Result.Login_Result.result); // 데이터 저장 확인 (닉네임도 가져옴)
+    const loginResult = Login_Server_Result.Login_Result.result[0]; // 배열의 첫 번째 요소에 접근
+    const nickname = loginResult.User_NickName; // User_NickName 가져오기
+    console.log("닉네임 : ", nickname); //닉네인 되는지 로그 찍기
+
     switch (Login_Server_Result.Login_Result.result_num) {
       case Return_Select_Undefined:
         alert("비밀번호 틀림.");
@@ -19,6 +23,8 @@ async function Login(formData, setFormData, navigate) {
           ID: "",
           PW: "",
         });
+        // 닉네임을 로컬 스토리지에 저장
+        localStorage.setItem("nickname", nickname);
         navigate("/HomePageLogin");
         break;
       case Return_Select_Error:
