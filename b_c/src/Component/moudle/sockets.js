@@ -170,6 +170,21 @@ async function BlogSave_Server(formData) {
   }
 }
 
+// 블로그 게시물 저장
+async function BlogPostSave_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const BlogPostSave = require("./Blog/BlogPostSave/BlogPostSave_Server.js");
+    var return_data = await BlogPostSave.BlogPostSave_Server(socket, formData);
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogPostSave_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 module.exports = {
   SignUp_Server,
   FindID_Server,
@@ -180,4 +195,5 @@ module.exports = {
   Login_Server,
   DeleteUser_Server,
   BlogSave_Server,
+  BlogPostSave_Server,
 };

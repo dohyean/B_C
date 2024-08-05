@@ -43,6 +43,11 @@ const RecSend_Message = {
     Receive: "Receive BlogSave",
     Send: "Send BlogSave",
   },
+
+  BlogPostSave_Message: {
+    Receive: "Receive BlogPostSave",
+    Send: "Send BlogPostSave",
+  },
 };
 
 exports.RecSend_Message = RecSend_Message;
