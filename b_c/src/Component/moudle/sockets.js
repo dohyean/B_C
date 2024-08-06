@@ -42,7 +42,7 @@ function disconnectSocket(socket) {
 async function SignUp_Server(formData) {
   const socket = await connectSocket();
   try {
-    const SignUp = require("./SignUp/SignUp_Server.js");
+    const SignUp = require("./Credential/SignUp/SignUp_Server.js");
     var return_data = await SignUp.SignUp_Server(socket, formData);
     return return_data;
   } catch (err) {
@@ -57,7 +57,7 @@ async function SignUp_Server(formData) {
 async function FindID_Server(formData) {
   const socket = await connectSocket();
   try {
-    const FindID = require("./FindID/FindID_Server.js");
+    const FindID = require("./Credential/FindID/FindID_Server.js");
     var return_data = await FindID.FindID_Server(socket, formData);
     return return_data;
   } catch (err) {
@@ -72,7 +72,7 @@ async function FindID_Server(formData) {
 async function FindPW_Server(formData) {
   const socket = await connectSocket();
   try {
-    const FindPW = require("./FindPW/FindPW_Server.js");
+    const FindPW = require("./Credential/FindPW/FindPW_Server.js");
     var return_data = await FindPW.FindPW_Server(socket, formData);
     return return_data;
   } catch (err) {
@@ -87,7 +87,7 @@ async function FindPW_Server(formData) {
 async function ChangePW_Server(formData) {
   const socket = await connectSocket();
   try {
-    const ChangePW = require("./ChangePW/ChangePW_Server.js");
+    const ChangePW = require("./Credential/ChangePW/ChangePW_Server.js");
     var return_data = await ChangePW.ChangePW_Server(socket, formData);
     return return_data;
   } catch (err) {
@@ -101,7 +101,7 @@ async function ChangePW_Server(formData) {
 // 해시를 생성하는 기능
 async function MakeHash_Server() {
   try {
-    const MakeHash = require("./etc/MakeHash_Server.js");
+    const MakeHash = require("./Credential/HashModule/MakeHash/MakeHash_Server.js");
     var return_data = await MakeHash.MakeHash_Server(socket);
     return return_data;
   } catch (err) {
@@ -114,7 +114,7 @@ async function MakeHash_Server() {
 async function GetHash_Server(formData) {
   const socket = await connectSocket();
   try {
-    const GetHash = require("./etc/GetHash_Server.js");
+    const GetHash = require("./Credential/HashModule/GetHash/GetHash_Server.js");
     var return_data = await GetHash.GetHash_Server(socket, formData);
     return return_data;
   } catch (err) {
@@ -129,7 +129,7 @@ async function GetHash_Server(formData) {
 async function Login_Server(formData) {
   const socket = await connectSocket();
   try {
-    const Login = require("./Login/Login_Server.js");
+    const Login = require("./Credential/Login/Login_Server.js");
     var return_data = await Login.Login_Server(socket, formData);
     return return_data;
   } catch (err) {
@@ -203,6 +203,24 @@ async function CategoryCreate_Server(formData) {
   }
 }
 
+// 블로그 댓글 생성
+async function CommentCreate_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const CommentCreate = require("./Blog/Commnet/CommentCreate/CommentCreate_Server.js");
+    var return_data = await CommentCreate.CommentCreate_Server(
+      socket,
+      formData
+    );
+    return return_data;
+  } catch (err) {
+    console.error("err in CommentCreate_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 module.exports = {
   SignUp_Server,
   FindID_Server,
@@ -215,4 +233,5 @@ module.exports = {
   BlogSave_Server,
   BlogPostSave_Server,
   CategoryCreate_Server,
+  CommentCreate_Server,
 };

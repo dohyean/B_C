@@ -1,5 +1,5 @@
-const Server_Receive = require("../Server_RecSend/Server_Receive.js");
-const { RecSend_Message } = require("../Server_RecSend/RecSend_Message.js");
+const Server_Receive = require("../../Server_RecSend/Server_Receive.js");
+const { RecSend_Message } = require("../../Server_RecSend/RecSend_Message.js");
 
 exports.FindID_Server = async function (socket, formData) {
   const UserData = {
