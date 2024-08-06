@@ -1,4 +1,4 @@
-const { global_value } = require("../../temp/global_value.js");
+const { global_value } = require("../../../temp/global_value.js");
 const Check_CategoryCreate = require("./Check_CategoryCreate.js");
 
 exports.CategoryCreate = async function (db, io, UserData) {

@@ -69,28 +69,33 @@ io.on("connection", (socket) => {
     GetHash.GetHash(db, io, item);
   });
 
-  // 유저 데이터 삭제 (프론트 구현 x)
+  // 유저 데이터 삭제 (프론트 미구현)
   socket.on("Send DeleteUser", (item) => {
     const DeleteUser = require("./module/SQL/Function/DeleteUser/DeleteUser.js");
     DeleteUser.DeleteUser(db, io, item);
   });
 
-  // 블로그 생성
+  // 블로그 생성 (프론트 미구현)
   socket.on("Send BlogSave", (item) => {
     const BlogSave = require("./module/SQL/Function/Blog/BlogSave/BlogSave.js");
     BlogSave.BlogSave(db, io, item);
   });
 
-  // 블로그 게시물 생성
+  // 블로그 게시물 생성 (프론트 미구현)
   socket.on("Send BlogPostSave", (item) => {
     const BlogPostSave = require("./module/SQL/Function/Blog/BlogPostSave/BlogPostSave.js");
     BlogPostSave.BlogPostSave(db, io, item);
   });
 
-  // 블로그 카테고리 생성 (테스트 x)
+  // 블로그 카테고리 생성 (프론트 미구현)
   socket.on("Send CategoryCreate", (item) => {
-    const CategoryCreate = require("./module/SQL/Function/Blog/CategoryCreate/CategoryCreate.js");
+    const CategoryCreate = require("./module/SQL/Function/Blog/Category/CategoryCreate/CategoryCreate.js");
     CategoryCreate.CategoryCreate(db, io, item);
+  });
+
+  socket.on("Send CommentCreate", (item) => {
+    const CommentCreate = require("./module/SQL/Function/Blog/Comment/CommentCreate/CommentCreate.js");
+    CommentCreate.CommentCreate(db, io, item);
   });
 
   socket.on("disconnect", () => {

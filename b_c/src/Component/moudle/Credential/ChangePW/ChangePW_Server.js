@@ -1,7 +1,7 @@
-const Server_Receive = require("../Server_RecSend/Server_Receive.js");
-const { RecSend_Message } = require("../Server_RecSend/RecSend_Message.js");
-const Change_PW = require("../etc/Change_HashPW.js");
-const sockets = require("../sockets.js");
+const Server_Receive = require("../../Server_RecSend/Server_Receive.js");
+const { RecSend_Message } = require("../../Server_RecSend/RecSend_Message.js");
+const Change_PW = require("../../etc/Change_HashPW.js");
+const sockets = require("../../sockets.js");
 
 exports.ChangePW_Server = async function (socket, formData) {
   const key = await sockets.MakeHash_Server();
