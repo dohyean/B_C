@@ -63,6 +63,11 @@ const RecSend_Message = {
     Receive: "Receive CommentDelete",
     Send: "Send CommentDelete",
   },
+  //test용 이후 삭제 예정
+  test_Message: {
+    Receive: "Receive test",
+    Send: "Send test",
+  },
 };
 
 exports.RecSend_Message = RecSend_Message;

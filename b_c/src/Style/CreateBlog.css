@@ -59,7 +59,7 @@
 }
 
 .mid-section-title {
-  width: 100%;
+  width: 80%;
   height: 15%; /* 부모 요소의 높이에 맞게 조정 */
   border: 1px solid #61606033;
   box-sizing: border-box; /* padding과 border를 요소의 전체 크기에 포함 */
@@ -68,7 +68,7 @@
 }
 
 .mid-section-content {
-  width: 100%;
+  width: 80%;
   height: 75%; /* 부모 요소의 높이에 맞게 조정 */
   box-sizing: border-box; /* padding과 border를 요소의 전체 크기에 포함 */
   font-size: 25px;

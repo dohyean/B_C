@@ -98,10 +98,19 @@ io.on("connection", (socket) => {
     const CommentCreate = require("./module/SQL/Function/Blog/Comment/CommentCreate/CommentCreate.js");
     CommentCreate.CommentCreate(db, io, item);
   });
+
   // 블로그 게시판 댓글 삭제 (프론트 미구현)
   socket.on("Send CommentDelete", (item) => {
     const CommentDelete = require("./module/SQL/Function/Blog/Comment/CommentDelete/CommentDelete.js");
     CommentDelete.CommentDelete(db, io, item);
+  });
+
+  //test용 이후 삭제 예정
+  socket.on("Send test", (item) => {
+    console.log("test");
+    console.log(item);
+    const save = item;
+    console.log(save);
   });
 
   socket.on("disconnect", () => {
