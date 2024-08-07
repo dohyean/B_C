@@ -221,6 +221,24 @@ async function CommentCreate_Server(formData) {
   }
 }
 
+// 블로그 댓글 삭제
+async function CommentDelete_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const CommentDelete = require("./Blog/Commnet/CommentDelete/CommentDelete_Server.js");
+    var return_data = await CommentDelete.CommentDelete_Server(
+      socket,
+      formData
+    );
+    return return_data;
+  } catch (err) {
+    console.error("err in CommentDelete_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 module.exports = {
   SignUp_Server,
   FindID_Server,
@@ -234,4 +252,5 @@ module.exports = {
   BlogPostSave_Server,
   CategoryCreate_Server,
   CommentCreate_Server,
+  CommentDelete_Server,
 };

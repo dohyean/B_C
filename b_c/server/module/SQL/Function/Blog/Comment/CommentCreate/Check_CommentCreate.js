@@ -9,11 +9,11 @@ exports.Check_CommentCreate = async function (db, UserData) {
     UserData.UserData.Comment_Visibility_Status,
   ];
 
-  var BlogSave_Result = await Insert_DBMS.Insert_DBMS(
+  var CommentCreate_Result = await Insert_DBMS.Insert_DBMS(
     db,
     "Blog_Comment_Data",
     column,
     dataset
   );
-  return BlogSave_Result;
+  return CommentCreate_Result;
 };
