@@ -93,9 +93,15 @@ io.on("connection", (socket) => {
     CategoryCreate.CategoryCreate(db, io, item);
   });
 
+  // 블로그 게시판 댓글 생성 (프론트 미구현)
   socket.on("Send CommentCreate", (item) => {
     const CommentCreate = require("./module/SQL/Function/Blog/Comment/CommentCreate/CommentCreate.js");
     CommentCreate.CommentCreate(db, io, item);
+  });
+  // 블로그 게시판 댓글 삭제 (프론트 미구현)
+  socket.on("Send CommentDelete", (item) => {
+    const CommentDelete = require("./module/SQL/Function/Blog/Comment/CommentDelete/CommentDelete.js");
+    CommentDelete.CommentDelete(db, io, item);
   });
 
   socket.on("disconnect", () => {

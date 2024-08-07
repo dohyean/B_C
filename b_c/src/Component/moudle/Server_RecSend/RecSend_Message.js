@@ -53,9 +53,15 @@ const RecSend_Message = {
     Receive: "Receive CategoryCreate",
     Send: "Send CategoryCreate",
   },
+
   BlogCommentCreate_Message: {
     Receive: "Receive CommentCreate",
     Send: "Send CommentCreate",
+  },
+
+  BlogCommentDelete_Message: {
+    Receive: "Receive CommentDelete",
+    Send: "Send CommentDelete",
   },
 };
 

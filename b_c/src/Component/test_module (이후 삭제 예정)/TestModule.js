@@ -7,8 +7,9 @@ function TestModule() {
       User_ID: "test",
       Comment: "댓글 테스트입니다.",
       Comment_Visibility_Status: 1,
+      Comment_ID: 1,
     };
-    sockets.CommentCreate_Server(formData);
+    sockets.CommentDelete_Server(formData);
   };
 
   return (
