@@ -239,6 +239,30 @@ async function CommentDelete_Server(formData) {
   }
 }
 
+//연습용 이후 삭제 예정
+async function Test_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const Server_Receive = require("./Server_RecSend/Server_Receive.js");
+    const { RecSend_Message } = require("./Server_RecSend/RecSend_Message.js");
+
+    //const UserData = { ID: formData.ID }; //내가 보낼꺼로 설정
+
+    var return_data = await Server_Receive.Server_Receive(
+      socket,
+      formData,
+      RecSend_Message.test_Message
+    );
+
+    return return_data;
+  } catch (err) {
+    console.error("err in CommentDelete_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 module.exports = {
   SignUp_Server,
   FindID_Server,
@@ -253,4 +277,5 @@ module.exports = {
   CategoryCreate_Server,
   CommentCreate_Server,
   CommentDelete_Server,
+  Test_Server,
 };

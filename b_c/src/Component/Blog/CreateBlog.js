@@ -9,6 +9,12 @@ function CreateBlog() {
   const quillRef = useRef(null);
   const toolbarRef = useRef(null);
 
+  // const submit = () => {
+  //   const socket = require("../moudle/sockets.js");
+  //   console.log(FormData);
+  //   socket.Test_Server(FormData);
+  // };
+
   // 커스텀 훅 사용
   useQuill(quillRef, toolbarRef);
 
