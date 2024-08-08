@@ -17,7 +17,7 @@ exports.CommentDelete = async function (db, io, UserData) {
       CommentDelete_Result = global_value.Other_Error;
       break;
   }
-  io.emit("Receive CommentDelete", {
+  io.emit("Receive BlogCommentDelete", {
     CommentDelete_Result: CommentDelete_Result,
   });
 };

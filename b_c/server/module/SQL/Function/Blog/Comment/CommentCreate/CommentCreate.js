@@ -17,7 +17,7 @@ exports.CommentCreate = async function (db, io, UserData) {
       CommentCreate_Result = global_value.Other_Error;
       break;
   }
-  io.emit("Receive CommentCreate", {
+  io.emit("Receive BlogCommentCreate", {
     CommentCreate_Result: CommentCreate_Result,
   });
 };

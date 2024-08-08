@@ -16,7 +16,7 @@ exports.PostDelete = async function (db, io, UserData) {
       PostDelete_Result = global_value.Other_Error;
       break;
   }
-  io.emit("Receive PostDelete", {
+  io.emit("Receive BlogPostDelete", {
     PostDelete_Result: PostDelete_Result,
   });
 };
