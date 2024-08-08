@@ -49,20 +49,26 @@ const RecSend_Message = {
     Send: "Send BlogPostSave",
   },
 
+  BlogPostDelete_Message: {
+    Receive: "Receive BlogPostDelete",
+    Send: "Send BlogPostDelete",
+  },
+
   BlogCategoryCreate_Message: {
     Receive: "Receive CategoryCreate",
     Send: "Send CategoryCreate",
   },
 
   BlogCommentCreate_Message: {
-    Receive: "Receive CommentCreate",
-    Send: "Send CommentCreate",
+    Receive: "Receive BlogCommentCreate",
+    Send: "Send BlogCommentCreate",
   },
 
   BlogCommentDelete_Message: {
-    Receive: "Receive CommentDelete",
-    Send: "Send CommentDelete",
+    Receive: "Receive BlogCommentDelete",
+    Send: "Send BlogCommentDelete",
   },
+
   //test용 이후 삭제 예정
   test_Message: {
     Receive: "Receive test",

@@ -185,6 +185,21 @@ async function BlogPostSave_Server(formData) {
   }
 }
 
+// 블로그 게시물 삭제
+async function BlogPostDelete_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const PostDelete = require("./Blog/Post/PostDelete/PostDelete_Server.js");
+    var return_data = await PostDelete.PostDelete_Server(socket, formData);
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogPostDelete_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 // 블로그 카테고리 생성
 async function CategoryCreate_Server(formData) {
   const socket = await connectSocket();
@@ -274,6 +289,7 @@ module.exports = {
   DeleteUser_Server,
   BlogSave_Server,
   BlogPostSave_Server,
+  BlogPostDelete_Server,
   CategoryCreate_Server,
   CommentCreate_Server,
   CommentDelete_Server,
