@@ -1,4 +1,4 @@
-const sockets = require("../../Component/moudle/sockets.js");
+const sockets = require("../../Component/module/sockets.js");
 
 const Return_Select_Error = 2;
 const Return_Select_Match = 0;

@@ -44,6 +44,11 @@ const RecSend_Message = {
     Send: "Send BlogSave",
   },
 
+  BlogDelete_Message: {
+    Receive: "Receive BlogDelete",
+    Send: "Send BlogDelete",
+  },
+
   BlogPostSave_Message: {
     Receive: "Receive BlogPostSave",
     Send: "Send BlogPostSave",
@@ -57,6 +62,11 @@ const RecSend_Message = {
   BlogCategoryCreate_Message: {
     Receive: "Receive CategoryCreate",
     Send: "Send CategoryCreate",
+  },
+
+  BlogCategoryDelete_Message: {
+    Receive: "Receive CategoryDelete",
+    Send: "Send CategoryDelete",
   },
 
   BlogCommentCreate_Message: {
