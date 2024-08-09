@@ -81,6 +81,12 @@ io.on("connection", (socket) => {
     BlogSave.BlogSave(db, io, item);
   });
 
+  // 블로그 삭제 (프론트 미구현)
+  socket.on("Send BlogDelete", (item) => {
+    const BlogDelete = require("./module/SQL/Function/Blog/Blog/BlogDelete/BlogDelete.js");
+    BlogDelete.BlogDelete(db, io, item);
+  });
+
   // 블로그 게시물 생성 (프론트 미구현)
   socket.on("Send BlogPostSave", (item) => {
     const BlogPostSave = require("./module/SQL/Function/Blog/BlogPostSave/BlogPostSave.js");
@@ -97,6 +103,12 @@ io.on("connection", (socket) => {
   socket.on("Send CategoryCreate", (item) => {
     const CategoryCreate = require("./module/SQL/Function/Blog/Category/CategoryCreate/CategoryCreate.js");
     CategoryCreate.CategoryCreate(db, io, item);
+  });
+
+  // 블로그 카테고리 삭제 (프론트 미구현)
+  socket.on("Send CategoryDelete", (item) => {
+    const CategoryDelete = require("./module/SQL/Function/Blog/Category/CategoryDelete/CategoryDelete.js");
+    CategoryDelete.CategoryDelete(db, io, item);
   });
 
   // 블로그 게시판 댓글 생성 (프론트 미구현)

@@ -1,5 +1,5 @@
 //Find_ID_fuction.js
-const sockets = require("../../Component/moudle/sockets.js");
+const sockets = require("../../Component/module/sockets.js");
 
 const Return_Success = 0;
 const Return_Fail = 1;

@@ -140,11 +140,11 @@ async function Login_Server(formData) {
   }
 }
 
-// 아래는 후순위 더미 데이터 (유저 정보 제거 관련 데이터)
+// 회원 탈퇴 (유저 정보 제거 관련 데이터 - 프론트 미구현)
 async function DeleteUser_Server(formData) {
   const socket = await connectSocket();
   try {
-    const DeleteUser = require("./DeleteUser/DeleteUser_Server.js");
+    const DeleteUser = require("./Credential/DeleteUser/DeleteUser_Server.js");
     var return_data = await DeleteUser.DeleteUser_Server(socket, formData);
     return return_data;
   } catch (err) {
@@ -155,7 +155,7 @@ async function DeleteUser_Server(formData) {
   }
 }
 
-// 블로그 저장
+// 블로그 저장 (프론트 미구현)
 async function BlogSave_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -170,7 +170,22 @@ async function BlogSave_Server(formData) {
   }
 }
 
-// 블로그 게시물 저장
+// 블로그 삭제 (프론트 미구현)
+async function BlogDelete_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const BlogDelete = require("./Blog/Blog/BlogDelete/BlogDelete_Server.js");
+    var return_data = await BlogDelete.BlogDelete_Server(socket, formData);
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogDelete_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
+// 블로그 게시물 저장 (프론트 미구현)
 async function BlogPostSave_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -185,7 +200,7 @@ async function BlogPostSave_Server(formData) {
   }
 }
 
-// 블로그 게시물 삭제
+// 블로그 게시물 삭제 (프론트 미구현)
 async function BlogPostDelete_Server(formData) {
   const socket = await connectSocket();
   try {
@@ -200,11 +215,11 @@ async function BlogPostDelete_Server(formData) {
   }
 }
 
-// 블로그 카테고리 생성
-async function CategoryCreate_Server(formData) {
+// 블로그 카테고리 생성 (프론트 미구현)
+async function BlogCategoryCreate_Server(formData) {
   const socket = await connectSocket();
   try {
-    const CategoryCreate = require("./Blog/CategoryCreate/CategoryCreate_Server.js");
+    const CategoryCreate = require("./Blog/Category/CategoryCreate/CategoryCreate_Server.js");
     var return_data = await CategoryCreate.CategoryCreate_Server(
       socket,
       formData
@@ -218,8 +233,26 @@ async function CategoryCreate_Server(formData) {
   }
 }
 
-// 블로그 댓글 생성
-async function CommentCreate_Server(formData) {
+// 블로그 카테고리 삭제 (프론트 미구현)
+async function BlogCategoryDelete_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const CategoryDelete = require("./Blog/Category/CategoryDelete/CategoryDelete_Server.js");
+    var return_data = await CategoryDelete.CategoryDelete_Server(
+      socket,
+      formData
+    );
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogCategoryDelete_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
+// 블로그 댓글 생성 (프론트 미구현)
+async function BlogCommentCreate_Server(formData) {
   const socket = await connectSocket();
   try {
     const CommentCreate = require("./Blog/Commnet/CommentCreate/CommentCreate_Server.js");
@@ -229,15 +262,15 @@ async function CommentCreate_Server(formData) {
     );
     return return_data;
   } catch (err) {
-    console.error("err in CommentCreate_Server: ", err);
+    console.error("err in BlogCommentCreate_Server: ", err);
     throw err;
   } finally {
     await disconnectSocket(socket);
   }
 }
 
-// 블로그 댓글 삭제
-async function CommentDelete_Server(formData) {
+// 블로그 댓글 삭제 (프론트 미구현)
+async function BlogCommentDelete_Server(formData) {
   const socket = await connectSocket();
   try {
     const CommentDelete = require("./Blog/Commnet/CommentDelete/CommentDelete_Server.js");
@@ -247,7 +280,7 @@ async function CommentDelete_Server(formData) {
     );
     return return_data;
   } catch (err) {
-    console.error("err in CommentDelete_Server: ", err);
+    console.error("err in BlogCommentDelete_Server: ", err);
     throw err;
   } finally {
     await disconnectSocket(socket);
@@ -288,10 +321,12 @@ module.exports = {
   Login_Server,
   DeleteUser_Server,
   BlogSave_Server,
+  BlogDelete_Server,
   BlogPostSave_Server,
   BlogPostDelete_Server,
-  CategoryCreate_Server,
-  CommentCreate_Server,
-  CommentDelete_Server,
+  BlogCategoryCreate_Server,
+  BlogCategoryDelete_Server,
+  BlogCommentCreate_Server,
+  BlogCommentDelete_Server,
   Test_Server,
 };

@@ -1,11 +1,11 @@
-const sockets = require("../../Component/moudle/sockets.js");
+const sockets = require("../../Component/module/sockets.js");
 
 function TestModule() {
   const submit = () => {
     const formData = {
-      Post_ID: 1,
+      Blog_ID: 2,
     };
-    sockets.BlogPostDelete_Server(formData);
+    sockets.BlogDelete_Server(formData);
   };
 
   return (

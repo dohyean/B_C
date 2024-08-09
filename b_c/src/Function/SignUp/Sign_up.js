@@ -1,5 +1,5 @@
 // sign_up_function.js
-const sockets = require("../../Component/moudle/sockets.js");
+const sockets = require("../../Component/module/sockets.js");
 const Return_Success = 0;
 const Return_Duplicate_ID = 1;
 const Return_Error = 2;
