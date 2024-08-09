@@ -1,3 +1,4 @@
+// 스크롤 제한 없는 버전
 // import React, { useRef } from "react";
 // import "quill/dist/quill.snow.css";
 // import Toolbar from "./Function/Toolbar"; // Toolbar 컴포넌트 임포트
@@ -39,14 +40,77 @@
 
 // export default CreateBlog;
 
+//중간 버전 아마도 삭제 예정
+// import React, { useRef, useEffect } from "react";
+// import "react-quill/dist/quill.snow.css";
+// import Toolbar from "./Function/Toolbar"; // Toolbar 컴포넌트 임포트
+// import ReactQuill from "react-quill"; // react-quill을 임포트
+// import "../../Style/CreateBlog.css";
+// import Menubar from "../Menubar";
+
+// function CreateBlog() {
+//   const quillRef = useRef(null);
+//   const toolbarRef = useRef(null);
+
+//   useEffect(() => {
+//     if (quillRef.current) {
+//       const editorElement = quillRef.current.getEditor().container;
+
+//       // 휠 스크롤 비활성화
+//       const disableWheel = (e) => {
+//         e.preventDefault();
+//       };
+
+//       editorElement.addEventListener("wheel", disableWheel);
+
+//       // 에디터의 높이를 자동으로 조정하는 함수
+//       const adjustEditorHeight = () => {
+//         editorElement.style.height = "auto"; // 현재 높이 초기화
+//         editorElement.style.height = `${editorElement.scrollHeight}px`; // 스크롤 높이에 맞게 조정
+//       };
+
+//       // Quill 에디터의 내용이 변경될 때마다 높이 조정
+//       quillRef.current.getEditor().on("text-change", adjustEditorHeight);
+
+//       // 초기 높이 조정
+//       adjustEditorHeight();
+
+//       // Cleanup 리스너
+//       return () => {
+//         editorElement.removeEventListener("wheel", disableWheel);
+//         quillRef.current.getEditor().off("text-change", adjustEditorHeight);
+//       };
+//     }
+//   }, [quillRef]);
+
+//   return (
+//     <div className="App-CreateBlog">
+//       <Menubar />
+//       <div className="high-section">{/* <Toolbar ref={toolbarRef} /> */}</div>
+//       <div className="mid-section-a1-title">
+//         <textarea className="mid-section-a1-title-a1" placeholder="제목" />
+//       </div>
+//       <div className="mid-section">
+//         <div className="mid-section-a1">
+//           <ReactQuill ref={quillRef} className="mid-section-content" />
+//         </div>
+//       </div>
+//       <div className="low-section">아래</div>
+//     </div>
+//   );
+// }
+
+// export default CreateBlog;
+
+//테스트용 제대로 확인후 확인되면 사용 예정
 import React, { useRef, useEffect } from "react";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Toolbar from "./Function/Toolbar"; // Toolbar 컴포넌트 임포트
-import ReactQuill from "react-quill"; // react-quill을 임포트
 import "../../Style/CreateBlog.css";
 import Menubar from "../Menubar";
 
-function CreateBlog() {
+const CreateBlog = () => {
   const quillRef = useRef(null);
   const toolbarRef = useRef(null);
 
@@ -79,7 +143,13 @@ function CreateBlog() {
         quillRef.current.getEditor().off("text-change", adjustEditorHeight);
       };
     }
-  }, [quillRef]);
+  }, []);
+
+  const modules = {
+    toolbar: {
+      container: "#toolbar", // Toolbar의 ID를 사용
+    },
+  };
 
   return (
     <div className="App-CreateBlog">
@@ -87,15 +157,21 @@ function CreateBlog() {
       <div className="high-section">
         <Toolbar ref={toolbarRef} />
       </div>
+      <div className="mid-section-a1-title">
+        <textarea className="mid-section-a1-title-a1" placeholder="제목" />
+      </div>
       <div className="mid-section">
         <div className="mid-section-a1">
-          <textarea className="mid-section-title" placeholder="제목" />
-          <ReactQuill ref={quillRef} className="mid-section-content" />
+          <ReactQuill
+            ref={quillRef}
+            className="mid-section-content"
+            modules={modules}
+          />
         </div>
       </div>
       <div className="low-section">아래</div>
     </div>
   );
-}
+};
 
 export default CreateBlog;
