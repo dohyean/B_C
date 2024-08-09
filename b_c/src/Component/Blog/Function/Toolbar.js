@@ -23,7 +23,7 @@ Quill.register(Size, true);
 
 const Toolbar = React.forwardRef((props, ref) => {
   return (
-    <div ref={ref} className="toolbar">
+    <div id="toolbar" ref={ref} className="toolbar">
       <span className="ql-formats">
         <select className="ql-header" defaultValue="">
           <option value="1"></option>
