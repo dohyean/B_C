@@ -3,9 +3,12 @@ const sockets = require("../../Component/module/sockets.js");
 function TestModule() {
   const submit = () => {
     const formData = {
-      Blog_ID: 2,
+      // Blog_ID: "3",
+      // Post_Title: "post_3 test title",
+      // Post_Content: "post_3 test content",
+      // Post_Visibility_Status: 0,
     };
-    sockets.BlogDelete_Server(formData);
+    sockets.BlogPostCreate_Server(formData);
   };
 
   return (

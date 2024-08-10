@@ -156,14 +156,14 @@ async function DeleteUser_Server(formData) {
 }
 
 // 블로그 저장 (프론트 미구현)
-async function BlogSave_Server(formData) {
+async function BlogCreate_Server(formData) {
   const socket = await connectSocket();
   try {
-    const BlogSave = require("./Blog/BlogSave/BlogSave_Server.js");
-    var return_data = await BlogSave.BlogSave_Server(socket, formData);
+    const BlogCreate = require("./Blog/Blog/BlogCreate/BlogCreate_Server.js");
+    var return_data = await BlogCreate.BlogCreate_Server(socket, formData);
     return return_data;
   } catch (err) {
-    console.error("err in BlogSave_Server: ", err);
+    console.error("err in BlogCreate_Server: ", err);
     throw err;
   } finally {
     await disconnectSocket(socket);
@@ -186,14 +186,14 @@ async function BlogDelete_Server(formData) {
 }
 
 // 블로그 게시물 저장 (프론트 미구현)
-async function BlogPostSave_Server(formData) {
+async function BlogPostCreate_Server(formData) {
   const socket = await connectSocket();
   try {
-    const BlogPostSave = require("./Blog/BlogPostSave/BlogPostSave_Server.js");
-    var return_data = await BlogPostSave.BlogPostSave_Server(socket, formData);
+    const PostCreate = require("./Blog/Post/PostCreate/PostCreate_Server.js");
+    var return_data = await PostCreate.PostCreate_Server(socket, formData);
     return return_data;
   } catch (err) {
-    console.error("err in BlogPostSave_Server: ", err);
+    console.error("err in BlogPostCreate_Server: ", err);
     throw err;
   } finally {
     await disconnectSocket(socket);
@@ -320,9 +320,9 @@ module.exports = {
   GetHash_Server,
   Login_Server,
   DeleteUser_Server,
-  BlogSave_Server,
+  BlogCreate_Server,
   BlogDelete_Server,
-  BlogPostSave_Server,
+  BlogPostCreate_Server,
   BlogPostDelete_Server,
   BlogCategoryCreate_Server,
   BlogCategoryDelete_Server,

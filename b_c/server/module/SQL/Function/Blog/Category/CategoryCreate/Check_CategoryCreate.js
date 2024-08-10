@@ -2,14 +2,12 @@ const Insert_DBMS = require("../../../../CRUD_Query/Insert_DBMS.js");
 
 exports.Check_CategoryCreate = async function (db, UserData) {
   var column = [
-    "User_ID",
     "Blog_ID",
     "Category_Name",
     "Category_PID",
     "Category_ChildNum",
   ];
   var dataset = [
-    UserData.UserData.User_ID,
     UserData.UserData.Blog_ID,
     UserData.UserData.Category_Name,
     UserData.UserData.Category_PID,

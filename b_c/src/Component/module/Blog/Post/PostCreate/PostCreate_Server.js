@@ -3,21 +3,21 @@ const {
   RecSend_Message,
 } = require("../../../Server_RecSend/RecSend_Message.js");
 
-exports.CategoryCreate_Server = async function (socket, formData) {
+exports.PostCreate_Server = async function (socket, formData) {
   const UserData = {
     // 이후 프론트에서 넘어오는 formData 구조 확인 후 변경
     // Blog_ID: formData.Blog_ID,
-    Blog_ID: 3,
-    Category_Name: "category_name",
-    Category_PID: "",
-    Category_Child_Num: 0,
+    Category_ID: "5",
+    Post_Title: "test",
+    Post_Content: "test",
+    Post_Visibility_Status: 0,
   };
 
-  var CategoryCreate_Server_Result = await Server_Receive.Server_Receive(
+  var PostCreate_Server_Result = await Server_Receive.Server_Receive(
     socket,
     UserData,
-    RecSend_Message.BlogCategoryCreate_Message
+    RecSend_Message.BlogPostCreate_Message
   );
 
-  return CategoryCreate_Server_Result;
+  return PostCreate_Server_Result;
 };
