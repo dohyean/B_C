@@ -39,9 +39,9 @@ const RecSend_Message = {
     Send: "Send DeleteUser",
   },
 
-  BlogSave_Message: {
-    Receive: "Receive BlogSave",
-    Send: "Send BlogSave",
+  BlogCreate_Message: {
+    Receive: "Receive BlogCreate",
+    Send: "Send BlogCreate",
   },
 
   BlogDelete_Message: {
@@ -49,9 +49,9 @@ const RecSend_Message = {
     Send: "Send BlogDelete",
   },
 
-  BlogPostSave_Message: {
-    Receive: "Receive BlogPostSave",
-    Send: "Send BlogPostSave",
+  BlogPostCreate_Message: {
+    Receive: "Receive BlogPostCreate",
+    Send: "Send BlogPostCreate",
   },
 
   BlogPostDelete_Message: {

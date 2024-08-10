@@ -29,56 +29,56 @@ io.on("connection", (socket) => {
 
   // 회원가입
   socket.on("Send SignUp", (item) => {
-    const SiginUp = require("./module/SQL/Function/SignUp/SignUp.js");
+    const SiginUp = require("./module/SQL/Function/Credential/SignUp/SignUp.js");
     SiginUp.SignUp(db, io, item);
   });
 
   // 회원가입시 hash 생성
   socket.on("Send MakeHash", (item) => {
-    const SendHash = require("./module/SQL/Function/HashModule/MakeHash/MakeHash.js");
+    const SendHash = require("./module/SQL/Function/Credential/HashModule/MakeHash/MakeHash.js");
     SendHash.MakeHash(io);
   });
 
   // 아이디 찾기
   socket.on("Send FindID", (item) => {
-    const FindID = require("./module/SQL/Function/FindID/FindID.js");
+    const FindID = require("./module/SQL/Function/Credential/FindID/FindID.js");
     FindID.FindID(db, io, item);
   });
 
   // 비밀번호 찾기
   socket.on("Send FindPW", (item) => {
-    const FindPW = require("./module/SQL/Function/FindPW/FindPW.js");
+    const FindPW = require("./module/SQL/Function/Credential/FindPW/FindPW.js");
     FindPW.FindPW(db, io, item);
   });
 
   // 비밀번호 변경
   socket.on("Send ChangePW", (item) => {
-    const ChangePW = require("./module/SQL/Function/ChangePW/ChangePW.js");
+    const ChangePW = require("./module/SQL/Function/Credential/ChangePW/ChangePW.js");
     ChangePW.ChangePW(db, io, item);
   });
 
   // 로그인
   socket.on("Send Login", (item) => {
-    const Login = require("./module/SQL/Function/Login/Login.js");
+    const Login = require("./module/SQL/Function/Credential/Login/Login.js");
     Login.Login(db, io, item);
   });
 
   // 해시 데이터 획득
   socket.on("Send GetHash", (item) => {
-    const GetHash = require("./module/SQL/Function/HashModule/GetHash/GetHash.js");
+    const GetHash = require("./module/SQL/Function/Credential/HashModule/GetHash/GetHash.js");
     GetHash.GetHash(db, io, item);
   });
 
   // 유저 데이터 삭제 (프론트 미구현)
   socket.on("Send DeleteUser", (item) => {
-    const DeleteUser = require("./module/SQL/Function/DeleteUser/DeleteUser.js");
+    const DeleteUser = require("./module/SQL/Function/Credential/DeleteUser/DeleteUser.js");
     DeleteUser.DeleteUser(db, io, item);
   });
 
   // 블로그 생성 (프론트 미구현)
-  socket.on("Send BlogSave", (item) => {
-    const BlogSave = require("./module/SQL/Function/Blog/BlogSave/BlogSave.js");
-    BlogSave.BlogSave(db, io, item);
+  socket.on("Send BlogCreate", (item) => {
+    const BlogCreate = require("./module/SQL/Function/Blog/Blog/BlogCreate/BlogCreate.js");
+    BlogCreate.BlogCreate(db, io, item);
   });
 
   // 블로그 삭제 (프론트 미구현)
@@ -88,9 +88,9 @@ io.on("connection", (socket) => {
   });
 
   // 블로그 게시물 생성 (프론트 미구현)
-  socket.on("Send BlogPostSave", (item) => {
-    const BlogPostSave = require("./module/SQL/Function/Blog/BlogPostSave/BlogPostSave.js");
-    BlogPostSave.BlogPostSave(db, io, item);
+  socket.on("Send BlogPostCreate", (item) => {
+    const PostCreate = require("./module/SQL/Function/Blog/Post/PostCreate/PostCreate.js");
+    PostCreate.PostCreate(db, io, item);
   });
 
   // 블로그 게시물 삭제 (프론트 미구현)
