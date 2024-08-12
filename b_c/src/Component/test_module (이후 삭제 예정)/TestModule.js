@@ -8,7 +8,7 @@ function TestModule() {
       // Post_Content: "post_3 test content",
       // Post_Visibility_Status: 0,
     };
-    sockets.BlogPostCreate_Server(formData);
+    sockets.BlogUpdate_Server(formData);
   };
 
   return (
