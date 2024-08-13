@@ -17,7 +17,7 @@ exports.CategoryUpdate = async function (db, io, UserData) {
       CategoryUpdate_Result = global_value.Other_Error;
       break;
   }
-  io.emit("Receive CategoryUpdate", {
+  io.emit("Receive BlogCategoryUpdate", {
     CategoryUpdate_Result: CategoryUpdate_Result,
   });
 };

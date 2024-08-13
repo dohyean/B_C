@@ -64,14 +64,24 @@ const RecSend_Message = {
     Send: "Send BlogPostDelete",
   },
 
+  BlogPostUpdate_Message: {
+    Receive: "Receive BlogPostUpdate",
+    Send: "Send BlogPostUpdate",
+  },
+
   BlogCategoryCreate_Message: {
-    Receive: "Receive CategoryCreate",
-    Send: "Send CategoryCreate",
+    Receive: "Receive BlogCategoryCreate",
+    Send: "Send BlogCategoryCreate",
   },
 
   BlogCategoryDelete_Message: {
-    Receive: "Receive CategoryDelete",
-    Send: "Send CategoryDelete",
+    Receive: "Receive BlogCategoryDelete",
+    Send: "Send BlogCategoryDelete",
+  },
+
+  BlogCategoryUpdate_Message: {
+    Receive: "Receive BlogCategoryUpdate",
+    Send: "Send BlogCategoryUpdate",
   },
 
   BlogCommentCreate_Message: {

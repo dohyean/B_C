@@ -17,7 +17,7 @@ exports.CategoryCreate = async function (db, io, UserData) {
       CategoryCreate_Result = global_value.Other_Error;
       break;
   }
-  io.emit("Receive CategoryCreate", {
+  io.emit("Receive BlogCategoryCreate", {
     CategoryCreate_Result: CategoryCreate_Result,
   });
 };

@@ -17,7 +17,7 @@ exports.CategoryDelete = async function (db, io, UserData) {
       CategoryDelete_Result = global_value.Other_Error;
       break;
   }
-  io.emit("Receive CategoryDelete", {
+  io.emit("Receive BlogCategoryDelete", {
     CategoryDelete_Result: CategoryDelete_Result,
   });
 };
