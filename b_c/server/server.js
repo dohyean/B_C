@@ -105,20 +105,26 @@ io.on("connection", (socket) => {
     PostDelete.PostDelete(db, io, item);
   });
 
+  // 블로그 게시물 수정 (프론트 미구현)
+  socket.on("Send BlogPostUpdate", (item) => {
+    const PostUpdate = require("./module/SQL/Function/Blog/Post/PostUpdate/PostUpdate.js");
+    PostUpdate.PostUpdate(db, io, item);
+  });
+
   // 블로그 카테고리 생성 (프론트 미구현)
-  socket.on("Send CategoryCreate", (item) => {
+  socket.on("Send BlogCategoryCreate", (item) => {
     const CategoryCreate = require("./module/SQL/Function/Blog/Category/CategoryCreate/CategoryCreate.js");
     CategoryCreate.CategoryCreate(db, io, item);
   });
 
   // 블로그 카테고리 삭제 (프론트 미구현)
-  socket.on("Send CategoryDelete", (item) => {
+  socket.on("Send BlogCategoryDelete", (item) => {
     const CategoryDelete = require("./module/SQL/Function/Blog/Category/CategoryDelete/CategoryDelete.js");
     CategoryDelete.CategoryDelete(db, io, item);
   });
 
   // 블로그 카테고리 수정 (프론트 미구현 - 테스트 미완)
-  socket.on("Send CategoryUpdate", (item) => {
+  socket.on("Send BlogCategoryUpdate", (item) => {
     const CategoryUpdate = require("./module/SQL/Function/Blog/Category/CategoryUpdate/CategoryUpdate.js");
     CategoryUpdate.CategoryUpdate(db, io, item);
   });
