@@ -1,21 +1,10 @@
 .App-CreateBlog {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-}
-
-.App-header-CreateBlog {
-  display: flex;
-  flex: 1;
-  flex-direction: column; /* 세로 배치 */
-  width: 100%; /* 전체 너비 사용 */
-}
-
-.CreateBlog-container {
-  display: flex;
-  flex: 1;
-  width: 100%; /* 전체 너비 사용 */
-  flex-direction: column; /*세로 배치*/
+  min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
+  width: 1500px; /* 고정 너비 설정 (예시로 1000px 사용) */
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  margin: 0 auto; /* 가운데 정렬 */
 }
 
 .high-section {
@@ -24,10 +13,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column; /* 세로 배치 */
-  height: 10%; /* 높이 10% */
-  margin-top: 30px;
-  margin-bottom: 15px;
+  height: 50px; /* 높이 10% */
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
+
 .high-section-a1 {
   width: 100%;
   display: flex;
@@ -46,8 +36,10 @@
   align-items: center;
   flex-direction: column; /* 세로 배치 */
   height: 100px; /*높이 90퍼*/
-  /* margin-top: 5px; 위쪽에 5px 간격 추가 */
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
+
 .mid-section-a1-title-a1 {
   width: 80%;
   height: 100px; /* 부모 요소의 높이에 맞게 조정 */
@@ -64,8 +56,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column; /* 세로 배치 */
-  height: 2000px; /*높이 90퍼*/
-  /* margin-top: 5px; 위쪽에 5px 간격 추가 */
+  height: auto; /*높이 90퍼*/
 }
 
 .mid-section-a1 {
@@ -105,12 +96,25 @@
   height: 100px;
 }
 
+.low-section-a1 {
+  height: 100px;
+  width: 100%;
+  display: flex; /* Flexbox 사용 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  flex-direction: column; /* 요소를 세로 방향으로 배치 */
+}
+
+.low-section-a1-selectbutton {
+}
+
 .ql-container {
   overflow-y: hidden; /* 수직 스크롤 막기 */
 }
 
 .ql-editor {
-  min-height: 150px; /* 초기 최소 높이 설정 */
+  overflow-y: hidden; /* 수직 스크롤 막기 */
+  min-height: 400px; /* 초기 최소 높이 설정 */
   padding-bottom: 20px; /* 하단 여백 추가 */
   box-sizing: border-box;
 }
