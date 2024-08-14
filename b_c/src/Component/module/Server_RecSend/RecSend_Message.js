@@ -49,6 +49,11 @@ const RecSend_Message = {
     Send: "Send BlogDelete",
   },
 
+  BlogUpdate_Message: {
+    Receive: "Receive BlogUpdate",
+    Send: "Send BlogUpdate",
+  },
+
   BlogPostCreate_Message: {
     Receive: "Receive BlogPostCreate",
     Send: "Send BlogPostCreate",
