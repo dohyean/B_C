@@ -230,6 +230,21 @@ async function BlogPostDelete_Server(formData) {
   }
 }
 
+// 블로그 게시물 삭제 (프론트 미구현)
+async function BlogPostUpdate_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const PostUpdate = require("./Blog/Post/PostUpdate/PostUpdate_Server.js");
+    var return_data = await PostUpdate.PostUpdate_Server(socket, formData);
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogPostUpdate_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 // 블로그 카테고리 생성 (프론트 미구현)
 async function BlogCategoryCreate_Server(formData) {
   const socket = await connectSocket();
@@ -260,6 +275,24 @@ async function BlogCategoryDelete_Server(formData) {
     return return_data;
   } catch (err) {
     console.error("err in BlogCategoryDelete_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
+// 블로그 카테고리 수정 (프론트 미구현)
+async function BlogCategoryUpdate_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const CategoryUpdate = require("./Blog/Category/CategoryUpdate/CategoryUpdate_Server.js");
+    var return_data = await CategoryUpdate.CategoryUpdate_Server(
+      socket,
+      formData
+    );
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogCategoryUpdate_Server: ", err);
     throw err;
   } finally {
     await disconnectSocket(socket);
@@ -340,8 +373,10 @@ module.exports = {
   BlogUpdate_Server,
   BlogPostCreate_Server,
   BlogPostDelete_Server,
+  BlogPostUpdate_Server,
   BlogCategoryCreate_Server,
   BlogCategoryDelete_Server,
+  BlogCategoryUpdate_Server,
   BlogCommentCreate_Server,
   BlogCommentDelete_Server,
   Test_Server,
