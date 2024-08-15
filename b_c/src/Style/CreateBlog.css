@@ -93,19 +93,45 @@
   justify-content: center;
   align-items: center;
   flex-direction: column; /* 세로 배치 */
-  height: 100px;
+  height: 50px;
+}
+.low-section-select {
+  width: 100%;
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  flex-direction: column; /* 요소를 세로 방향으로 배치 */
+  height: 50px;
+}
+.low-section-select-a1 {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center;
+  flex-direction: row; /* 세로 배치 */
+  height: 50px;
 }
 
 .low-section-a1 {
   height: 100px;
   width: 100%;
   display: flex; /* Flexbox 사용 */
-  justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
   flex-direction: column; /* 요소를 세로 방향으로 배치 */
 }
+.low-section-a2 {
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
 
-.low-section-a1-selectbutton {
+.Create-blog-button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: auto;
 }
 
 .ql-container {
