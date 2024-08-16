@@ -6,10 +6,11 @@ app.use(cors());
 const fs = require("fs");
 const port = 3001;
 const https = require("https");
+require("dotenv").config();
 const server = https.createServer(
   {
-    key: fs.readFileSync("./key.pem"),
-    cert: fs.readFileSync("./cert.pem"),
+    key: fs.readFileSync(process.env.SSL_KEY_FILE),
+    cert: fs.readFileSync(process.env.SSL_CRT_FILE),
   },
   app
 );
