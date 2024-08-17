@@ -10,7 +10,9 @@ async function Login(formData, setFormData, navigate) {
     console.log(Login_Server_Result.Login_Result.result); // 데이터 저장 확인 (닉네임도 가져옴)
     const loginResult = Login_Server_Result.Login_Result.result[0]; // 배열의 첫 번째 요소에 접근
     const nickname = loginResult.User_NickName; // User_NickName 가져오기
+    const id = loginResult.User_ID;
     console.log("닉네임 : ", nickname); //닉네인 되는지 로그 찍기
+    console.log("아이디 :", id); //아이디 로그 찍기
 
     switch (Login_Server_Result.Login_Result.result_num) {
       case Return_Select_Undefined:
@@ -23,7 +25,8 @@ async function Login(formData, setFormData, navigate) {
           PW: "",
         });
         // 닉네임을 로컬 스토리지에 저장
-        localStorage.setItem("nickname", nickname);
+        localStorage.setItem("nickname", nickname); //스토리지에 저장
+        localStorage.setItem("id", id); //스토리지에 저장
         navigate("/HomePageLogin");
         break;
       case Return_Select_Error:
