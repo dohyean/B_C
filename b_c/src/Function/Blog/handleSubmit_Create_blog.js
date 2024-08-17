@@ -1,3 +1,5 @@
+const { Create_Blog_Post } = require("./Create_Blog_Post.js");
+
 export const handleSubmit = (
   title,
   content,
@@ -14,15 +16,5 @@ export const handleSubmit = (
     visibility: visibility,
   };
 
-  console.log("Blog Data:", blogData);
-
-  // 데이터 처리 후 필드 초기화
-  setTitle("");
-  setContent("");
-  setVisibility("public");
-
-  navigate("/HomePageLogin");
-
-  // 여기서 서버에 데이터를 보내거나 로컬 저장소에 저장하는 로직을 추가할 수 있습니다.
-  // 예를 들어 fetch 또는 axios를 사용하여 서버에 요청을 보낼 수 있습니다.
+  Create_Blog_Post(blogData, setTitle, setContent, setVisibility, navigate);
 };
