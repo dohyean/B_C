@@ -1,7 +1,10 @@
-.App {
+.App-FindID {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
+  width: 1500px; /* 고정 너비 설정 (예시로 1000px 사용) */
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  margin: 0 auto; /* 가운데 정렬 */
 }
 
 .back-button-Login {

@@ -5,7 +5,7 @@ import { getRandomImages } from "../Function/shuffleImages";
 function HomePage() {
   const images = getRandomImages();
   return (
-    <div className="App">
+    <div className="App-HomePage">
       <Menubar></Menubar>
       <div className="App-content-Home">
         <div className="description">

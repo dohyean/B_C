@@ -46,7 +46,7 @@ function ChangePW() {
   };
 
   return (
-    <div className="App">
+    <div className="App-ChangePW">
       <Menubar></Menubar>
       <div className="App-content-ChangePW">
         <h2>비밀번호 변경</h2>

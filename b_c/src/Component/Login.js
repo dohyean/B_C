@@ -31,7 +31,7 @@ function Login() {
   };
 
   return (
-    <div className="App">
+    <div className="App-Login">
       <Menubar></Menubar>
       <div className="App-content">
         <form onSubmit={handleSubmit} className="login-form">

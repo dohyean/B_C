@@ -36,7 +36,7 @@ function FindPW() {
   };
 
   return (
-    <div className="App">
+    <div className="App-FindPW">
       <Menubar></Menubar>
       <div className="App-content-FindID">
         <h2>비밀번호 찾기</h2>

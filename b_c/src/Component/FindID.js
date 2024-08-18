@@ -35,7 +35,7 @@ function FindID() {
   };
 
   return (
-    <div className="App">
+    <div className="App-FindID">
       <Menubar></Menubar>
       <div className="App-content-FindID">
         <h2>아이디 찾기</h2>
