@@ -94,7 +94,12 @@ io.on("connection", (socket) => {
     BlogUpdate.BlogUpdate(db, io, item);
   });
 
-  // 블로그 게시물 생성 (프론트 미구현)
+  socket.on("Send BlogGet", (item) => {
+    const BlogGet = require("./module/SQL/Function/Blog/Blog/BlogGet/BlogGet.js");
+    BlogGet.BlogGet(db, io, item);
+  });
+
+  // 블로그 게시물 생성 (프론트)
   socket.on("Send BlogPostCreate", (item) => {
     const PostCreate = require("./module/SQL/Function/Blog/Post/PostCreate/PostCreate.js");
     PostCreate.PostCreate(db, io, item);

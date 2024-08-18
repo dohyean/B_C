@@ -200,6 +200,21 @@ async function BlogUpdate_Server(formData) {
   }
 }
 
+// 블로그 정보 전달 (프론트 미구현)
+async function BlogGet_Server(formData) {
+  const socket = await connectSocket();
+  try {
+    const BlogGet = require("./Blog/Blog/BlogGet/BlogGet_Server.js");
+    var return_data = await BlogGet.BlogGet_Server(socket, formData);
+    return return_data;
+  } catch (err) {
+    console.error("err in BlogGet_Server: ", err);
+    throw err;
+  } finally {
+    await disconnectSocket(socket);
+  }
+}
+
 // 블로그 게시물 저장 (프론트 미구현)
 async function BlogPostCreate_Server(formData) {
   const socket = await connectSocket();
@@ -371,6 +386,7 @@ module.exports = {
   BlogCreate_Server,
   BlogDelete_Server,
   BlogUpdate_Server,
+  BlogGet_Server,
   BlogPostCreate_Server,
   BlogPostDelete_Server,
   BlogPostUpdate_Server,
