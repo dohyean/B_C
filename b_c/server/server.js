@@ -88,12 +88,13 @@ io.on("connection", (socket) => {
     BlogDelete.BlogDelete(db, io, item);
   });
 
-  // 블로그 수정 (프론트 미구현 - 테스트 미완)
+  // 블로그 수정 (프론트 미구현)
   socket.on("Send BlogUpdate", (item) => {
     const BlogUpdate = require("./module/SQL/Function/Blog/Blog/BlogUpdate/BlogUpdate.js");
     BlogUpdate.BlogUpdate(db, io, item);
   });
 
+  // 블로그 데이터 전송 (프론트 미구현 - 테스트 미완)
   socket.on("Send BlogGet", (item) => {
     const BlogGet = require("./module/SQL/Function/Blog/Blog/BlogGet/BlogGet.js");
     BlogGet.BlogGet(db, io, item);
@@ -135,6 +136,12 @@ io.on("connection", (socket) => {
     CategoryUpdate.CategoryUpdate(db, io, item);
   });
 
+  // 블로그 카테고리 데이터 전송 (프론트 미구현 - 테스트 미완)
+  socket.on("Send BlogCategoryGet", (item) => {
+    const CategoryGet = require("./module/SQL/Function/Blog/Category/CategoryGet/CategoryGet.js");
+    CategoryGet.CategoryGet(db, io, item);
+  });
+
   // 블로그 게시판 댓글 생성 (프론트 미구현)
   socket.on("Send BlogCommentCreate", (item) => {
     const CommentCreate = require("./module/SQL/Function/Blog/Comment/CommentCreate/CommentCreate.js");
@@ -145,6 +152,12 @@ io.on("connection", (socket) => {
   socket.on("Send BlogCommentDelete", (item) => {
     const CommentDelete = require("./module/SQL/Function/Blog/Comment/CommentDelete/CommentDelete.js");
     CommentDelete.CommentDelete(db, io, item);
+  });
+
+  // 블로그 게시판 댓글 데이터 전송 (프론트 미구현 - 테스트 미완)
+  socket.on("Send BlogCommentGet", (item) => {
+    const CommentGet = require("./module/SQL/Function/Blog/Comment/CommentGet/CommentGet.js");
+    CommentGet.CommentGet(db, io, item);
   });
 
   //test용 이후 삭제 예정
