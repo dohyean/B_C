@@ -17,7 +17,7 @@ function SelectID() {
   };
 
   return (
-    <div className="App">
+    <div className="App-SelectID">
       <Menubar />
       <div className="App-content-SelectID">
         <h2>아이디 찾기</h2>

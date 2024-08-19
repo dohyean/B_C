@@ -51,7 +51,7 @@ function SignUp() {
   };
 
   return (
-    <div className="App">
+    <div className="App-SignUp">
       <Menubar></Menubar>
       <div className="App-content-SignUp">
         <form onSubmit={handleFormSubmit} className="signup-form">
