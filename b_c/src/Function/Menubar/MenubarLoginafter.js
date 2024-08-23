@@ -19,8 +19,9 @@ function MenubarLoginafter() {
   }, []);
 
   const handleLogout = () => {
-    // 로컬 스토리지에서 닉네임 제거
+    // 로컬 스토리지에서 닉네임 제거 //아이디 제거
     localStorage.removeItem("nickname");
+    localStorage.removeItem("id");
     navigate("/"); // 로그아웃 후 홈으로 이동
   };
 
@@ -49,6 +50,12 @@ function MenubarLoginafter() {
                   style={{ cursor: "pointer" }}
                 >
                   블로그 작성
+                </h5>
+                <h5
+                  onClick={() => handleClick("/BlogManagePage")}
+                  style={{ cursor: "pointer" }}
+                >
+                  블로그 관리 페이지
                 </h5>
               </div>
             </h1>
