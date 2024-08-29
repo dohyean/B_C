@@ -31,10 +31,10 @@ function Login() {
   };
 
   return (
-    <div className="App">
+    <div className="App-Login">
       <Menubar></Menubar>
       <div className="App-content">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
           <div>
             <input
               name="ID"
@@ -51,7 +51,6 @@ function Login() {
             onChange={handleChange}
             placeholder="비밀번호"
           />
-          &nbsp;
           <button
             type="submit" // 폼 제출 버튼으로 설정
             className="login-button-login"

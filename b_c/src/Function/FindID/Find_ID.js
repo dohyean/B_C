@@ -1,5 +1,5 @@
 //Find_ID_fuction.js
-const sockets = require("../../Component/moudle/sockets.js");
+const sockets = require("../../Component/module/sockets.js");
 
 const Return_Success = 0;
 const Return_Fail = 1;
@@ -30,7 +30,6 @@ async function Check_Find_ID(formData, setFormData, navigate) {
         setFormData({
           Phone: "",
         });
-        // navigate("/SelectID", { String_ID });
         navigate("/SelectID", { state: { String_ID } }); // state 객체로 전달
         break;
       case Return_Fail:

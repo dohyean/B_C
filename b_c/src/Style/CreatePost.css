@@ -1,0 +1,230 @@
+.App-CreateBlog {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
+  width: 1500px; /* 고정 너비 설정 (예시로 1000px 사용) */
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  margin: 0 auto; /* 가운데 정렬 */
+}
+
+.high-section {
+  width: 100%; /* 넓이는 화면 꽉 차게 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+  height: 50px; /* 높이 10% */
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.high-section-a1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+  height: 100%; /* 높이 10% */
+  border: 1px solid black; /* 검은색 테두리 추가 */
+  margin: 5px; /*아래쪽에 5px 간격 추가 */
+}
+
+.mid-section-a1-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+  height: 100px; /*높이 90퍼*/
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.mid-section-a1-title-a1 {
+  width: 80%;
+  height: 100px; /* 부모 요소의 높이에 맞게 조정 */
+  border: 1px solid #61606033;
+  box-sizing: border-box; /* padding과 border를 요소의 전체 크기에 포함 */
+  font-size: 20px;
+  font-family: "Arial", sans-serif;
+  resize: none; /* 사용자가 텍스트 영역의 크기를 조절하지 못하도록 함 */
+}
+
+.mid-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+  height: auto; /*높이 90퍼*/
+}
+
+.mid-section-a1 {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+  height: 100%; /* 높이 10% */
+  margin: 5px; /*아래쪽에 5px 간격 추가 */
+  box-sizing: border-box;
+}
+
+.mid-section-title {
+  width: 100%;
+  height: 15%; /* 부모 요소의 높이에 맞게 조정 */
+  border: 1px solid #61606033;
+  box-sizing: border-box; /* padding과 border를 요소의 전체 크기에 포함 */
+  font-size: 25px;
+  font-family: "Arial", sans-serif;
+  resize: none; /* 사용자가 텍스트 영역의 크기를 조절하지 못하도록 함 */
+}
+
+.mid-section-content {
+  width: 100%;
+  box-sizing: border-box; /* padding과 border를 요소의 전체 크기에 포함 */
+  font-size: 25px;
+  font-family: "Arial", sans-serif;
+}
+/* border: 1px dashed #ccc; 점선 테두리 추가 */
+
+.low-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 세로 배치 */
+  height: 50px;
+}
+.low-section-select {
+  width: 100%;
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  flex-direction: column; /* 요소를 세로 방향으로 배치 */
+  height: 50px;
+}
+.low-section-select-a1 {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center;
+  flex-direction: row; /* 세로 배치 */
+  height: 50px;
+}
+
+.low-section-a1 {
+  height: 100px;
+  width: 100%;
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 수직 가운데 정렬 */
+  flex-direction: column; /* 요소를 세로 방향으로 배치 */
+}
+.low-section-a2 {
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+
+.Create-blog-button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.ql-container {
+  overflow-y: hidden; /* 수직 스크롤 막기 */
+}
+
+.ql-editor {
+  overflow-y: hidden; /* 수직 스크롤 막기 */
+  min-height: 400px; /* 초기 최소 높이 설정 */
+  padding-bottom: 20px; /* 하단 여백 추가 */
+  box-sizing: border-box;
+}
+/*폰트 관련 Toolbar*/
+.ql-size-8px {
+  font-size: 8px;
+}
+.ql-size-10px {
+  font-size: 10px;
+}
+.ql-size-12px {
+  font-size: 12px;
+}
+.ql-size-14px {
+  font-size: 14px;
+}
+.ql-size-16px {
+  font-size: 16px;
+}
+.ql-size-18px {
+  font-size: 18px;
+}
+.ql-size-20px {
+  font-size: 20px;
+}
+.ql-size-22px {
+  font-size: 22px;
+}
+.ql-size-24px {
+  font-size: 24px;
+}
+.ql-size-26px {
+  font-size: 26px;
+}
+.ql-size-28px {
+  font-size: 28px;
+}
+.ql-size-32px {
+  font-size: 32px;
+}
+.ql-size-36px {
+  font-size: 36px;
+}
+.ql-size-40px {
+  font-size: 40px;
+}
+
+/*이미지 관련 css*/
+.ql-container {
+  position: relative;
+}
+
+.ql-editor img {
+  max-width: 100%; /* Ensure images do not overflow the container */
+}
+
+.ql-image-resize {
+  position: absolute;
+  border: solid 1px #07a;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ql-image-resize .ql-image-handle {
+  background-color: #fff;
+  border: solid 1px #07a;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  cursor: nwse-resize;
+  z-index: 10;
+}
+
+.ql-image-resize .ql-image-handle.top-left {
+  cursor: nwse-resize;
+}
+
+.ql-image-resize .ql-image-handle.top-right {
+  cursor: nesw-resize;
+}
+
+.ql-image-resize .ql-image-handle.bottom-left {
+  cursor: nesw-resize;
+}
+
+.ql-image-resize .ql-image-handle.bottom-right {
+  cursor: nwse-resize;
+}

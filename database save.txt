@@ -1,70 +1,89 @@
+유저 정보
+// 유저 데이터 정보
+CREATE TABLE User_Data(
+  User_ID varchar(20),
+  User_PW varchar(255) NOT NULL,
+  User_NickName varchar(63) NOT NULL,
+  User_Name varchar(63) NOT NULL,
+  User_PhoneNum varchar(63) NOT NULL,
+  User_Birthday varchar(63) NOT NULL,
+  User_Create_Time DATETIME DEFAULT (DATETIME(CURRENT_TIMESTAMP, '+9 hours')),
+  PRIMARY KEY (User_ID)
+);
+
+// hash 데이터 정보
+CREATE TABLE Hash_Data(
+  User_ID varchar(20),
+  User_Hash varchar(255),
+  PRIMARY KEY (User_ID),
+  FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 블로그
-// 블로그 정보 (블로그의 번호 및 )
+// 블로그 정보 
 CREATE TABLE Blog_Data (
-  Blog_ID INTEGER AUTO_INCREMENT,
+  Blog_ID INTEGER PRIMARY KEY AUTOINCREMENT,
   User_ID varchar(20) NOT NULL,
   Blog_Name varchar(30) NOT NULL,
-  Blog_Description varchar(500),
-  Blog_Visibility_Status INTEGER DEFAULT 1,
-  Blog_Create_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (Blog_ID),
-  FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID)
-);
-
-// 게시물 정보
-CREATE TABLE Blog_Post_Data (
-  Post_ID INTEGER AUTO_INCREMENT,
-  Blog_ID varchar(20) NOT NULL,
-  Post_Title TEXT NOT NULL,
-  Post_Content TEXT NOT NULL,
-  Post_Visibility_Status INTEGER DEFAULT 1,
-  Post_Create_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (Post_ID),
-  FOREIGN KEY (Blog_ID) REFERENCES Blog_Data(Blog_ID)
-);
-
-// 댓글 정보
-CREATE TABLE Blog_Comment_Data (
-  Comment_ID INTEGER AUTO_INCREMENT,
-  Post_ID INTGER NOT NULL,
-  User_ID varchar(20) NOT NULL,
-  Comment TEXT NOT NULL,
-  Comment_Visibility_Status INTEGER DEFAULT 1,
-  Comment_Report_Status INTEGER DEFAULT 0,
-  Comment_Create_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (Comment_ID),
-  FOREIGN KEY (Post_ID) REFERENCES Blog_Post_Data(Post_ID),
-  FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID)
+  Blog_Description TEXT,
+  Blog_Visibility_Status INTEGER DEFAULT 0,
+  Blog_Create_Time DATETIME DEFAULT (DATETIME(CURRENT_TIMESTAMP, '+9 hours')),
+  FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 // 카테고리 정보
 CREATE TABLE Blog_Category_Data (
-  Category_ID INTEGER AUTO_INCREMENT,
-  User_ID varchar(20) NOT NULL,
-  Category_Name VARCHAR(100) NOT NULL,
-  Parent_Category_ID INTEGER,
-  Child_Num INTEGER,
-  PRIMARY KEY (Category_ID),
-  FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID),
-  FOREIGN KEY (Parent_Category_ID) REFERENCES Blog_Category_Data(Category_ID)
+  Category_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Blog_ID INTEGER NOT NULL,
+  Category_Name VARCHAR(255) NOT NULL,
+  Category_PID INTEGER,
+  Category_ChildNum INTEGER,
+  FOREIGN KEY (Blog_ID) REFERENCES Blog_Data(Blog_ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-// 블로그, 카테고리 관계 정보
-CREATE TABLE Blog_BlogCategory_Association (
-  Blog_ID INTEGER NOT NULL,
+// 게시물 정보
+CREATE TABLE Blog_Post_Data (
+  Post_ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Category_ID INTEGER NOT NULL,
+  Post_Title TEXT NOT NULL,
+  Post_Content TEXT NOT NULL,
+  Post_Visibility_Status INTEGER DEFAULT 0,
+  Post_Create_Time DATETIME DEFAULT (DATETIME(CURRENT_TIMESTAMP, '+9 hours')),
+  FOREIGN KEY (Category_ID) REFERENCES Blog_Category_Data(Category_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+// 댓글 정보
+CREATE TABLE Blog_Comment_Data (
+  Comment_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Post_ID INTGER NOT NULL,
+  User_ID varchar(20) NOT NULL,
+  Comment TEXT NOT NULL,
+  Comment_Visibility_Status INTEGER DEFAULT 0,
+  Comment_Report_Status INTEGER DEFAULT 0,
+  Comment_Create_Time DATETIME DEFAULT (DATETIME(CURRENT_TIMESTAMP, '+9 hours')),
+  FOREIGN KEY (Post_ID) REFERENCES Blog_Post_Data(Post_ID) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+// 블로그, 카테고리 관계 정보 (현재는 사용 x)
+CREATE TABLE Blog_BlogCategory_Association (
+  Blog_ID INTEGER,
+  Category_ID INTEGER,
   PRIMARY KEY (Blog_ID, Category_ID),
   FOREIGN KEY (Blog_ID) REFERENCES Blog_Data(Blog_ID),
   FOREIGN KEY (Category_ID) REFERENCES Blog_Category_Data(Category_ID)
 );
 
-// 게시물, 카테고리 관계 정보
-CREATE TABLE Blog_PostCategory_Association (
-    Post_ID INTEGER NOT NULL,
-    Category_ID INTEGER NOT NULL,
+
+// 게시물, 카테고리 관계 정보 ( 현재는 사용 x)
+CREATE TABLE Blog_CategoryPost_Association (
+    Category_ID INTEGER,
+    Post_ID INTEGER,
     PRIMARY KEY (Post_ID, Category_ID),
-    FOREIGN KEY (Post_ID) REFERENCES Blog_Post_Data(Post_ID),
-    FOREIGN KEY (Category_ID) REFERENCES Blog_Category_Data(Category_ID)
+    FOREIGN KEY (Category_ID) REFERENCES Blog_Category_Data(Category_ID),
+    FOREIGN KEY (Post_ID) REFERENCES Blog_Post_Data(Post_ID)
 );
 
 // 타입 정보
@@ -72,32 +91,14 @@ CREATE TABLE Blog_Category_Type (
     // 해당 데이터는 이후에 채우기
     Category_ID INTEGER 
     PRIMARY KEY (Category_ID)
-    FOREIGN KEY (Category_ID) REFERENCES Blog_Category_Data(Category_ID)
+    FOREIGN KEY (Category_ID) REFERENCES Blog_Category_Data(Category_ID) 
 );
 
 
 커뮤니티
 
 
-유저 정보
-// 유저 데이터 정보
-CREATE TABLE User_Data(
-  User_ID varchar(20),
-  User_PW varchar(64) NOT NULL,
-  User_NickName varchar(30) NOT NULL,
-  User_Name varchar(30) NOT NULL,
-  User_PhoneNum varchar(15) NOT NULL,
-  User_Birthday varchar(15) NOT NULL,
-  User_Create_Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (User_ID)
-);
 
-// hash 데이터 정보
-CREATE TABLE Hash_Data(
-  User_ID varchar(20) REFERENCES User_Data(User_ID),
-  User_Hash varchar(64),
-  FOREIGN KEY (User_ID) REFERENCES User_Data(User_ID)
-);
 
 
 // 트리거 설정
@@ -128,32 +129,41 @@ https://dbdiagram.io/d
 // 유저 정보
 Table User_Data{
   User_ID varchar(20) [ pk ]
-  User_PW varchar(64) [not null]
-  User_NickName varchar(30)
-  User_Name varchar(20) [not null]
-  User_PhoneNum varchar(20) [not null]
-  User_Birthday varchar(15)
+  User_PW varchar(255) [not null]
+  User_NickName varchar(255)
+  User_Name varchar(63) [not null]
+  User_PhoneNum varchar(63) [not null]
+  User_Birthday varchar(63)
   User_SignUp_Time datetime [not null, default: `current_timestamp`]
 }
 
 Table Hash_Data {
   User_ID varchar(20) [primary key, ref: - User_Data.User_ID]
-  User_Hash varchar(64)
+  User_Hash varchar(255)
 }
 
 // 블로그 정보
 Table Blog_Data {
   Blog_ID integer [ pk, increment ] // auto-increment
   User_ID varchar(20) [ ref : > User_Data.User_ID ]
-  Blog_Name text [not null]
+  Blog_Name varchar(30) [not null]
   Blog_Description text
   Blog_Visibility_Status integer [default: 0]
   Blog_Create_Time datetime [not null, default: `current_timestamp`]
 }
 
+Table Blog_Category_Data {
+  Category_ID integer [ pk, increment ] // auto-increment
+  Blog_ID integer [ not null, ref: > Blog_Data.Blog_ID ]
+  Category_Name varchar(255) [ not null ]
+  Category_PID integer
+  Category_ChildNum integer [ not null, default: 0 ]
+  Category_Create_Time datetime [ not null, default: `current_timestamp`]
+}
+
 Table Blog_Post_Data {
   Post_ID integer [ pk, increment] // auto-increment
-  Blog_ID varchar(20) [not null, ref: > Blog_Data.Blog_ID]
+  Category_ID varchar(20) [not null, ref: > Blog_Category_Data.Category_ID]
   Post_Title text [not null]
   Post_Content text [not null]
   Post_Visibility_Status integer [ default: 0 ]
@@ -162,26 +172,12 @@ Table Blog_Post_Data {
 
 Table Blog_Comment_Data {
   Comment_ID integer [ pk, increment] // auto-increment
-  Post_ID integer [not null, ref: <> Blog_Post_Data.Post_ID]
+  Post_ID integer [not null, ref: < Blog_Post_Data.Post_ID]
   User_ID varchar(20) [not null, ref: > User_Data.User_ID]
   Comment text [not null]
   Comment_Visibility_Status integer [default: 0]
   Comment_Create_Time datetime [not null, default: `current_timestamp`]
 }
-
-Table Blog_Category_Data {
-  Category_ID integer [pk, increment] // auto-increment
-  User_ID varchar(20) [not null, ref: > User_Data.User_ID]
-  Category_Name varchar(100) [not null]
-  Parent_Category_ID integer [ref: > Blog_Category_Data.Category_ID]
-  Child_Num integer [not null, default: 0]
-}
-
-
-
-
-
-
 
 
 

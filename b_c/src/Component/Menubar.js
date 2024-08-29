@@ -5,6 +5,7 @@ import MenubarLoginbefore from "../Function/Menubar/MenubarLoginbefore";
 import MenubarLoginafter from "../Function/Menubar/MenubarLoginafter";
 
 function Menubar() {
+  //nickname 받기
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,6 +26,7 @@ function Menubar() {
   const Blog = ["/Blog"]; // 블로그
   const Community = ["/Community"]; // 커뮤니티
   const ChangeUserInfo = ["/ChangeUserInfo"];
+  const CreateBlog = ["/CreateBlog"];
 
   function page_check() {
     if (start_page.includes(location.pathname)) {
@@ -34,7 +36,8 @@ function Menubar() {
       HomePageLoginPages.includes(location.pathname) ||
       Blog.includes(location.pathname) ||
       Community.includes(location.pathname) ||
-      ChangeUserInfo.includes(location.pathname)
+      ChangeUserInfo.includes(location.pathname) ||
+      CreateBlog.includes(location.pathname)
     ) {
       return 2;
     }
