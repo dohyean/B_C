@@ -1,0 +1,8 @@
+.App-content-TestModule {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+  }
